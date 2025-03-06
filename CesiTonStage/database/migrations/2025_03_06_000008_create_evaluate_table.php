@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('evaluate', function (Blueprint $table) {
-            $table->foreignId('Id_Account_holder')->constrained('accounts', 'Id_Account')->cascadeOnDelete();
+            $table->foreignId('Id_Account')->constrained('accounts', 'Id_Account')->cascadeOnDelete();
             $table->foreignId('Id_Company')->constrained('companies', 'Id_Company')->cascadeOnDelete();
             $table->decimal('Rating', 2, 1)->nullable(); // Note sur 5, nullable
-            $table->primary(['Id_Account_holder', 'Id_Company']); // Clé primaire composite
+            $table->primary(['Id_Account', 'Id_Company']); // Clé primaire composite
             $table->timestamps(); // Ajout des timestamps (création et mise à jour)
 
         });

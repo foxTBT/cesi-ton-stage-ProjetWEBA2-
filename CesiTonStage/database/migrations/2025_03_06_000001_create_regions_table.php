@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id('Id_Region'); // Clé primaire auto-incrémentée
-            $table->string('City_region', 255)->charset('ascii'); // Ville (ASCII, non null)
-            $table->string('Postal_code_Region', 6)->charset('ascii'); // Code postal (ASCII, non null)
+            $table->string('Name_Region', 255)->charset('ascii')->notNull(); // Nom de la région, ASCII, not null
             $table->timestamps(); // Ajout des timestamps (création et mise à jour)
         });
     }

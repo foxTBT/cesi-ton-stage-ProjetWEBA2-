@@ -18,8 +18,12 @@ return new class extends Migration
             $table->string('First_name_Account', 128)->charset('ascii'); // Prénom, ASCII
             $table->string('Last_name_Account', 128)->charset('ascii'); // Nom de famille, ASCII
             $table->date('Birth_date_Account'); // Date de naissance, not null
-            $table->timestamps(); // Ajout des timestamps (création et mise à jour)
+            $table->unsignedBigInteger('Id_Role')->unique(); // Clé étrangère, unique, not null
+            
+            // Définition de la clé étrangère
+            $table->foreign('Id_Role')->references('Id_Role')->on('roles')->onDelete('cascade');
 
+            $table->timestamps(); // Ajout des timestamps (création et mise à jour)
         });
     }
 

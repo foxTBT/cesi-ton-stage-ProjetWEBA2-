@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('wish_lists', function (Blueprint $table) {
-            $table->foreignId('Id_Account_holder')->constrained('accounts', 'Id_Account')->cascadeOnDelete();
+            $table->foreignId('Id_Account')->constrained('accounts', 'Id_Account')->cascadeOnDelete();
             $table->foreignId('Id_Offer')->constrained('offers', 'Id_Offer')->cascadeOnDelete();
-            $table->primary(['Id_Account_holder', 'Id_Offer']); // Clé primaire composite
+            $table->primary(['Id_Account', 'Id_Offer']); // Clé primaire composite
             $table->timestamps(); // Ajout des timestamps (création et mise à jour)
 
         });

@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -9,9 +8,10 @@ class CreateStatusesTable extends Migration
     public function up()
     {
         Schema::create('statuses', function (Blueprint $table) {
-            $table->id('id_status');
-            $table->string('title_status', 128);
-            $table->text('description_status')->nullable();
+            $table->id('Id_Status');
+            $table->string('Title_Status', 255);
+            $table->text('Description_Status')->nullable();
+            $table->primary('Id_Status');
             $table->timestamps();
         });
     }

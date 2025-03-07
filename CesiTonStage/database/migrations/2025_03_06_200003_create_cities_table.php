@@ -9,10 +9,11 @@ class CreateCitiesTable extends Migration
     public function up()
     {
         Schema::create('cities', function (Blueprint $table) {
-            $table->id('id_city');
-            $table->string('name_city', 255);
-            $table->string('postal_code_city', 6);
-            $table->foreignId('id_region')->constrained('regions')->onDelete('cascade');
+            $table->id('Id_City');
+            $table->string('Name_City', 255);
+            $table->string('Postal_code_City', 10);
+            $table->foreignId('Id_Region')->constrained('regions')->references('Id_Region');
+            $table->primary('Id_City');
             $table->timestamps();
         });
     }

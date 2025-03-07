@@ -16,13 +16,11 @@ class RegionController extends Controller
     {
         // Valider les données du formulaire
         $request->validate([
-            'City_Region' => 'required|string|max:255',
-            'Postal_code_Region' => 'required|string|max:6',
+            'Name_Region' => 'required|string|max:255',
         ]);
         
         Region::create([
-            'City_Region' => $request->City_Region,
-            'Postal_code_Region' => $request->Postal_code_Region,
+            'Name_Region' => $request->Name_Region,
         ]);
         
 

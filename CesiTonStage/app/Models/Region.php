@@ -9,7 +9,7 @@ class Region extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['City_Region', 'Postal_code_Region'];
+    protected $fillable = ['Name_Region'];
 
 }
 

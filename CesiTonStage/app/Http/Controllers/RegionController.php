@@ -25,6 +25,6 @@ class RegionController extends Controller
         
 
         // Rediriger vers une page de succès ou afficher un message
-        return redirect()->route('regions.create')->with('success', 'Région ajoutée avec succès !');
+        return redirect()->route('regions.create')->with('success1', 'Région ajoutée avec succès !');
     }
 }

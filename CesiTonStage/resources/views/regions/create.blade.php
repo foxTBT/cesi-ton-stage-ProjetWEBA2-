@@ -14,7 +14,10 @@
     
 
 
-    <p>Session Test: {{ session('test') }}</p>
+    @if (session('success1'))
+    <p style="color: green;">{{ session('success1') }}</p>
+    @endif
+
 
 
 </form>

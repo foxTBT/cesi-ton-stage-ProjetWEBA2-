@@ -3,7 +3,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegionController;
-use App\Http\Controllers\AccountController;
 use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
@@ -12,9 +11,6 @@ Route::get('/', function () {
 
 Route::get('/regions/create', [RegionController::class, 'create'])->name('regions.create');
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');
-
-Route::get('/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
-Route::post('/accounts', [AccountController::class, 'store'])->name('accounts.store');
 
 Route::get('/create_account/create', [LoginController::class, 'create'])->name('create_account.create');
 Route::post('/create_account', [LoginController::class, 'store'])->name('create_account.store');
@@ -40,4 +36,3 @@ Route::get('/admin', function () {
     }
     return "Bienvenue sur la page Admin";
 })->name('admin.page');
-

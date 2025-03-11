@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeBonPlan</title>
+    <title>CTS</title>
     <!-- Intégration de Tailwind CSS via CDN -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <!-- Intégration de JQuery -->
@@ -17,8 +17,9 @@
     <header class="flex flex-col items-center">
         <div class="bg-yellow-500 w-full border border-black">
             <div class="logo my-2">
-                <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo LeBonPlan" class="w-[15em] mx-auto">
+                <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
             </div>
+            
         </div>
         
         
@@ -33,9 +34,15 @@
                     <li><a href="#" class="hover:text-[#ec6f35]">Contact</a></li>
                 </ul>
                 <ul class="flex items-center gap-4">
-                    <li><a href="#" class="hover:text-[#ec6f35]">Connexion</a></li>
-                    <li><a href="#" class="bg-white text-black font-bold py-1 px-3 rounded hover:text-[#ec6f35]">S'inscrire</a></li>
+                    @if(session('account'))
+                        <li class="text-white font-bold">Bienvenue, {{ session('account')->First_name_Account }} 👋</li>
+                        <li><a href="{{ route('logout') }}" class="hover:text-[#ec6f35]">Déconnexion</a></li>
+                    @else
+                        <li><a href="{{ route('login') }}" class="hover:text-[#ec6f35]">Connexion</a></li>
+                        <li><a href="{{ route('create_account.create') }}" class="bg-white text-black font-bold py-1 px-3 rounded hover:text-[#ec6f35]">S'inscrire</a></li>
+                    @endif
                 </ul>
+                
             </div>
             <ul class="flex-col items-start gap-2 p-4 bg-black md:hidden hidden" id="mobileMenu">
                 <li><a href="#" class="text-white hover:text-[#ec6f35]">Accueil</a></li>
@@ -52,6 +59,10 @@
     </main>
 
     <footer class="bg-black text-white text-left text-base py-2 mt-12">
+        <div class="bg-gray-500 w-full border border-black">
+                        trtr
+        </div>
+        
         <p class="ml-4">&#169;2025 - Tous droits réservés - Web4All</p>
     </footer>
 

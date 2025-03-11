@@ -15,9 +15,13 @@
 <body class="bg-[#f3f3f3]">
     <!-- Header -->
     <header class="flex flex-col items-center">
-        <div class="logo my-4">
-            <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo LeBonPlan" class="w-[25em] mx-auto">
+        <div class="bg-yellow-500 w-full border border-black">
+            <div class="logo my-2">
+                <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo LeBonPlan" class="w-[15em] mx-auto">
+            </div>
         </div>
+        
+        
         <nav class="relative w-full bg-black text-white text-[1.3em]">
             <div class="flex items-center justify-between px-4 py-2">
                 <button class="menu-toggle text-white text-2xl md:hidden" aria-label="Ouvrir le menu">&#9776;</button>

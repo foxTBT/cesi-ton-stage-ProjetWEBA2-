@@ -3,7 +3,7 @@
     <label>Email:</label>
     <input type="text" name="Email_Account" required>
     
-    <label>Mot de passe:</label>
+    <label>Mot de passe :</label>
     <input type="text" name="Password_Account" required>
 
     <button type="submit">Se connecter</button>

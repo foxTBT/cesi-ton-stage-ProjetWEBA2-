@@ -16,8 +16,8 @@ Route::post('/regions', [RegionController::class, 'store'])->name('regions.store
 Route::get('/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
 Route::post('/accounts', [AccountController::class, 'store'])->name('accounts.store');
 
-Route::get('/logins/create', [LoginController::class, 'create'])->name('logins.create');
-Route::post('/logins', [LoginController::class, 'store'])->name('logins.store');
+Route::get('/create_account/create', [LoginController::class, 'create'])->name('create_account.create');
+Route::post('/create_account', [LoginController::class, 'store'])->name('create_account.store');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function create()
     {
-        return view('logins.create');
+        return view('create_account.create');
     }
     
 
@@ -36,6 +36,6 @@ Account::create([
         
 
         // Rediriger vers une page de succès ou afficher un message
-        return redirect()->route('logins.create')->with('success', 'Compte ajoutée avec succès !');
+        return redirect()->route('create_account.create')->with('success', 'Compte ajoutée avec succès !');
     }
 }

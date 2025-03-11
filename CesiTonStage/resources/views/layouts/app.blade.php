@@ -1,80 +1,61 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeBonPlan</title>
+    <!-- Intégration de Tailwind CSS via CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- Intégration de JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="script.js"></script>
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+<body class="bg-[#f3f3f3]">
+    <!-- Header -->
+    <header class="flex flex-col items-center">
+        <div class="logo my-4">
+            <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo LeBonPlan" class="w-[25em] mx-auto">
+        </div>
+        <nav class="relative w-full bg-black text-white text-[1.3em]">
+            <div class="flex items-center justify-between px-4 py-2">
+                <button class="menu-toggle text-white text-2xl md:hidden" aria-label="Ouvrir le menu">&#9776;</button>
+                <ul id="navList" class="hidden md:flex md:items-center md:gap-4">
+                    <li><a href="#" class="hover:text-[#ec6f35]">Accueil</a></li>
+                    <li><a href="#" class="hover:text-[#ec6f35]">Entreprises</a></li>
+                    <li><a href="#" class="text-[#ec6f35] font-bold hover:text-[#ec6f35]">Offres</a></li>
+                    <li><a href="#" class="hover:text-[#ec6f35]">Wishlist</a></li>
+                    <li><a href="#" class="hover:text-[#ec6f35]">Contact</a></li>
+                </ul>
+                <ul class="flex items-center gap-4">
+                    <li><a href="#" class="hover:text-[#ec6f35]">Connexion</a></li>
+                    <li><a href="#" class="bg-white text-black font-bold py-1 px-3 rounded hover:text-[#ec6f35]">S'inscrire</a></li>
+                </ul>
             </div>
+            <ul class="flex-col items-start gap-2 p-4 bg-black md:hidden hidden" id="mobileMenu">
+                <li><a href="#" class="text-white hover:text-[#ec6f35]">Accueil</a></li>
+                <li><a href="#" class="text-white hover:text-[#ec6f35]">Entreprises</a></li>
+                <li><a href="#" class="text-[#ec6f35] font-bold hover:text-[#ec6f35]">Offres</a></li>
+                <li><a href="#" class="text-white hover:text-[#ec6f35]">Wishlist</a></li>
+                <li><a href="#" class="text-white hover:text-[#ec6f35]">Contact</a></li>
+            </ul>
         </nav>
+    </header>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    <main>
+        @yield('content')
+    </main>
+
+    <footer class="bg-black text-white text-left text-base py-2 mt-12">
+        <p class="ml-4">&#169;2025 - Tous droits réservés - Web4All</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>

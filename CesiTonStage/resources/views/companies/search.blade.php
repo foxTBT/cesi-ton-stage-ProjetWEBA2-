@@ -9,3 +9,5 @@
         {{ $company->Siret_number_Company }}
     </h3>
 @endforeach
+
+{{ $companies->appends(request()->query())->links() }}

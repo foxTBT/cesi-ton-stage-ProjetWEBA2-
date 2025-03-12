@@ -35,7 +35,7 @@
                 </ul>
                 <ul class="flex items-center gap-4">
                     @if(session('account'))
-                        <li class="text-white font-bold">Bienvenue, {{ session('account')->First_name_Account }} 👋</li>
+                        <li class="text-white font-bold">Bienvenue, {{ session('account')->First_name_Account }}</li>
                         <li><a href="{{ route('logout') }}" class="hover:text-[#ec6f35]">Déconnexion</a></li>
                     @else
                         <li><a href="{{ route('login') }}" class="hover:text-[#ec6f35]">Connexion</a></li>
@@ -60,7 +60,13 @@
 
     <footer class="bg-black text-white text-left text-base py-2 mt-12">
         <div class="bg-gray-500 w-full border border-black">
-                        trtr
+            <div class="flex flex-wrap flex-col">
+                <div class="bg-blue-500 p-4 mb-4">Div 1</div>
+                <div class="bg-green-500 p-4">Div 2</div>
+                <div class="bg-blue-500 p-4 mb-4">Div 3'''''''''''''''''''''''''''''''''"'"é'"ezrfdssd dsqdsqdq</div>
+                <div class="bg-blue-500 p-4 mb-4">Div 4</div>
+              </div>
+              
         </div>
         
         <p class="ml-4">&#169;2025 - Tous droits réservés - Web4All</p>

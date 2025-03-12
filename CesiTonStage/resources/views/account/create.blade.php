@@ -31,8 +31,9 @@
         <div class="mb-3">
             <label for="Id_Role" class="form-label">Rôle</label>
             <select class="form-select" id="Id_Role" name="Id_Role" required>
-                <option value="1">Admin</option>
-                <option value="2">Utilisateur</option>
+                <option value="1">Étudiant</option>
+                <option value="2">Pilote</option>
+                <option value="2">Admin</option>
             </select>
         </div>
         <div class="mb-3 form-check">

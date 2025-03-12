@@ -13,6 +13,8 @@ Route::get('/regions/create', [RegionController::class, 'create'])->name('region
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');
 
 Route::get('/account/create', [AccountController::class, 'create'])->name('account.create');
+Route::get('/account/show-pilote', [AccountController::class, 'showPilote'])->name('account.show-pilote');
+Route::get('/account/show-student', [AccountController::class, 'showStudent'])->name('account.show-student');
 Route::post('/account', [AccountController::class, 'store'])->name('account.store');
 
 

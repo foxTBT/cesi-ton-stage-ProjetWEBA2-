@@ -41,3 +41,8 @@ Route::get('/admin', function () {
     return "Bienvenue sur la page Admin";
 })->name('admin.page');
 
+use App\Http\Controllers\CompaniesController;
+
+Route::get('/companies/create', [CompaniesController::class, 'create'])->name('companies.create');
+Route::post('/companies', [CompaniesController::class, 'store'])->name('companies.store');
+Route::get('/companies/search', [CompaniesController::class, 'search'])->name('companies.search');

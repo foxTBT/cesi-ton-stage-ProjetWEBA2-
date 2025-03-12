@@ -39,7 +39,7 @@
                         <li><a href="{{ route('logout') }}" class="hover:text-[#ec6f35]">Déconnexion</a></li>
                     @else
                         <li><a href="{{ route('login') }}" class="hover:text-[#ec6f35]">Connexion</a></li>
-                        <li><a href="{{ route('create_account.create') }}" class="bg-white text-black font-bold py-1 px-3 rounded hover:text-[#ec6f35]">S'inscrire</a></li>
+                        <li><a href="{{ route('account.create') }}" class="bg-white text-black font-bold py-1 px-3 rounded hover:text-[#ec6f35]">S'inscrire</a></li>
                     @endif
                 </ul>
                 

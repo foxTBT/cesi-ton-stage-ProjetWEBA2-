@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 
-class LoginController extends Controller
+class AccountController extends Controller
 {
     public function create()
     {
-        return view('create_account.create');
+        return view('account.create');
     }
 
     public function store(Request $request) {
@@ -39,6 +39,6 @@ class LoginController extends Controller
         }
     
         // Redirection avec message de succès
-        return redirect()->route('create_account.create')->with('success', 'Compte ajouté avec succès !');
+        return redirect()->route('account.create')->with('success', 'Compte ajouté avec succès !');
     }
 }

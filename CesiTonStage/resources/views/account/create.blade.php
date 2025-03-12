@@ -6,7 +6,7 @@
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <form action="{{ route('create_account.store') }}" method="POST">
+    <form action="{{ route('account.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="Email_Account" class="form-label">Email</label>

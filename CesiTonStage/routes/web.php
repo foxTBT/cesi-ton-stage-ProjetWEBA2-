@@ -3,7 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegionController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AccountController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,8 +12,8 @@ Route::get('/', function () {
 Route::get('/regions/create', [RegionController::class, 'create'])->name('regions.create');
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');
 
-Route::get('/create_account/create', [LoginController::class, 'create'])->name('create_account.create');
-Route::post('/create_account', [LoginController::class, 'store'])->name('create_account.store');
+Route::get('/account/create', [AccountController::class, 'create'])->name('account.create');
+Route::post('/account', [AccountController::class, 'store'])->name('account.store');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,47 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
-    <h2 class="mb-4">Créer un compte</h2>
+<div class="max-w-100 mx-auto bg-white shadow-lg rounded-lg p-6 border mb-4">
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">Créer un compte</h2>
+
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <form action="{{ route('account.store') }}" method="POST">
+
+    <form action="{{ route('account.store') }}" method="POST" class="flex flex-col justify-center">
         @csrf
-        <div class="mb-3">
-            <label for="Email_Account" class="form-label">Email</label>
-            <input type="email" class="form-control" id="Email_Account" name="Email_Account" required>
+
+        <div class="mb-4">
+            <label for="Email_Account" class="block text-gray-700">Email :</label>
+            <input type="email" name="Email_Account" id="Email_Account" class="w-full px-4 py-2 border rounded-lg" required>
         </div>
-        <div class="mb-3">
-            <label for="Password_Account" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="Password_Account" name="Password_Account" required>
+
+        <div class="mb-4">
+            <label for="Password_Account" class="block text-gray-700">Mot de passe :</label>
+            <input type="password" name="Password_Account" id="Password_Account" class="w-full px-4 py-2 border rounded-lg" required>
         </div>
-        <div class="mb-3">
-            <label for="First_name_Account" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="First_name_Account" name="First_name_Account" required>
+
+        <div class="mb-4">
+            <label for="First_name_Account" class="block text-gray-700">Prénom :</label>
+            <input type="text" name="First_name_Account" id="First_name_Account" class="w-full px-4 py-2 border rounded-lg" required>
         </div>
-        <div class="mb-3">
-            <label for="Last_name_Account" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="Last_name_Account" name="Last_name_Account" required>
+
+        <div class="mb-4">
+            <label for="Last_name_Account" class="block text-gray-700">Nom :</label>
+            <input type="text" name="Last_name_Account" id="Last_name_Account" class="w-full px-4 py-2 border rounded-lg" required>
         </div>
-        <div class="mb-3">
-            <label for="Birth_date_Account" class="form-label">Date de naissance</label>
-            <input type="date" class="form-control" id="Birth_date_Account" name="Birth_date_Account" required>
+
+        <div class="mb-4">
+            <label for="Birth_date_Account" class="block text-gray-700">Date de naissance :</label>
+            <input type="date" name="Birth_date_Account" id="Birth_date_Account" class="w-full px-4 py-2 border rounded-lg" required>
         </div>
-        <div class="mb-3">
-            <label for="Id_Role" class="form-label">Rôle</label>
-            <select class="form-select" id="Id_Role" name="Id_Role" required>
+
+        <div class="mb-4">
+            <label for="Id_Role" class="block text-gray-700">Rôle :</label>
+            <select name="Id_Role" id="Id_Role" class="w-full px-4 py-2 border rounded-lg" required>
                 <option value="1">Étudiant</option>
                 <option value="2">Pilote</option>
-                <option value="2">Admin</option>
+                <option value="3">Admin</option>
             </select>
         </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="remember" name="remember">
-            <label class="form-check-label" for="remember">Se souvenir de moi</label>
+
+        <div class="mb-4 flex items-center">
+            <label for="remember" class="text-gray-700 mr-2">Se souvenir de moi</label>
+            <input type="checkbox" name="remember" id="remember" class="form-check-input">
         </div>
-        
-        <button type="submit" class="btn btn-primary">Créer le compte</button>
+
+        <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Créer le compte</button>
     </form>
 </div>
 @endsection

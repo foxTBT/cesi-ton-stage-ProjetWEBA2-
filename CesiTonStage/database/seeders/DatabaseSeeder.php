@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
                 'Title_Role' => 'Admin',
                 'Description_role' => 'Compte admin'
             ]
-        ]);
+        ]); 
 
 
 
@@ -78,16 +78,95 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Seeder pour la table accounts
-        /*
+        
         DB::table('accounts')->insert([
-            'Id_Account' => $i + 1,
-            'Email_Account' => 'jean' . ($i + 1) . '@example.com',
-            'Password_Account' => bcrypt('password' . ($i + 1)),
+            ['Id_Account' => 1,
+            'Email_Account' => 'jean' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
             'First_name_Account' => 'Jean',
-            'Last_name_Account' => 'Doe' . ($i + 1),
+            'Last_name_Account' => 'Doe',
             'Birth_date_Account' => now()->subYears(30)->toDateString(),
-            'Id_Role' => $i + 1,
-        ]);*/
+            'Id_Role' => 1],
+            ['Id_Account' => 2,
+            'Email_Account' => 'pierre' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Pierre',
+            'Last_name_Account' => 'Baptiste',
+            'Birth_date_Account' => now()->subYears(31)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 3,
+            'Email_Account' => 'michel' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Michel',
+            'Last_name_Account' => 'Arti',
+            'Birth_date_Account' => now()->subYears(12)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 4,
+            'Email_Account' => 'Maxime' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Maxime',
+            'Last_name_Account' => 'Moysset',
+            'Birth_date_Account' => now()->subYears(10)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 5,
+            'Email_Account' => 'diego' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Diego',
+            'Last_name_Account' => 'Borto',
+            'Birth_date_Account' => now()->subYears(13)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 6,
+            'Email_Account' => 'mathis' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Mathis',
+            'Last_name_Account' => 'Voshgel',
+            'Birth_date_Account' => now()->subYears(13)->toDateString(),
+            'Id_Role' => 1],
+
+            ['Id_Account' => 7,
+            'Email_Account' => 'steven' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Steven',
+            'Last_name_Account' => 'Esco',
+            'Birth_date_Account' => now()->subYears(63)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 8,
+            'Email_Account' => 'thomas' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Thomas',
+            'Last_name_Account' => 'Palo',
+            'Birth_date_Account' => now()->subYears(13)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 9,
+            'Email_Account' => 'chris' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Chris',
+            'Last_name_Account' => 'Milan',
+            'Birth_date_Account' => now()->subYears(19)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 10,
+            'Email_Account' => 'argan' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Argan',
+            'Last_name_Account' => 'LeTomic',
+            'Birth_date_Account' => now()->subYears(65)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 11,
+            'Email_Account' => 'raphael' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Raphael',
+            'Last_name_Account' => 'Fabian',
+            'Birth_date_Account' => now()->subYears(17)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 12,
+            'Email_Account' => 'yren' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Yren',
+            'Last_name_Account' => 'Jaegger',
+            'Birth_date_Account' => now()->subYears(23)->toDateString(),
+            'Id_Role' => 2],
+
+        ]);
 
         // Seeder pour la table companies
         // DB::table('companies')->insert([

@@ -12,8 +12,8 @@ Route::get('/', function () {
 Route::get('/regions/create', [RegionController::class, 'create'])->name('regions.create');
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');
 
-Route::get('/create_account/create', [LoginController::class, 'create'])->name('create_account.create');
-Route::post('/create_account', [LoginController::class, 'store'])->name('create_account.store');
+Route::get('/account/create', [LoginController::class, 'create'])->name('account.create');
+Route::post('/account', [LoginController::class, 'store'])->name('account.store');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -31,7 +31,7 @@ Route::get('/check-cookies', [AuthController::class, 'checkCookies'])->name('che
 //pour la page de controle des cookies (côté utilisateur)
 use App\Http\Controllers\CookieController;
 
-Route::get('/politique-de-protection', [CookieController::class, 'showCookieSettings'])->name('cookie.settings');
+Route::get('/politique-de-protection-des-donnees', [CookieController::class, 'showCookieSettings'])->name('cookie.settings');
 Route::post('/cookies/update', [CookieController::class, 'updateCookies'])->name('cookie.update');
 
 

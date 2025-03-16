@@ -10,7 +10,7 @@
 <form action="{{ route('login') }}" method="POST">
     @csrf
 
-    <div class="m-20 p-10 shadow-gray-200 shadow-xl rounded-xl" style="display: flex; flex-direction: column; gap: 8px; height: 55vh;">
+    <div class="mt-20 m-5 mb-20 p-10 shadow-gray-200 shadow-xl rounded-xl" style="display: flex; flex-direction: column; gap: 8px; height: 55vh;">
         <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
         
         <label>Email:</label>

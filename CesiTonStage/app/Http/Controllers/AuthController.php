@@ -17,32 +17,32 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $request->validate([
-            'Email_Account' => 'required',
-            'Password_Account' => 'required',
-        ]);
-
-        $account = Account::where('Email_Account', $request->Email_Account)->where('Password_Account', $request->Password_Account)->first();
-
-        if ($account) {
-            session(['account' => $account]);
-
-            // Créer un cookie qui dure 1 jour (1440 minutes)
-            Cookie::queue('user_email', $account->Email_Account, 1440);
-
-            if ((int) $account->Id_Role === 1) {
-                return redirect()->route('admin.page');
-                // Afficher le cookie
-                
-            }
-
-            return redirect()->route('dashboard');
-        }
-        $user_email = Cookie::get('user_email');
-        echo "User Email: " . $user_email;
-        return back()->withErrors(['login' => 'Email ou mot de passe incorrect.', $user_email]);
+{
+    if (!$request->cookie('accept_cookies')) {
+        return back()->withErrors(['login' => 'Vous devez accepter les cookies pour vous connecter.']);
     }
+
+    $request->validate([
+        'Email_Account' => 'required',
+        'Password_Account' => 'required',
+    ]);
+
+    $account = Account::where('Email_Account', $request->Email_Account)
+                      ->where('Password_Account', $request->Password_Account)
+                      ->first();
+
+    if ($account) {
+        session(['account' => $account]);
+
+        // Stocker l'email dans un cookie pour 1 jour
+        Cookie::queue('user_email', $account->Email_Account, 1440);
+
+        return (int) $account->Id_Role === 1 ? redirect()->route('admin.page') : redirect()->route('dashboard');
+    }
+
+    return back()->withErrors(['login' => 'Email ou mot de passe incorrect.']);
+}
+
 
     public function logout()
     {
@@ -53,5 +53,28 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
+
+    
+    public function acceptCookies(Request $request)
+        {
+            Cookie::queue('accept_cookies', true, 1440); // 1 jour
+            return response()->json(['success' => true]);
+        }
+
+    public function rejectCookies(Request $request)
+        {
+            Cookie::queue(Cookie::forget('accept_cookies'));
+            return response()->json(['success' => true]);
+        }
+
+
+    public function checkCookies()
+    {
+        return response()->json(['accepted' => Cookie::has('accept_cookies') && Cookie::get('accept_cookies') == true]);
+    }
+
+
+    
+    
 
 }

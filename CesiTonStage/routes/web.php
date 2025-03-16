@@ -24,6 +24,15 @@ use App\Http\Controllers\AuthController;
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Routes pour la gestion des cookies
+Route::post('/accept-cookies', [AuthController::class, 'acceptCookies'])->name('accept.cookies');
+Route::post('/reject-cookies', [AuthController::class, 'rejectCookies'])->name('reject.cookies');
+Route::get('/check-cookies', [AuthController::class, 'checkCookies'])->name('check.cookies'); // <--- Ajout de cette route
+//pour la page de controle des cookies (côté utilisateur)
+use App\Http\Controllers\CookieController;
+
+Route::get('/politique-de-protection', [CookieController::class, 'showCookieSettings'])->name('cookie.settings');
+Route::post('/cookies/update', [CookieController::class, 'updateCookies'])->name('cookie.update');
 
 
 Route::get('/dashboard', function () {

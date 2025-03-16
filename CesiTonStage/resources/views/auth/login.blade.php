@@ -1,4 +1,4 @@
-@extends('layouts.login')
+@extends('layouts.login_app')
 
 @section('content')
 
@@ -9,18 +9,34 @@
 </head>
 <form action="{{ route('login') }}" method="POST">
     @csrf
-    <label>Email:</label>
-    <input type="text" name="Email_Account">
-    
-    <label>Mot de passe :</label>
-    <input type="text" name="Password_Account">
 
-    <button type="submit" class="bg-yellow-400  focus:border-yellow-400 focus:bg-yellow-500 hover:border-yellow-500 hover:text-white text-white font-bold py-2 px-4 border-2 rounded border-yellow-400">Se connecter</button>
+    <div class="m-20 p-10 shadow-gray-200 shadow-xl rounded-xl" style="display: flex; flex-direction: column; gap: 8px; height: 55vh;">
+        <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
+        
+        <label>Email:</label>
+        <input type="text" name="Email_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 p-1" placeholder="Entrez votre email">
+        
+        <label>Mot de passe :</label>
+        <input type="text" name="Password_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 p-1" placeholder="Entrez votre mot de passe">
+        
+        <p style="text-align: right;"> mot de passe oublié ?</p>
+        
+        <!-- Conteneur pour centrer uniquement le bouton -->
+        <div style="display: flex; justify-content: center;">
+            <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-xl w-30">
+                Se connecter
+            </button>
+        </div>
+    </div>
+    
     <!--
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="remember" name="remember">
         <label class="form-check-label" for="remember">Se souvenir de moi</label>
     </div>-->
+
+
+
 
     <!-- Popup pour l'acceptation des cookies -->
     

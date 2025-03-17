@@ -13,8 +13,12 @@ Route::get('/regions/create', [RegionController::class, 'create'])->name('region
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');
 
 Route::get('/account/create', [AccountController::class, 'create'])->name('account.create');
+Route::get('/account/show-pilote', [AccountController::class, 'showPilote'])->name('account.show-pilote');
+Route::get('/account/show-student', [AccountController::class, 'showStudent'])->name('account.show-student');
 Route::post('/account', [AccountController::class, 'store'])->name('account.store');
-
+Route::delete('/account/destroy/{id}', [AccountController::class, 'destroy'])->name('account.destroy');
+Route::get('/account/{id}/edit', [AccountController::class, 'edit'])->name('account.edit');
+Route::put('/account/{id}', [AccountController::class, 'update'])->name('account.update');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

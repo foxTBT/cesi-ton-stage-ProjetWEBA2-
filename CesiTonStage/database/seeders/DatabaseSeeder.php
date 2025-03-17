@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Account;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -8,155 +10,225 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Seeder pour la table sessions
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('sessions')->insert([
-                'id' => Str::uuid(),
-                'user_id' => $i + 1,
-                'ip_address' => '192.168.1.' . ($i + 1),
-                'user_agent' => 'Mozilla/5.0',
-                'payload' => json_encode(['key' => 'value']),
-                'last_activity' => time(),
-            ]);
-        }
+
+        // DB::table('sessions')->insert([
+        //     'id' => Str::uuid(),
+        //     'user_id' => $i + 1,
+        //     'ip_address' => '192.168.1.' . ($i + 1),
+        //     'user_agent' => 'Mozilla/5.0',
+        //     'payload' => json_encode(['key' => 'value']),
+        //     'last_activity' => time(),
+        // ]);
+
 
         // Seeder pour la table roles
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('roles')->insert([
-                'Id_Role' => $i + 1,
-                'Title_Role' => 'Role ' . ($i + 1),
-                'Description_role' => 'Description for role ' . ($i + 1),
-            ]);
-        }
+
+        DB::table('roles')->insert([
+            [
+                'Id_Role' => 1,
+                'Title_Role' => 'Étudiant',
+                'Description_role' => 'Compte étudiant'
+            ],
+            [
+                'Id_Role' => 2,
+                'Title_Role' => 'Pilote',
+                'Description_role' => 'Compte pilote'
+            ],
+            [
+                'Id_Role' => 3,
+                'Title_Role' => 'Admin',
+                'Description_role' => 'Compte admin'
+            ]
+        ]); 
+
+
 
         // Seeder pour la table regions
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('regions')->insert([
-                'Id_Region' => $i + 1,
-                'Name_Region' => 'Region ' . ($i + 1),
-            ]);
-        }
+        // DB::table('regions')->insert([
+        //     'Id_Region' => $i + 1,
+        //     'Name_Region' => 'Region ' . ($i + 1),
+        // ]);
 
         // Seeder pour la table cities
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('cities')->insert([
-                'Id_City' => $i + 1,
-                'Name_City' => 'City ' . ($i + 1),
-                'Postal_code_City' => '1000' . ($i + 1),
-                'Id_Region' => $i + 1,
-            ]);
-        }
+        // DB::table('cities')->insert([
+        //     'Id_City' => $i + 1,
+        //     'Name_City' => 'City ' . ($i + 1),
+        //     'Postal_code_City' => '1000' . ($i + 1),
+        //     'Id_Region' => $i + 1,
+        // ]);
 
         // Seeder pour la table skills
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('skills')->insert([
-                'Id_Skill' => $i + 1,
-                'Name_Skill' => 'Skill ' . ($i + 1),
-            ]);
-        }
+        // DB::table('skills')->insert([
+        //     'Id_Skill' => $i + 1,
+        //     'Name_Skill' => 'Skill ' . ($i + 1),
+        // ]);
 
         // Seeder pour la table statuses
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('statuses')->insert([
-                'Id_Status' => $i + 1,
-                'Title_Status' => 'Status ' . ($i + 1),
-                'Description_Status' => 'Description for status ' . ($i + 1),
-            ]);
-        }
+        // DB::table('statuses')->insert([
+        //     'Id_Status' => $i + 1,
+        //     'Title_Status' => 'Status ' . ($i + 1),
+        //     'Description_Status' => 'Description for status ' . ($i + 1),
+        // ]);
 
         // Seeder pour la table categories
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('categories')->insert([
-                'Id_Category' => $i + 1,
-                'Name_Category' => 'Category ' . ($i + 1),
-                'Description_Category' => 'Description for category ' . ($i + 1),
-            ]);
-        }
+        // DB::table('categories')->insert([
+        //     'Id_Category' => $i + 1,
+        //     'Name_Category' => 'Category ' . ($i + 1),
+        //     'Description_Category' => 'Description for category ' . ($i + 1),
+        // ]);
 
         // Seeder pour la table accounts
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('accounts')->insert([
-                'Id_Account' => $i + 1,
-                'Email_Account' => 'jean' . ($i + 1) . '@example.com',
-                'Password_Account' => bcrypt('password' . ($i + 1)),
-                'First_name_Account' => 'Jean',
-                'Last_name_Account' => 'Doe' . ($i + 1),
-                'Birth_date_Account' => now()->subYears(30)->toDateString(),
-                'Id_Role' => $i + 1,
-            ]);
-        }
+        
+        DB::table('accounts')->insert([
+            ['Id_Account' => 1,
+            'Email_Account' => 'jean' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Jean',
+            'Last_name_Account' => 'Doe',
+            'Birth_date_Account' => now()->subYears(30)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 2,
+            'Email_Account' => 'pierre' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Pierre',
+            'Last_name_Account' => 'Baptiste',
+            'Birth_date_Account' => now()->subYears(31)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 3,
+            'Email_Account' => 'michel' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Michel',
+            'Last_name_Account' => 'Arti',
+            'Birth_date_Account' => now()->subYears(12)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 4,
+            'Email_Account' => 'Maxime' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Maxime',
+            'Last_name_Account' => 'Moysset',
+            'Birth_date_Account' => now()->subYears(10)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 5,
+            'Email_Account' => 'diego' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Diego',
+            'Last_name_Account' => 'Borto',
+            'Birth_date_Account' => now()->subYears(13)->toDateString(),
+            'Id_Role' => 1],
+            ['Id_Account' => 6,
+            'Email_Account' => 'mathis' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Mathis',
+            'Last_name_Account' => 'Voshgel',
+            'Birth_date_Account' => now()->subYears(13)->toDateString(),
+            'Id_Role' => 1],
+
+            ['Id_Account' => 7,
+            'Email_Account' => 'steven' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Steven',
+            'Last_name_Account' => 'Esco',
+            'Birth_date_Account' => now()->subYears(63)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 8,
+            'Email_Account' => 'thomas' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Thomas',
+            'Last_name_Account' => 'Palo',
+            'Birth_date_Account' => now()->subYears(13)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 9,
+            'Email_Account' => 'chris' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Chris',
+            'Last_name_Account' => 'Milan',
+            'Birth_date_Account' => now()->subYears(19)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 10,
+            'Email_Account' => 'argan' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Argan',
+            'Last_name_Account' => 'LeTomic',
+            'Birth_date_Account' => now()->subYears(65)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 11,
+            'Email_Account' => 'raphael' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Raphael',
+            'Last_name_Account' => 'Fabian',
+            'Birth_date_Account' => now()->subYears(17)->toDateString(),
+            'Id_Role' => 2],
+            ['Id_Account' => 12,
+            'Email_Account' => 'yren' . '@example.com',
+            'Password_Account' => bcrypt('password' . (1234)),
+            'First_name_Account' => 'Yren',
+            'Last_name_Account' => 'Jaegger',
+            'Birth_date_Account' => now()->subYears(23)->toDateString(),
+            'Id_Role' => 2],
+
+        ]);
 
         // Seeder pour la table companies
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('companies')->insert([
-                'Id_Company' => $i + 1,
-                'Name_Company' => 'Company ' . ($i + 1),
-                'Email_Company' => 'company' . ($i + 1) . '@example.com',
-                'Phone_number_Company' => '0123456789' . ($i + 1),
-                'Description_Company' => 'Description for company ' . ($i + 1),
-                'Siret_number_Company' => '12345678901234',
-                'Logo_link_Company' => 'http://example.com/logo' . ($i + 1) . '.png',
-                'Id_City' => $i + 1,
-            ]);
-        }
+        // DB::table('companies')->insert([
+        //     'Id_Company' => $i + 1,
+        //     'Name_Company' => 'Company ' . ($i + 1),
+        //     'Email_Company' => 'company' . ($i + 1) . '@example.com',
+        //     'Phone_number_Company' => '0123456789' . ($i + 1),
+        //     'Description_Company' => 'Description for company ' . ($i + 1),
+        //     'Siret_number_Company' => '12345678901234',
+        //     'Logo_link_Company' => 'http://example.com/logo' . ($i + 1) . '.png',
+        //     'Id_City' => $i + 1,
+        // ]);
+
 
         // Seeder pour la table offers
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('offers')->insert([
-                'Id_Offer' => $i + 1,
-                'Title_Offer' => 'Offer ' . ($i + 1),
-                'Description_Offer' => 'Description for offer ' . ($i + 1),
-                'Salary_Offer' => 50000 + ($i * 1000),
-                'Begin_date_Offer' => now()->subDays(30)->toDateString(),
-                'Duration_Offer' => now()->addDays(30)->toDateString(),
-                'Id_Category' => $i + 1,
-                'Id_Status' => $i + 1,
-                'Id_Account' => $i + 1,
-                'Id_Company' => $i + 1,
-            ]);
-        }
+        // DB::table('offers')->insert([
+        //     'Id_Offer' => $i + 1,
+        //     'Title_Offer' => 'Offer ' . ($i + 1),
+        //     'Description_Offer' => 'Description for offer ' . ($i + 1),
+        //     'Salary_Offer' => 50000 + ($i * 1000),
+        //     'Begin_date_Offer' => now()->subDays(30)->toDateString(),
+        //     'Duration_Offer' => now()->addDays(30)->toDateString(),
+        //     'Id_Category' => $i + 1,
+        //     'Id_Status' => $i + 1,
+        //     'Id_Account' => $i + 1,
+        //     'Id_Company' => $i + 1,
+        // ]);
 
         // Seeder pour la table evaluates
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('evaluates')->insert([
-                'Id_Account' => $i + 1,
-                'Id_Company' => $i + 1,
-                'Rating' => 4.5,
-            ]);
-        }
+        // DB::table('evaluates')->insert([
+        //     'Id_Account' => $i + 1,
+        //     'Id_Company' => $i + 1,
+        //     'Rating' => 4.5,
+        // ]);
 
         // Seeder pour la table applications
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('applications')->insert([
-                'Id_Account' => $i + 1,
-                'Id_Offer' => $i + 1,
-                'Cv_link_Application' => 'http://example.com/cv' . ($i + 1) . '.pdf',
-                'Cover_letter_Application' => 'Cover letter for application ' . ($i + 1),
-                'Date_Application' => now()->subDays(30)->toDateString(),
-            ]);
-        }
+        // DB::table('applications')->insert([
+        //     'Id_Account' => $i + 1,
+        //     'Id_Offer' => $i + 1,
+        //     'Cv_link_Application' => 'http://example.com/cv' . ($i + 1) . '.pdf',
+        //     'Cover_letter_Application' => 'Cover letter for application ' . ($i + 1),
+        //     'Date_Application' => now()->subDays(30)->toDateString(),
+        // ]);
 
         // Seeder pour la table wish_lists
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('wish_lists')->insert([
-                'Id_Account' => $i + 1,
-                'Id_Offer' => $i + 1,
-            ]);
-        }
+        // DB::table('wish_lists')->insert([
+        //     'Id_Account' => $i + 1,
+        //     'Id_Offer' => $i + 1,
+        // ]);
+
 
         // Seeder pour la table manages
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('manages')->insert([
-                'Id_Account' => $i + 1,
-                'Id_Company' => $i + 1,
-            ]);
-        }
+        // DB::table('manages')->insert([
+        //     'Id_Account' => $i + 1,
+        //     'Id_Company' => $i + 1,
+        // ]);
+
 
         // Seeder pour la table gots
-        for ($i = 0; $i < 15; $i++) {
-            DB::table('gots')->insert([
-                'Id_Offer' => $i + 1,
-                'Id_Skill' => $i + 1,
-            ]);
-        }
+        // DB::table('gots')->insert([
+        //     'Id_Offer' => $i + 1,
+        //     'Id_Skill' => $i + 1,
+        // ]);
     }
 }

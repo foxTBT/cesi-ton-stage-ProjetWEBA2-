@@ -10,7 +10,7 @@
 <form action="{{ route('login') }}" method="POST">
     @csrf
 
-    <div class="m-20 p-10 shadow-gray-200 shadow-xl rounded-xl" style="display: flex; flex-direction: column; gap: 8px; height: 55vh;">
+    <div class="mt-20 m-5 mb-20 p-10 shadow-gray-200 shadow-xl rounded-xl" style="display: flex; flex-direction: column; gap: 8px; height: 55vh;">
         <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
         
         <label>Email:</label>
@@ -19,7 +19,7 @@
         <label>Mot de passe :</label>
         <input type="text" name="Password_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 p-1" placeholder="Entrez votre mot de passe">
         
-        <p style="text-align: right;"> mot de passe oublié ?</p>
+        <p style="text-align: right; font-size: 12px" class ="text-gray-600"> mot de passe oublié ?</p>
         
         <!-- Conteneur pour centrer uniquement le bouton -->
         <div style="display: flex; justify-content: center;">

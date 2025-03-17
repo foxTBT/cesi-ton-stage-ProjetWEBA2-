@@ -29,3 +29,5 @@
         <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-red-500 hover:bg-red-300 hover:text-black"><strong>Supprimer</strong></button>
     </form>
 </div>
+
+@include('partials.search_bar_comp_offer')

@@ -23,7 +23,9 @@
         <button class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-blue-500 hover:bg-blue-300 hover:text-black"><strong>Modifier</strong></button>
     </a>
 
-    <a href="{{ route('companies.delete', $company->Id_Company) }}" class="Block">
-        <button class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-red-500 hover:bg-red-300 hover:text-black"><strong>Supprimer</strong></button>
-    </a>
+    <form action="{{ route('companies.destroy', $company->Id_Company) }}" method="POST" class="Block">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-red-500 hover:bg-red-300 hover:text-black"><strong>Supprimer</strong></button>
+    </form>
 </div>

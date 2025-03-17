@@ -60,11 +60,12 @@ class CompaniesController extends Controller
         return view('companies.show')->with('company', $company);
     }
 
-    public function delete($Id_Company)
+    public function destroy($Id_Company)
     {
-        $company = Company::where('Id_Company',$Id_Company)->firstOrFail();
+        $company = Company::findOrFail($Id_Company);
+        $company->delete();
 
-        return view('companies.delete')->with('company', $company);
+        return redirect()->route('companies.search', $company->Id_Company)->with('success', 'Entreprise mise à jour avec succès !');
     }
 
     public function edit($Id_Company)

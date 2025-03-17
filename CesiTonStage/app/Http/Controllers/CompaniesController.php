@@ -99,9 +99,5 @@ class CompaniesController extends Controller
         ]);
         
         return redirect()->route('companies.show', $company->Id_Company)->with('success', 'Entreprise mise à jour avec succès !');
-
-        // $company = Company::where('Id_Company',$Id_Company)->firstOrFail();
-
-        // return view('companies.delete')->with('company', $company);
     }
 }

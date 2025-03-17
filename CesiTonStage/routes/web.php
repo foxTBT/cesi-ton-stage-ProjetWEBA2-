@@ -48,6 +48,6 @@ Route::post('/companies', [CompaniesController::class, 'store'])->name('companie
 
 Route::get('/companies/search', [CompaniesController::class, 'search'])->name('companies.search');
 Route::get('/companies/show/{Id_Company}', [CompaniesController::class, 'show'])->name('companies.show');
-Route::put('/companies/{Id_Company}/update', [CompaniesController::class, 'update'])->name('companies.update');
 Route::delete('/companies/{Id_Company}/delete', [CompaniesController::class, 'delete'])->name('companies.delete');
 Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])->name('companies.edit');
+Route::put('/companies/{Id_Company}', [CompaniesController::class, 'update'])->name('companies.update');

@@ -17,6 +17,7 @@ class CreateAccountsTable extends Migration
             $table->foreignId('Id_Role')->constrained('roles')->references('Id_Role');
             $table->primary('Id_Account');
             $table->timestamps();
+            $table->softDeletes(); // Ajout de la colonne deleted_at pour la suppression douce
         });
     }
 

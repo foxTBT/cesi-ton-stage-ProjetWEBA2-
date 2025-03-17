@@ -41,41 +41,403 @@ class DatabaseSeeder extends Seeder
             ]
         ]); 
 
-
-
         // Seeder pour la table regions
-        // DB::table('regions')->insert([
-        //     'Id_Region' => $i + 1,
-        //     'Name_Region' => 'Region ' . ($i + 1),
-        // ]);
+        DB::table('regions')->insert([
+            [
+            'Id_Region' => 1,
+            'Name_Region' => 'AUVERGNE-RHONE-ALPES',
+            ],
+            [
+            'Id_Region' => 2,
+            'Name_Region' => 'BOURGOGNE-FRANCHE-COMTE',
+            ],
+            [
+            'Id_Region' => 3,
+            'Name_Region' => 'BRETAGNE',
+            ],
+            [
+            'Id_Region' => 4,
+            'Name_Region' => 'CENTRE-VAL_DE_LOIRE',
+            ],
+            [
+            'Id_Region' => 5,
+            'Name_Region' => 'CORSE',
+            ],
+            [
+            'Id_Region' => 6,
+            'Name_Region' => 'GRAND_EST',
+            ],
+            [
+            'Id_Region' => 7,
+            'Name_Region' => 'HAUTS-DE-FRANCE',
+            ],
+            [
+            'Id_Region' => 8,
+            'Name_Region' => 'ILE-DE-FRANCE',
+            ],
+            [
+            'Id_Region' => 9,
+            'Name_Region' => 'NORMANDIE',
+            ],
+            [
+            'Id_Region' => 10,
+            'Name_Region' => 'NOUVELLE-AQUITAINE',
+            ],
+            [
+            'Id_Region' => 11,
+            'Name_Region' => 'OCCITANIE',
+            ],
+            [
+            'Id_Region' => 12,
+            'Name_Region' => 'PAYS_DE_LA_LOIRE',
+            ],
+            [
+            'Id_Region' => 13,
+            'Name_Region' => 'PROVENCE_ALPES_COTE_D_AZUR',
+            ]
+        ]);
 
         // Seeder pour la table cities
-        // DB::table('cities')->insert([
-        //     'Id_City' => $i + 1,
-        //     'Name_City' => 'City ' . ($i + 1),
-        //     'Postal_code_City' => '1000' . ($i + 1),
-        //     'Id_Region' => $i + 1,
-        // ]);
+        DB::table('cities')->insert([
+            //AUVERGNE-RHONE-ALPES
+            [
+            'Id_City' => 1,
+            'Name_City' => 'LYON',
+            'Postal_code_City' => '69000',
+            'Id_Region' => 1,
+            ],
+            [
+            'Id_City' => 2,
+            'Name_City' => 'GRENOBLE',
+            'Postal_code_City' => '38000',
+            'Id_Region' => 1,
+            ],
+            [
+            'Id_City' => 3,
+            'Name_City' => 'SAINT-ETIENNE',
+            'Postal_code_City' => '42000',
+            'Id_Region' => 1,
+            ],
+
+            //BOURGOGNE-FRANCHE-COMTE
+            [
+            'Id_City' => 4,
+            'Name_City' => 'DIJON',
+            'Postal_code_City' => '21000',
+            'Id_Region' => 2,
+            ],
+            [
+            'Id_City' => 5,
+            'Name_City' => 'BESANCON',
+            'Postal_code_City' => '25000',
+            'Id_Region' => 2,
+            ],
+            [
+            'Id_City' => 6,
+            'Name_City' => 'CHALON-SUR-SAONE',
+            'Postal_code_City' => '71100',
+            'Id_Region' => 2,
+            ],
+
+            //BRETAGNE
+            [
+            'Id_City' => 7,
+            'Name_City' => 'RENNES',
+            'Postal_code_City' => '35000',
+            'Id_Region' => 3,
+            ],
+            [
+            'Id_City' => 8,
+            'Name_City' => 'BREST',
+            'Postal_code_City' => '29200',
+            'Id_Region' => 3,
+            ],
+            [
+            'Id_City' => 9,
+            'Name_City' => 'QUIMPER',
+            'Postal_code_City' => '29000',
+            'Id_Region' => 3,
+            ],
+
+            //CENTRE-VAL_DE_LOIRE
+            [
+            'Id_City' => 10,
+            'Name_City' => 'TOURS',
+            'Postal_code_City' => '37000',
+            'Id_Region' => 4,
+            ],
+            [
+            'Id_City' => 11,
+            'Name_City' => 'ORLEANS',
+            'Postal_code_City' => '45000',
+            'Id_Region' => 4,
+            ],
+            [
+            'Id_City' => 12,
+            'Name_City' => 'BOURGES',
+            'Postal_code_City' => '18000',
+            'Id_Region' => 4,
+            ],
+
+            //CORSE
+            [
+            'Id_City' => 13,
+            'Name_City' => 'AJACCIO',
+            'Postal_code_City' => '20000',
+            'Id_Region' => 5,
+            ],
+            [
+            'Id_City' => 14,
+            'Name_City' => 'BASTIA',
+            'Postal_code_City' => '20200',
+            'Id_Region' => 5,
+            ],
+            [
+            'Id_City' => 15,
+            'Name_City' => 'PORTO-VECCHIO',
+            'Postal_code_City' => '20137',
+            'Id_Region' => 5,
+            ],
+
+            //GRAND_EST
+            [
+            'Id_City' => 16,
+            'Name_City' => 'STRASBOURG',
+            'Postal_code_City' => '67000',
+            'Id_Region' => 6,
+            ],
+            [
+            'Id_City' => 17,
+            'Name_City' => 'REIMS',
+            'Postal_code_City' => '51100',
+            'Id_Region' => 6,
+            ],
+            [
+            'Id_City' => 18,
+            'Name_City' => 'METZ',
+            'Postal_code_City' => '57000',
+            'Id_Region' => 6,
+            ],
+
+            //HAUTS-DE-FRANCE
+            [
+            'Id_City' => 19,
+            'Name_City' => 'LILLE',
+            'Postal_code_City' => '59000',
+            'Id_Region' => 7,
+            ],
+            [
+            'Id_City' => 20,
+            'Name_City' => 'AMIENS',
+            'Postal_code_City' => '80000',
+            'Id_Region' => 7,
+            ],
+            [
+            'Id_City' => 21,
+            'Name_City' => 'ROUBAIX',
+            'Postal_code_City' => '59100',
+            'Id_Region' => 7,
+            ],
+
+            //ILE-DE-FRANCE
+            [
+            'Id_City' => 22,
+            'Name_City' => 'PARIS',
+            'Postal_code_City' => '75000',
+            'Id_Region' => 8,
+            ],
+            [
+            'Id_City' => 23,
+            'Name_City' => 'BOULOGNE-BILLANCOURT',
+            'Postal_code_City' => '92100',
+            'Id_Region' => 8,
+            ],
+            [
+            'Id_City' => 24,
+            'Name_City' => 'SAINT-DENIS',
+            'Postal_code_City' => '93200',
+            'Id_Region' => 8,
+            ],
+            
+            //NORMANDIE
+            [
+            'Id_City' => 25,
+            'Name_City' => 'LE_HAVRE',
+            'Postal_code_City' => '76600',
+            'Id_Region' => 9,
+            ],
+            [
+            'Id_City' => 26,
+            'Name_City' => 'ROUEN',
+            'Postal_code_City' => '76000',
+            'Id_Region' => 9,
+            ],
+            [
+            'Id_City' => 27,
+            'Name_City' => 'CAEN',
+            'Postal_code_City' => '14000',
+            'Id_Region' => 9,
+            ],
+
+            //NOUVELLE-AQUITAINE
+            [
+            'Id_City' => 28,
+            'Name_City' => 'BORDEAUX',
+            'Postal_code_City' => '33000',
+            'Id_Region' => 10,
+            ],
+            [
+            'Id_City' => 29,
+            'Name_City' => 'LIMOGES',
+            'Postal_code_City' => '87000',
+            'Id_Region' => 10,
+            ],
+            [
+            'Id_City' => 30,
+            'Name_City' => 'POITIERS',
+            'Postal_code_City' => '86000',
+            'Id_Region' => 10,
+            ],
+
+            //OCCITANIE
+            [
+            'Id_City' => 31,
+            'Name_City' => 'TOULOUSE',
+            'Postal_code_City' => '31000',
+            'Id_Region' => 11,
+            ],
+            [
+            'Id_City' => 32,
+            'Name_City' => 'MONTPELLIER',
+            'Postal_code_City' => '34000',
+            'Id_Region' => 11,
+            ],
+            [
+            'Id_City' => 33,
+            'Name_City' => 'NIMES',
+            'Postal_code_City' => '30000',
+            'Id_Region' => 11,
+            ],
+
+            //PAYS_DE_LA_LOIRE
+            [
+            'Id_City' => 34,
+            'Name_City' => 'NANTES',
+            'Postal_code_City' => '44000',
+            'Id_Region' => 12,
+            ],
+            [
+            'Id_City' => 35,
+            'Name_City' => 'ANGERS',
+            'Postal_code_City' => '49000',
+            'Id_Region' => 12,
+            ],
+            [
+            'Id_City' => 36,
+            'Name_City' => 'LE_MANS',
+            'Postal_code_City' => '72000',
+            'Id_Region' => 12,
+            ],
+
+            //PROVENCE_ALPES_COTE_D_AZUR
+            [
+            'Id_City' => 37,
+            'Name_City' => 'MARSEILLE',
+            'Postal_code_City' => '13000',
+            'Id_Region' => 13,
+            ],
+            [
+            'Id_City' => 38,
+            'Name_City' => 'NICE',
+            'Postal_code_City' => '06000',
+            'Id_Region' => 13,
+            ],
+            [
+            'Id_City' => 39,
+            'Name_City' => 'TOULON',
+            'Postal_code_City' => '83000',
+            'Id_Region' => 13,
+            ],
+
+        ]);
 
         // Seeder pour la table skills
-        // DB::table('skills')->insert([
-        //     'Id_Skill' => $i + 1,
-        //     'Name_Skill' => 'Skill ' . ($i + 1),
-        // ]);
+        DB::table('skills')->insert([
+            [
+            'Id_Skill' => 1,
+            'Name_Skill' => 'PHP',
+            ],
+            [
+            'Id_Skill' => 2,
+            'Name_Skill' => 'C++',
+            ],
+            [
+            'Id_Skill' => 3,
+            'Name_Skill' => 'SQL',
+            ],
+            [
+            'Id_Skill' => 4,
+            'Name_Skill' => 'C',
+            ],
+            [
+            'Id_Skill' => 5,
+            'Name_Skill' => 'GIT',
+            ],
+            [
+            'Id_Skill' => 6,
+            'Name_Skill' => 'JS',
+            ],
+            [
+            'Id_Skill' => 7,
+            'Name_Skill' => 'LARAVEL',
+            ],
+            [
+            'Id_Skill' => 8,
+            'Name_Skill' => 'ANGULAR',
+            ],
+            [
+            'Id_Skill' => 9,
+            'Name_Skill' => 'HTML',
+            ],
+            [
+            'Id_Skill' => 10,
+            'Name_Skill' => 'CSS',
+            ],
+        ]);
 
         // Seeder pour la table statuses
-        // DB::table('statuses')->insert([
-        //     'Id_Status' => $i + 1,
-        //     'Title_Status' => 'Status ' . ($i + 1),
-        //     'Description_Status' => 'Description for status ' . ($i + 1),
-        // ]);
+        DB::table('statuses')->insert([
+            [
+            'Id_Status' => 1,
+            'Title_Status' => 'ACCEPTE',
+            'Description_Status' => 'bar',
+            ],
+            [
+            'Id_Status' => 2,
+            'Title_Status' => 'EN_COURS',
+            'Description_Status' => 'bar',
+            ],
+            [
+            'Id_Status' => 3,
+            'Title_Status' => 'REFUSE',
+            'Description_Status' => 'bar',
+            ],
+
+        ]);
 
         // Seeder pour la table categories
-        // DB::table('categories')->insert([
-        //     'Id_Category' => $i + 1,
-        //     'Name_Category' => 'Category ' . ($i + 1),
-        //     'Description_Category' => 'Description for category ' . ($i + 1),
-        // ]);
+        DB::table('categories')->insert([
+            [
+            'Id_Category' => 1,
+            'Name_Category' => 'STAGE',
+            'Description_Category' => 'bar',
+            ],
+            [
+            'Id_Category' => 2,
+            'Name_Category' => 'ALTERNANCE',
+            'Description_Category' => 'bar',
+            ],
+        ]);
 
         // Seeder pour la table accounts
         
@@ -169,38 +531,248 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Seeder pour la table companies
-        // DB::table('companies')->insert([
-        //     'Id_Company' => $i + 1,
-        //     'Name_Company' => 'Company ' . ($i + 1),
-        //     'Email_Company' => 'company' . ($i + 1) . '@example.com',
-        //     'Phone_number_Company' => '0123456789' . ($i + 1),
-        //     'Description_Company' => 'Description for company ' . ($i + 1),
-        //     'Siret_number_Company' => '12345678901234',
-        //     'Logo_link_Company' => 'http://example.com/logo' . ($i + 1) . '.png',
-        //     'Id_City' => $i + 1,
-        // ]);
+        DB::table('companies')->insert([
+            [
+            'Id_Company' => 1,
+            'Name_Company' => 'UBISOFT',
+            'Email_Company' => 'contact' . '@ubisoft.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo1' . '.png',
+            'Id_City' => 1,
+            ],
+            [
+            'Id_Company' => 2,
+            'Name_Company' => 'STEAM',
+            'Email_Company' => 'contact' . '@steam.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo2' . '.png',
+            'Id_City' => 2,
+            ],
+            [
+            'Id_Company' => 3,
+            'Name_Company' => 'SOPRA_STERIA',
+            'Email_Company' => 'contact' . '@soprasteria.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo3' . '.png',
+            'Id_City' => 3,
+            ],
+            [
+            'Id_Company' => 4,
+            'Name_Company' => 'INFOTEL',
+            'Email_Company' => 'contact' . '@infotel.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo4' . '.png',
+            'Id_City' => 4,
+            ],
+            [
+            'Id_Company' => 5,
+            'Name_Company' => 'KNDS',
+            'Email_Company' => 'contact' . '@knds.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo5' . '.png',
+            'Id_City' => 5,
+            ],
+            [
+            'Id_Company' => 6,
+            'Name_Company' => 'CAPGEMINI',
+            'Email_Company' => 'contact' . '@capgemini.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo6' . '.png',
+            'Id_City' => 6,
+            ],
+            [
+            'Id_Company' => 7,
+            'Name_Company' => 'TBM',
+            'Email_Company' => 'contact' . '@tbm.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo7' . '.png',
+            'Id_City' => 7,
+            ],
+            [
+            'Id_Company' => 8,
+            'Name_Company' => 'TISSEO',
+            'Email_Company' => 'contact' . '@tisseo.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo8' . '.png',
+            'Id_City' => 8,
+            ],
+             [
+            'Id_Company' => 9,
+            'Name_Company' => 'UBER',
+            'Email_Company' => 'contact' . '@uber.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo9' . '.png',
+            'Id_City' => 9,
+            ],
+            [
+            'Id_Company' => 10,
+            'Name_Company' => 'LINKEDIN',
+            'Email_Company' => 'contact' . '@linkedin.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo10' . '.png',
+            'Id_City' => 10,
+            ],
+            [
+            'Id_Company' => 11,
+            'Name_Company' => 'CYBERTECH',
+            'Email_Company' => 'contact' . '@cybertech.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo11' . '.png',
+            'Id_City' => 11,
+            ],
+            [
+            'Id_Company' => 12,
+            'Name_Company' => 'CGI',
+            'Email_Company' => 'contact' . '@cgi.com',
+            'Phone_number_Company' => '0123456789',
+            'Description_Company' => 'bar',
+            'Siret_number_Company' => '12345678901234',
+            'Logo_link_Company' => 'example.com/logo12' . '.png',
+            'Id_City' => 12,
+            ],
+        ]);
 
 
         // Seeder pour la table offers
-        // DB::table('offers')->insert([
-        //     'Id_Offer' => $i + 1,
-        //     'Title_Offer' => 'Offer ' . ($i + 1),
-        //     'Description_Offer' => 'Description for offer ' . ($i + 1),
-        //     'Salary_Offer' => 50000 + ($i * 1000),
-        //     'Begin_date_Offer' => now()->subDays(30)->toDateString(),
-        //     'Duration_Offer' => now()->addDays(30)->toDateString(),
-        //     'Id_Category' => $i + 1,
-        //     'Id_Status' => $i + 1,
-        //     'Id_Account' => $i + 1,
-        //     'Id_Company' => $i + 1,
-        // ]);
+        DB::table('offers')->insert([
+            [
+            'Id_Offer' => 1,
+            'Title_Offer' => 'Dev_C++',
+            'Description_Offer' => 'foo',
+            'Salary_Offer' => 50000,
+            'Begin_date_Offer' => now()->subDays(30)->toDateString(),
+            'Duration_Offer' => now()->addDays(30)->toDateString(),
+            'Id_Category' => 1,
+            'Id_Status' => 1,
+            'Id_Account' => 1,
+            'Id_Company' => 1,
+            ],
+            [
+            'Id_Offer' => 2,
+            'Title_Offer' => 'Dev_Web',
+            'Description_Offer' => 'foo',
+            'Salary_Offer' => 50000,
+            'Begin_date_Offer' => now()->subDays(30)->toDateString(),
+            'Duration_Offer' => now()->addDays(30)->toDateString(),
+            'Id_Category' => 1,
+            'Id_Status' => 1,
+            'Id_Account' => 1,
+            'Id_Company' => 1,
+            ],
+            [
+            'Id_Offer' => 3,
+            'Title_Offer' => 'Dev_PHP',
+            'Description_Offer' => 'foo',
+            'Salary_Offer' => 50000,
+            'Begin_date_Offer' => now()->subDays(30)->toDateString(),
+            'Duration_Offer' => now()->addDays(30)->toDateString(),
+            'Id_Category' => 2,
+            'Id_Status' => 1,
+            'Id_Account' => 1,
+            'Id_Company' => 4,
+            ],
+            [
+            'Id_Offer' => 4,
+            'Title_Offer' => 'Dev_Laravel',
+            'Description_Offer' => 'foo',
+            'Salary_Offer' => 50000,
+            'Begin_date_Offer' => now()->subDays(30)->toDateString(),
+            'Duration_Offer' => now()->addDays(30)->toDateString(),
+            'Id_Category' => 1,
+            'Id_Status' => 2,
+            'Id_Account' => 2,
+            'Id_Company' => 3,
+            ],
+            [
+            'Id_Offer' => 5,
+            'Title_Offer' => 'Dev_C',
+            'Description_Offer' => 'foo',
+            'Salary_Offer' => 50000,
+            'Begin_date_Offer' => now()->subDays(30)->toDateString(),
+            'Duration_Offer' => now()->addDays(30)->toDateString(),
+            'Id_Category' => 2,
+            'Id_Status' => 2,
+            'Id_Account' => 2,
+            'Id_Company' => 3,
+            ],
+            
+        ]);
 
         // Seeder pour la table evaluates
-        // DB::table('evaluates')->insert([
-        //     'Id_Account' => $i + 1,
-        //     'Id_Company' => $i + 1,
-        //     'Rating' => 4.5,
-        // ]);
+        DB::table('evaluates')->insert([
+            [
+            'Id_Account' => 1,
+            'Id_Company' => 1,
+            'Rating' => 4.5,
+            ],
+            [
+            'Id_Account' => 2,
+            'Id_Company' => 1,
+            'Rating' => 2.5,
+            ],
+            [
+            'Id_Account' => 3,
+            'Id_Company' => 1,
+            'Rating' => 3.5,
+            ],
+            [
+            'Id_Account' => 4,
+            'Id_Company' => 1,
+            'Rating' => 5.0,
+            ],
+            [
+            'Id_Account' => 1,
+            'Id_Company' => 2,
+            'Rating' => 0.5,
+            ],
+            [
+            'Id_Account' => 6,
+            'Id_Company' => 5,
+            'Rating' => 4.5,
+            ],
+            [
+            'Id_Account' => 6,
+            'Id_Company' => 1,
+            'Rating' => 2.5,
+            ],
+            [
+            'Id_Account' => 7,
+            'Id_Company' => 3,
+            'Rating' => 3.5,
+            ],
+            [
+            'Id_Account' => 2,
+            'Id_Company' => 3,
+            'Rating' => 5.0,
+            ],
+            [
+            'Id_Account' => 9,
+            'Id_Company' => 1,
+            'Rating' => 0.5,
+            ],
+        ]);
 
         // Seeder pour la table applications
         // DB::table('applications')->insert([

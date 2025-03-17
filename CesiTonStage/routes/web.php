@@ -45,4 +45,9 @@ use App\Http\Controllers\CompaniesController;
 
 Route::get('/companies/create', [CompaniesController::class, 'create'])->name('companies.create');
 Route::post('/companies', [CompaniesController::class, 'store'])->name('companies.store');
+
 Route::get('/companies/search', [CompaniesController::class, 'search'])->name('companies.search');
+Route::get('/companies/show/{Id_Company}', [CompaniesController::class, 'show'])->name('companies.show');
+Route::put('/companies/{Id_Company}/update', [CompaniesController::class, 'update'])->name('companies.update');
+Route::delete('/companies/{Id_Company}/delete', [CompaniesController::class, 'delete'])->name('companies.delete');
+Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])->name('companies.edit');

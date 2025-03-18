@@ -13,23 +13,24 @@
 
 @foreach ($students as $student)
     <div class="max-w-100 mx-auto bg-white shadow-lg rounded-lg p-6 border mb-4">
-        <div class="flex items-center space-x-4">
-            <img src="{{ asset('images/icon/student-icon.png')}}" alt="Icon étudiant" 
-                class="w-16 h-16 object-cover rounded-full border bg-yellow-500">
+        <a href="{{ route('account.show-student-details',$student->Id_Account)}}">
+            <div class="flex items-center space-x-4 border-2 border-yellow-500 bg-yellow-500 shadow-lg rounded-lg p-2 hover:border-black hover:bg-yellow-400">
+                <img src="{{ asset('images/icon/student-icon.png')}}" alt="Icon étudiant" 
+                    class="w-16 h-16 object-cover rounded-full border bg-yellow-300">
 
-            <h3 class="text-xl font-semibold text-gray-800">
-                {{ $student->First_name_Account }}
-                {{ $student->Last_name_Account }}
-            </h3>
-        </div>
-
+                <h3 class="text-xl font-semibold text-gray-800 hover:font-bold" >
+                    {{ $student->First_name_Account }}
+                    {{ $student->Last_name_Account }}
+                </h3>
+            </div>
+        </a>
         <ul class="text-gray-600 space-y-1 mt-3">
             <li><strong>Email :</strong> {{ $student->Email_Account }}</li>
             
         </ul>
         <div class="flex flex-row place-content-evenly mt-4 font-bold">
             <!-- Bouton de mise à jour -->
-            <a href="{{ route('account.edit', $student->Id_Account) }}" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Mise à jour</a>
+            <a href="{{ route('account.edit', $student->Id_Account) }}" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Modifier</a>
             <!-- Bouton de suppression -->
             <form action="{{ route('account.destroy', $student->Id_Account) }}" method="POST">
                 @csrf

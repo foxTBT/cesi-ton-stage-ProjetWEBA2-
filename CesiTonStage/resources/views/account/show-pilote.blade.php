@@ -15,9 +15,9 @@
 
 @foreach ($pilotes as $pilote)
     <div class="max-w-100 mx-auto bg-white shadow-lg rounded-lg p-6 border mb-4">
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 border-2 border-yellow-500 bg-yellow-500 shadow-lg rounded-lg p-2 hover:border-black hover:bg-yellow-400">
             <img src="{{ asset('images/icon/pilote-icon.png')}}" alt="Icon pilote" 
-                class="w-16 h-16 object-cover rounded-full border bg-yellow-500">
+                class="w-16 h-16 object-cover rounded-full border bg-yellow-300">
 
             <h3 class="text-xl font-semibold text-gray-800">
                 {{ $pilote->First_name_Account }}

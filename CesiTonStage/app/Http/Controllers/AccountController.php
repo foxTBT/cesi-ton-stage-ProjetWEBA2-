@@ -96,73 +96,52 @@ class AccountController extends Controller
         $account = Account::findOrFail($id);
         return view('account.edit', compact('account'));
     }
-    // public function update(Request $request, $id)
-    // {
-    //     $account = Account::findOrFail($id);
-    //     $source = $request->input('source');
-
-    //     // Validation des données
-    //     $request->validate([
-    //         'Email_Account' => 'required|string|email|max:255|unique:accounts,Email_Account,' . $id . ',Id_Account',
-    //         'First_name_Account' => 'required|string|max:128',
-    //         'Last_name_Account' => 'required|string|max:128',
-    //         'Birth_date_Account' => 'required|date_format:Y-m-d',
-    //         'Id_Role' => 'required|integer',
-    //     ]);
-
-    //     // Mise à jour des données
-    //     $account->update([
-    //         'Email_Account' => $request->Email_Account,
-    //         'First_name_Account' => $request->First_name_Account,
-    //         'Last_name_Account' => $request->Last_name_Account,
-    //         'Birth_date_Account' => $request->Birth_date_Account,
-    //         'Id_Role' => $request->Id_Role,
-    //     ]);
-    //     if ($source === 'show-student') {
-    //         return redirect()->route('account.show-student')/*->with('success', 'Compte mis à jour avec succès !')*/;
-    //     } elseif ($source === 'show-pilote') {
-    //         return redirect()->route('account.show-pilote')/*->with('success', 'Compte mis à jour avec succès !')*/;
-    //     }
-    // }
 
     public function update(Request $request, $id)
-{
-    $account = Account::findOrFail($id);
+    {
+        $account = Account::findOrFail($id);
 
-    // Validation des données
-    $request->validate([
-        'Email_Account' => 'required|string|email|max:255|unique:accounts,Email_Account,' . $id . ',Id_Account',
-        'First_name_Account' => 'required|string|max:128',
-        'Last_name_Account' => 'required|string|max:128',
-        'Birth_date_Account' => 'required|date_format:Y-m-d',
-        'Id_Role' => 'required|integer',
-    ]);
+        // Validation des données
+        $request->validate([
+            'Email_Account' => 'required|string|email|max:255|unique:accounts,Email_Account,' . $id . ',Id_Account',
+            'First_name_Account' => 'required|string|max:128',
+            'Last_name_Account' => 'required|string|max:128',
+            'Birth_date_Account' => 'required|date_format:Y-m-d',
+            'Id_Role' => 'required|integer',
+        ]);
 
-    // Mise à jour des données
-    $account->update([
-        'Email_Account' => $request->Email_Account,
-        'First_name_Account' => $request->First_name_Account,
-        'Last_name_Account' => $request->Last_name_Account,
-        'Birth_date_Account' => $request->Birth_date_Account,
-        'Id_Role' => $request->Id_Role,
-    ]);
+        // Mise à jour des données
+        $account->update([
+            'Email_Account' => $request->Email_Account,
+            'First_name_Account' => $request->First_name_Account,
+            'Last_name_Account' => $request->Last_name_Account,
+            'Birth_date_Account' => $request->Birth_date_Account,
+            'Id_Role' => $request->Id_Role,
+        ]);
 
-    // Redirection conditionnelle en fonction du rôle
-    if ($account->Id_Role == 1) {
-        // Redirection vers la vue des étudiants
-        return redirect()->route('account.show-student')/*->with('success', 'Compte mis à jour avec succès !')*/;
-    } elseif ($account->Id_Role == 2) {
-        // Redirection vers la vue des pilotes
-        return redirect()->route('account.show-pilote')/*->with('success', 'Compte mis à jour avec succès !')*/;
-    } else {
-        // Redirection par défaut
-        return redirect()->route('account.show', $account->Id_Account)->with('success', 'Compte mis à jour avec succès !');
+        // Redirection conditionnelle en fonction du rôle
+        if ($account->Id_Role == 1) {
+            // Redirection vers la vue des étudiants
+            return redirect()->route('account.show-student')/*->with('success', 'Compte mis à jour avec succès !')*/;
+        } elseif ($account->Id_Role == 2) {
+            // Redirection vers la vue des pilotes
+            return redirect()->route('account.show-pilote')/*->with('success', 'Compte mis à jour avec succès !')*/;
+        }
+        // else {
+        //     // Redirection par défaut
+        //     return redirect()->route('account.show', $account->Id_Account)->with('success', 'Compte mis à jour avec succès !');
+        // }
     }
-}
-
+    /*
     public function show($id)
     {
         $account = Account::findOrFail($id);
         return view('account.show', compact('account'));
+    }
+*/
+    public function showStudentDetails($id)
+    {
+        $account = Account::with('role', 'offers')->findOrFail($id);
+        return view('account.show-student-details', compact('account'));
     }
 }

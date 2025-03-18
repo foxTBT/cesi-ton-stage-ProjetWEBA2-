@@ -775,13 +775,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Seeder pour la table applications
-        // DB::table('applications')->insert([
-        //     'Id_Account' => $i + 1,
-        //     'Id_Offer' => $i + 1,
-        //     'Cv_link_Application' => 'http://example.com/cv' . ($i + 1) . '.pdf',
-        //     'Cover_letter_Application' => 'Cover letter for application ' . ($i + 1),
-        //     'Date_Application' => now()->subDays(30)->toDateString(),
-        // ]);
+        DB::table('applications')->insert([
+            'Id_Account' => 1,
+            'Id_Offer' => 1,
+            'Cv_link_Application' => 'http://example.com/cv' . '.pdf',
+            'Cover_letter_Application' => 'Cover letter for application ',
+            'Date_Application' => now()->subDays(30)->toDateString(),
+        ]);
 
         // Seeder pour la table wish_lists
         // DB::table('wish_lists')->insert([

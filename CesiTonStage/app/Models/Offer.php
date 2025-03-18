@@ -7,6 +7,7 @@ class Offer extends Model
 {
     // Définir le nom de la table associée
     protected $table = 'offers';
+    protected $primaryKey = 'Id_Offer';
 
     // Définir les attributs qui peuvent être assignés en masse
     protected $fillable = [

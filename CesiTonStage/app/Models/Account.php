@@ -26,8 +26,8 @@ class Account extends Model
     {
         return $this->belongsTo(Role::class, 'Id_Role');
     }
-    public function offers()
+    public function application()
     {
-        return $this->hasMany(Offer::class, 'Id_Account');
+        return $this->hasMany(Application::class, 'Id_Account');
     }
 }

@@ -14,18 +14,20 @@
     </ul>
 
     <h2 class="text-xl font-semibold text-gray-800 mt-4 mb-4">Offres postulées</h2>
-    <ul class="text-gray-600 space-y-1 mt-3 ">
-        
-        @foreach($account->offers as $offer)
+    <ul class="text-gray-600 space-y-1 mt-3">
+        @foreach($account->application as $application)
         <div class="max-w-100 mx-auto bg-white shadow-lg rounded-lg p-6 border mb-4">
-            <li><strong>Titre :</strong> {{ $offer->Title_Offer }}</li>
-            <li><strong>Description :</strong> {{ $offer->Description_Offer }}</li>
-            <li><strong>Salaire :</strong> {{ $offer->Salary_Offer }} <strong>€/an</strong></li>
-            <li><strong>Date de début :</strong> {{ $offer->Begin_date_Offer }}</li>
-            <li><strong>Durée :</strong> {{ $offer->Duration_Offer }}</li>
+
+            <li><strong>Titre :</strong> {{ $application->offer->Title_Offer }}</li>
+            <li><strong>Description :</strong> {{ $application->offer->Description_Offer }}</li>
+            <li><strong>Salaire :</strong> {{ $application->offer->Salary_Offer }}</li>
+            <li><strong>Date de début :</strong> {{ $application->offer->Begin_date_Offer }}</li>
+            <li><strong>Durée :</strong> {{ $application->offer->Duration_Offer }}</li>
+            <li><strong>CV :</strong> <a href="{{ $application->Cv_link_Application }}" target="_blank">Voir le CV</a></li>
+            <li><strong>Lettre de motivation :</strong> {{ $application->Cover_letter_Application }}</li>
+            <li><strong>Date de candidature :</strong> {{ $application->Date_Application }}</li>
+        @endforeach
         </div>
-            @endforeach
-        
     </ul>
 
     <div class="flex flex-row place-content-evenly mt-4 font-bold">

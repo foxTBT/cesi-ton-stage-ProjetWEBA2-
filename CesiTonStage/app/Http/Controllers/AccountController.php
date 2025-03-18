@@ -141,7 +141,7 @@ class AccountController extends Controller
 */
     public function showStudentDetails($id)
     {
-        $account = Account::with('role', 'offers')->findOrFail($id);
+        $account = Account::with('role', 'application.offer')->findOrFail($id);
         return view('account.show-student-details', compact('account'));
     }
 }

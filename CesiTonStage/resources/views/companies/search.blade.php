@@ -1,4 +1,12 @@
-@include('partials.search_bar')
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="flex mx-auto w-fit p-3 gap-6">
+    @include('partials.search_bar')
+
+    <a href="{{ route('companies.create') }}">
+        <button class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black"><strong>Ajouter</strong></button>
+    </a>
+</div>
 
 @foreach ($companies as $company)
     <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6 border mb-4">

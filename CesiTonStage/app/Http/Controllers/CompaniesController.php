@@ -38,7 +38,7 @@ class CompaniesController extends Controller
         
 
         // Rediriger vers une page de succès ou afficher un message
-        return redirect()->route('companies.create')->with('success', 'Entreprise ajoutée avec succès !');
+        return redirect()->route('companies.search')->with('success', 'Entreprise ajoutée avec succès !');
     }
 
     public function search()
@@ -47,7 +47,8 @@ class CompaniesController extends Controller
 
         $companies = Company::where('Name_Company','LIKE','%'.$term.'%')
                 ->orWhere('Description_Company','LIKE','%'.$term.'%')
-                ->orWhere('Siret_number_Company','LIKE','%'.$term.'%')
+                ->orWhere('Email_Company','LIKE','%'.$term.'%')
+                ->orWhere('Phone_number_Company','LIKE','%'.$term.'%')
                 ->paginate(10);
 
         return view('companies.search')->with('companies', $companies);

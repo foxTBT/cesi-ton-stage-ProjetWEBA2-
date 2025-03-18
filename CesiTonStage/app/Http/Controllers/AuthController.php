@@ -23,8 +23,13 @@ class AuthController extends Controller
     }
 
     $request->validate([
-        'Email_Account' => 'required',
-        'Password_Account' => 'required',
+        'Email_Account' => 'required|email',
+        'Password_Account' => 'required|min:6',
+    ], [
+        'Email_Account.required' => 'L\'email est requis.',
+        'Email_Account.email' => 'Veuillez fournir un email valide.',
+        'Password_Account.required' => 'Le mot de passe est requis.',
+        'Password_Account.min' => 'Le mot de passe doit contenir au moins 6 caractères.',
     ]);
 
     $account = Account::where('Email_Account', $request->Email_Account)

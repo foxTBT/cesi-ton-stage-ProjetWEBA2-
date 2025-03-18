@@ -4,44 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Offer;
 
-// class OfferController extends Controller{
-//     // public function index(){
-//     //     $offers = Offer::with('company');
-
-//     //     return view('offers.index', compact('offers'));
-//     // }
-
-//     // public function create(){
-//     //     return view('offers.create');
-//     // }
-//     // public function store(Request $request)
-//     // {
-//     //     // Valider les données du formulaire
-//     //     $request->validate([
-//     //         'Title_Offer' => 'required|string|max:255',
-//     //         'Description_Offer' => 'required|string|max:65535',
-//     //         'Begin_date_Offer' => 'required|date format:Y-m-d',
-//     //         'Duration_Offer' => 'required|date format:Y-m-d',
-//     //         'Salary_Offer' => 'required|integer',
-//     //         'Id_Region' => 'required|integer',
-//     //     ]);
-        
-//     //     Offer::create([
-//     //         'Title_Offer' => $request->Title_Offer,
-//     //         'Description_Offer' => $request->Description_Offer,
-//     //         'Begin_date_Offer' => $request->Begin_date_Offer,
-//     //         'Duration_Offer' => $request->Duration_Offer,
-//     //         'Salary_Offer' => $request->Salary_Offer,
-//     //         'Id_Region' => $request->Id_Region,
-//     //     ]);
-        
-
-//     //     // Rediriger vers une page de succès ou afficher un message
-//     //     return redirect()->route('offers.create')->with('success', 'Offre ajoutée avec succès !');
-//     // }
-
-// }
-
 class OfferController extends Controller
 {
     public function index()
@@ -67,10 +29,13 @@ class OfferController extends Controller
     $request->validate([
         'Title_Offer' => 'required|string|max:255',
         'Description_Offer' => 'required|string|max:65535',
-        'Begin_date_Offer' => 'required|date format:Y-m-d',
-        'Duration_Offer' => 'required|date format:Y-m-d',
+        'Begin_date_Offer' => 'required|date',
+        'Duration_Offer' => 'required|date',
         'Salary_Offer' => 'required|integer',
-        'Id_Region' => 'required|integer',
+        'Id_Category' => 'required|integer',
+        'Id_Status' => 'required|integer',
+        'Id_Account' => 'required|integer',
+        'Id_Company' => 'required|integer',
      ]);
         
     Offer::create([
@@ -79,8 +44,13 @@ class OfferController extends Controller
         'Begin_date_Offer' => $request->Begin_date_Offer,
         'Duration_Offer' => $request->Duration_Offer,
         'Salary_Offer' => $request->Salary_Offer,
-        'Id_Region' => $request->Id_Region,
+        'Id_Category' => $request->Id_Category,
+        'Id_Status' => $request->Id_Status,
+        'Id_Account' => $request->Id_Account,
+        'Id_Company' => $request->Id_Company,
+        
     ]);
+    return redirect()->route('account.create')->with('success', 'Offre ajoutée avec succès !');
     }
 
     public function edit($id)

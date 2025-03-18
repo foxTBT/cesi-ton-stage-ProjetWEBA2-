@@ -56,4 +56,4 @@ Route::get('/admin', function () {
 Route::get('/offers', [OfferController::class, 'index'])->name('offer.index');
 
 Route::get('/offers/create', [OfferController::class, 'create'])->name('offer.create');
-Route::post('/offers/store', [RegionController::class, 'store'])->name('offers.store');
+Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.store');

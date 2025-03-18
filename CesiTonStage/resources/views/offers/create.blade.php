@@ -4,12 +4,18 @@
 <div class="max-w-100 mx-auto bg-white shadow-lg rounded-lg p-6 border mt-4">
     <h2 class="text-xl font-semibold text-gray-800 mb-4">Créer une offre</h2>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
     <form action="{{ route('offers.store') }}" method="POST" class="flex flex-col justify-center">
         @csrf
+
+        `@if ($errors->any())
+                <div>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif`
 
         <div class="mb-4">
             <label for="Title_Offer" class="block text-gray-700">Titre de l'offre :</label>
@@ -57,7 +63,7 @@
 
         <div class="mb-4">
             <label for="Id_Account" class="block text-gray-700">Compte :</label>
-            <select name="d_Account" id="d_Account" class="w-full px-4 py-2 border rounded-lg" required>
+            <select name="Id_Account" id="Id_Account" class="w-full px-4 py-2 border rounded-lg" required>
                 <option></option>
                 <option value="1">Steven Esco</option>
                 <option value="2">Thomas Palo</option>
@@ -91,3 +97,4 @@
     </form>
 </div>
 @endsection
+

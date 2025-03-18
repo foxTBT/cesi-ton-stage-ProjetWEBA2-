@@ -6,18 +6,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
+
 </head>
 <form action="{{ route('login') }}" method="POST">
     @csrf
-
-    <div class="mt-20 m-5 mb-20 p-10 shadow-gray-200 shadow-xl rounded-xl" style="display: flex; flex-direction: column; gap: 8px; height: 55vh;">
+    <div class="flex justify-center items-center ">
+    <div class="p-10 m-10 shadow-gray-200 shadow-xl rounded-xl" style="display: flex; flex-direction: column; gap: 8px;">
         <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
         
         <label>Email:</label>
-        <input type="text" name="Email_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 p-1" placeholder="Entrez votre email">
+        <input type="text" name="Email_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre email">
         
         <label>Mot de passe :</label>
-        <input type="text" name="Password_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 p-1" placeholder="Entrez votre mot de passe">
+        <input type="text" name="Password_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre mot de passe">
         
         <p style="text-align: right; font-size: 12px" class ="text-gray-600"> mot de passe oublié ?</p>
         
@@ -28,15 +29,7 @@
             </button>
         </div>
     </div>
-    
-    <!--
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="remember" name="remember">
-        <label class="form-check-label" for="remember">Se souvenir de moi</label>
-    </div>-->
-
-
-
+</div>
 
     <!-- Popup pour l'acceptation des cookies -->
     
@@ -48,8 +41,8 @@
         <div id="popup" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
             <div class="bg-white p-8 rounded-lg shadow-lg text-center">
                 <p class="mb-4">Veuillez accepter les cookies</p>
-                <button onclick="accept()" class="bg-blue-500 text-white px-4 py-2 rounded">Accepter</button>
-                <button onclick="reject()" class="bg-red-500 text-white px-4 py-2 rounded">Refuser</button>
+                <button onclick="accept()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">Accepter</button>
+                <button onclick="reject()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Refuser</button>
             </div>
         </div>
     @endif

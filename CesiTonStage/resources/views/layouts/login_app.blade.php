@@ -15,9 +15,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
     <!-- Header -->
-    <header class="flex flex-col items-center bg-transparent w-full border shadow-black shadow-xl">
+    <header class="flex flex-col items-center bg-white w-full border shadow-gray-500 shadow-md">
         
         <div class="logo my-4">
             <img src="{{ asset('images/logod_petit.svg') }}" alt="Logo CTS" class="w-[10em] mx-auto">
@@ -25,15 +25,15 @@
              
     </header>
 
-    <main>
+    <main class="flex-grow">
         
         @yield('content')
         
     </main>
 
-    <footer class="mt-auto">
+    <footer>
                
-        <strong class="bg-black text-white text-left text-base block w-full">&#169;2025 - Tous droits réservés - Web4All</strong>
+        <strong class="bg-black text-white text-left text-base block w-full mt-auto">&#169;2025 - Tous droits réservés - Web4All</strong>
 
     </footer>
 

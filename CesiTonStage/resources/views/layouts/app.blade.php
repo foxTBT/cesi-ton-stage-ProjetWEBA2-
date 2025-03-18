@@ -31,7 +31,7 @@
         }
     </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
     <!-- Header -->
     <header class="flex flex-col items-center bg-red-500">
         <div class="bg-yellow-500 w-full border border-black" id="shimmerDiv">
@@ -46,15 +46,15 @@
         </div>
         
         
-        <nav class="relative w-full bg-black text-white text-[1.3em]">
-            <div class="flex items-center justify-between px-4 py-2">
+        <nav class="sticky top-0 w-full bg-zinc-800 text-white text-[1.3em]">
+            <div class="sticky top-0 flex items-center justify-between px-4 py-2">
                 <button class="menu-toggle text-white text-2xl md:hidden" aria-label="Ouvrir le menu">&#9776;</button>
                 <ul id="navList" class="hidden md:flex md:items-center md:gap-4">
                     <li><a href="#" class="hover:text-yellow-500">Accueil</a></li>
                     <li><a href="#" class="hover:text-yellow-500">Entreprises</a></li>
                     <li><a href="#" class="text-yellow-500 font-bold hover:text-yellow-500">Offres</a></li>
                     <li><a href="#" class="hover:text-yellow-500">Wishlist</a></li>
-                    <li><a href="/account/create" class="hover:text-yellow-500">Créer un compte étudiant</a></li>
+                    <li><a href="{{ route('account.create') }}" class="hover:text-yellow-500">Créer un compte étudiant</a></li>
                 </ul>
                 <ul class="flex items-center gap-4">
                     @if(session('account'))
@@ -63,7 +63,6 @@
                     @else
 
                         <li><a href="{{ route('login') }}" class="hover:text-[#ec6f35]">Connexion</a></li>
-                        <li><a href="{{ route('account.create') }}" class="bg-white text-black font-bold py-1 px-3 rounded hover:text-[#ec6f35]">S'inscrire</a></li>
                     @endif
                 </ul>
                 
@@ -78,7 +77,8 @@
         </nav>
     </header>
 
-    <main>
+    <main class="flex-grow">
+   
         @yield('content')
     </main>
 
@@ -105,7 +105,7 @@
         </div>
           
         
-        <strong class="bg-black text-white text-left text-base block w-full">&#169;2025 - Tous droits réservés - Web4All</strong>
+        <strong class="bg-black text-white text-left text-base block w-full mt-auto">&#169;2025 - Tous droits réservés - Web4All</strong>
 
     </footer>
 

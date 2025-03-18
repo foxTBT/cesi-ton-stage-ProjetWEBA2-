@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\OfferController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,3 +51,9 @@ Route::get('/admin', function () {
     }
     return "Bienvenue sur la page Admin";
 })->name('admin.page');
+
+
+Route::get('/offers', [OfferController::class, 'index'])->name('offer.index');
+
+Route::get('/offers/create', [OfferController::class, 'create'])->name('offer.create');
+Route::post('/offers/store', [RegionController::class, 'store'])->name('offers.store');

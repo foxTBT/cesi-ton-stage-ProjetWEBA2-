@@ -37,81 +37,55 @@
         </div>
 
         <div class="mb-4">
-            <label for="Id_Region" class="block text-gray-700">Région :</label>
-            <select name="Id_Region" id="Id_Region" class="w-full px-4 py-2 border rounded-lg" required>
+            <label for="Id_Category" class="block text-gray-700">Catégorie :</label>
+            <select name="Id_Category" id="Id_Category" class="w-full px-4 py-2 border rounded-lg" required>
                 <option></option>
-                <option value="1">AUVERGNE-RHONE-ALPES</option>
-                <option value="2">BOURGOGNE-FRANCHE-COMTE</option>
-                <option value="3">BRETAGNE</option>
-                <option value="4">CENTRE-VAL_DE_LOIRE</option>
-                <option value="5">CORSE</option>
-                <option value="6">GRAND_EST</option>
-                <option value="7">HAUTS-DE-FRANCE</option>
-                <option value="8">ILE-DE-FRANCE</option>
-                <option value="9">NORMANDIE</option>
-                <option value="10">NOUVELLE-AQUITAINE</option>
-                <option value="11">OCCITANIE</option>
-                <option value="12">PAYS_DE_LA_LOIRE</option>
-                <option value="13">PROVENCE_ALPES_COTE_D_AZUR</option>
+                <option value="1">Stage</option>
+                <option value="2">Alternance</option>
             </select>
         </div>
 
-        <label for="Id_Region" class="block text-gray-700">Région :</label>
-        <select name="Id_Region" id="Id_Region" class="w-full px-4 py-2 border rounded-lg" required>
-            <option></option>
-            <option value="1">LYON</option>
-            <option value="2">GRENOBLE</option>
-            <option value="3">SAINT-ETIENNE</option>
+        <div class="mb-4">
+            <label for="Id_Status" class="block text-gray-700">Status :</label>
+            <select name="Id_Status" id="Id_Status" class="w-full px-4 py-2 border rounded-lg" required>
+                <option></option>
+                <option value="1">Accepté</option>
+                <option value="2">En Cours</option>
+                <option value="3">Refusé</option>
+            </select>
+        </div>
 
-            <option value="4">DIJON</option>
-            <option value="5">BESANCON</option>
-            <option value="6">CHALON-SUR-SAONE</option>
+        <div class="mb-4">
+            <label for="Id_Account" class="block text-gray-700">Compte :</label>
+            <select name="d_Account" id="d_Account" class="w-full px-4 py-2 border rounded-lg" required>
+                <option></option>
+                <option value="1">Steven Esco</option>
+                <option value="2">Thomas Palo</option>
+                <option value="3">Chris Milan</option>
+                <option value="4">Argan LeTomic</option>
+                <option value="5">Raphël Fabian</option>
+                <option value="6">Yren Jaegger</option>
+            </select>
+        </div>
 
-            <option value="7">RENNES</option>
-            <option value="8">BREST</option>
-            <option value="9">QUIMPER</option>
-
-            <option value="10">TOURS</option>
-            <option value="11">ORLEANS</option>
-            <option value="12">BOURGES</option>
-
-            <option value="13">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="14">AUVERGNE-RHONE-ALPES</option>
-            <option value="15">BOURGOGNE-FRANCHE-COMTE</option>
-
-            <option value="16">BRETAGNE</option>
-            <option value="17">CENTRE-VAL_DE_LOIRE</option>
-            <option value="18">CORSE</option>
-
-            <option value="19">GRAND_EST</option>
-            <option value="20">HAUTS-DE-FRANCE</option>
-            <option value="21">ILE-DE-FRANCE</option>
-
-            <option value="22">NORMANDIE</option>
-            <option value="23">NOUVELLE-AQUITAINE</option>
-            <option value="24">OCCITANIE</option>
-
-            <option value="25">PAYS_DE_LA_LOIRE</option>
-            <option value="26">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="27">OCCITANIE</option>
-
-            <option value="28">PAYS_DE_LA_LOIRE</option>
-            <option value="29">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="30">PROVENCE_ALPES_COTE_D_AZUR</option>
-
-            <option value="31">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="32">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="33">PAYS_DE_LA_LOIRE</option>
-
-            <option value="34">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="35">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="36">PAYS_DE_LA_LOIRE</option>
-
-            <option value="37">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="38">PROVENCE_ALPES_COTE_D_AZUR</option>
-            <option value="39">PAYS_DE_LA_LOIRE</option>
-        </select>
-    </div>
+        <div class="mb-4">
+            <label for="Id_Company" class="block text-gray-700">Entreprise : </label>
+            <select name="Id_Company" id="Id_Company" class="w-full px-4 py-2 border rounded-lg" required>
+                <option></option>
+                <option value="1">UBISOFT</option>
+                <option value="2">STEAM</option>
+                <option value="3">SOPRA STERIA</option>
+                <option value="4">INFOTEL</option>
+                <option value="5">KNDS</option>
+                <option value="6">CAPGEMINI</option>
+                <option value="7">TBM</option>
+                <option value="8">TISSEO</option>
+                <option value="9">UBER</option>
+                <option value="10">LINKEDIN</option>
+                <option value="11">CYBERTECH</option>
+                <option value="12">CGI</option>
+            </select>
+        </div>
 
         <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Créer l'offre</button>
     </form>

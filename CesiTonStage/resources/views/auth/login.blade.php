@@ -2,6 +2,21 @@
 
 @section('content')
 
+<style>
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  
+  .shake-div {
+    animation: shake 0.5s ease-in-out; /* Durée et effet */
+  }
+</style>
+  
+
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -10,26 +25,35 @@
 </head>
 <form action="{{ route('login') }}" method="POST">
     @csrf
-    <div class="flex justify-center items-center ">
-    <div class="p-10 m-10 shadow-gray-200 shadow-xl rounded-xl" style="display: flex; flex-direction: column; gap: 8px;">
-        <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
-        
-        <label>Email:</label>
-        <input type="text" name="Email_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre email">
-        
-        <label>Mot de passe :</label>
-        <input type="text" name="Password_Account" style="background-color: #d3d3d3;" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre mot de passe">
-        
-        <p style="text-align: right; font-size: 12px" class ="text-gray-600"> mot de passe oublié ?</p>
-        
-        <!-- Conteneur pour centrer uniquement le bouton -->
-        <div style="display: flex; justify-content: center;">
-            <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-xl w-30">
-                Se connecter
-            </button>
+    <div class="flex justify-center items-center h-1/2">
+        <div class="p-10 m-6 mt-12 shadow-gray-200 shadow-xl rounded-xl {{ $errors->any() ? 'shake-div' : '' }}" style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
+            
+            <label>Email:</label>
+            <input type="text" name="Email_Account" style="background-color: #d3d3d3; {{ $errors->has('Email_Account') ? 'border: 2px solid red;' : '' }}" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre email">
+            
+            <label>Mot de passe :</label>
+            <input type="text" name="Password_Account" style="background-color: #d3d3d3; {{ $errors->has('Password_Account') ? 'border: 2px solid red;' : '' }}" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre mot de passe">
+            
+            <p style="text-align: right; font-size: 12px" class ="text-gray-600"> mot de passe oublié ?</p>
+            
+            <!-- Conteneur pour centrer uniquement le bouton -->
+            <div style="display: flex; justify-content: center;">
+                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-xl {{ $errors->any() ? 'border-2xl border-red-500 border-2' : '' }}">
+                    Se connecter
+                </button>
+            </div>
+            @if ($errors->any())
+                <div class="text-red-500">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
     </div>
-</div>
 
     <!-- Popup pour l'acceptation des cookies -->
     
@@ -50,7 +74,6 @@
         </div>
     </div>
 
-    
     <script>
         window.onload = function () {
             let acceptCookies = document.cookie.includes('accept_cookies=true');
@@ -89,6 +112,7 @@
             }).then(response => response.json()).then(data => {
                 if (data.success) {
                     document.cookie = "accept_cookies=false; path=/; max-age=" + (30 * 24 * 60 * 60);
+                    window.location.href = "/";
                 }
             });
         }

@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        <form action="{{ route('account.store') }}" method="POST" class="flex flex-col justify-center">
+        <form action="{{ route('accounts.store') }}" method="POST" class="flex flex-col justify-center">
             @csrf
 
             <div class="mb-4">

@@ -4,7 +4,7 @@
 <div class="max-w-100 mx-auto bg-white shadow-lg rounded-lg p-6 border mb-4">
     <h2 class="text-xl font-semibold text-gray-800 mb-4">Mettre à jour le compte</h2>
 
-    <form action="{{ route('account.update', $account->Id_Account) }}" method="POST" class="flex flex-col justify-center">
+    <form action="{{ route('accounts.update', $account->Id_Account) }}" method="POST" class="flex flex-col justify-center">
         @csrf
         @method('PUT')
 

@@ -32,9 +32,9 @@
 
     <div class="flex flex-row place-content-evenly mt-4 font-bold">
         <!-- Bouton de mise à jour -->
-        <a href="{{ route('account.edit', $account->Id_Account) }}" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Mise à jour</a>
+        <a href="{{ route('accounts.edit', $account->Id_Account) }}" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Mise à jour</a>
         <!-- Bouton de suppression -->
-        <form action="{{ route('account.destroy', $account->Id_Account) }}" method="POST">
+        <form action="{{ route('accounts.destroy', $account->Id_Account) }}" method="POST">
             @csrf
             @method('DELETE')
             <input type="hidden" name="source" value="show-student">

@@ -21,14 +21,14 @@ Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.upd
 Route::get('/regions/create', [RegionController::class, 'create'])->name('regions.create');
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');
 
-Route::get('/account/create', [AccountController::class, 'create'])->name('account.create');
-Route::get('/account/show-pilote', [AccountController::class, 'showPilote'])->name('account.show-pilote');
-Route::get('/account/show-student', [AccountController::class, 'showStudent'])->name('account.show-student');
-Route::post('/account', [AccountController::class, 'store'])->name('account.store');
-Route::delete('/account/destroy/{id}', [AccountController::class, 'destroy'])->name('account.destroy');
-Route::get('/account/{id}/edit', [AccountController::class, 'edit'])->name('account.edit');
-Route::put('/account/{id}', [AccountController::class, 'update'])->name('account.update');
-Route::get('/account/show-student/{id}', [AccountController::class, 'showStudentDetails'])->name('account.show-student-details');
+Route::get('/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
+Route::get('/accounts/show-pilote', [AccountController::class, 'showPilote'])->name('accounts.show-pilote');
+Route::get('/accounts/show-student', [AccountController::class, 'showStudent'])->name('accounts.show-student');
+Route::post('/accounts', [AccountController::class, 'store'])->name('accounts.store');
+Route::delete('/accounts/destroy/{id}', [AccountController::class, 'destroy'])->name('accounts.destroy');
+Route::get('/accounts/{id}/edit', [AccountController::class, 'edit'])->name('accounts.edit');
+Route::put('/accounts/{id}', [AccountController::class, 'update'])->name('accounts.update');
+Route::get('/accounts/show-student/{id}', [AccountController::class, 'showStudentDetails'])->name('accounts.show-student-details');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

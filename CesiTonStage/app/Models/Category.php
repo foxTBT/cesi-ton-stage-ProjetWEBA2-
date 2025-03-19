@@ -9,6 +9,8 @@ class Category extends Model
 {
     // Définir le nom de la table associée
     protected $table = 'categories';
+    protected $primaryKey = 'Id_Category';
+
 
     // Définir les attributs qui peuvent être assignés en masse
     protected $fillable = [

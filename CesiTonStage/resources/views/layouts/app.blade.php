@@ -58,13 +58,13 @@
                     </li>
                     <li><a href="#" class="hover:text-yellow-500">Offres</a>
                     </li>
-                    <li><a href="{{ route('account.show-pilote') }}" class="{{ request()->is('account/show-pilote') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
+                    <li><a href="{{ route('accounts.show-pilote') }}" class="{{ request()->is('accounts/show-pilote') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
                         Voir les comptes pilotes
                         </a></li>
-                    <li><a href="{{ route('account.show-student') }}" class="{{ request()->is('account/show-student') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
+                    <li><a href="{{ route('accounts.show-student') }}" class="{{ request()->is('accounts/show-student') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
                         Voir les comptes étudiants
                       </a></li>
-                    <li><a href="{{ route('account.create') }}" class="{{ request()->is('account/create') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
+                    <li><a href="{{ route('accounts.create') }}" class="{{ request()->is('accounts/create') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
                           Créer un compte étudiant
                         </a></li>
                 </ul>
@@ -84,7 +84,7 @@
                 <li><a href="#" class="text-white font-bold hover:text-yellow-400">Entreprises</a></li>
                 <li><a href="#" class="text-yellow-500 font-bold hover:text-yellow-400">Offres</a></li>
                 <li><a href="#" class="text-white font-bold hover:text-yellow-400">Wishlist</a></li>
-                <li><a href="/account/create" class="text-white font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
+                <li><a href="/accounts/create" class="text-white font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
             </ul>
         </nav>
     </header>

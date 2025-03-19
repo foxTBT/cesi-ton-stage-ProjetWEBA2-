@@ -9,7 +9,7 @@ class AccountController extends Controller
 {
     public function create()
     {
-        return view('account.create');
+        return view('accounts.create');
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class AccountController extends Controller
         }
 
         // Redirection avec message de succès
-        return redirect()->route('account.create')->with('success', 'Compte ajouté avec succès !');
+        return redirect()->route('accounts.create')->with('success', 'Compte ajouté avec succès !');
     }
 
     public function showPilote()
@@ -69,7 +69,7 @@ class AccountController extends Controller
                     ->orWhere('Last_name_Account', 'LIKE', '%' . $term . '%');
             })
             ->paginate(10);
-        return view('account.show-pilote', compact('pilotes'));
+        return view('accounts.show-pilote', compact('pilotes'));
     }
 
     public function showStudent()
@@ -81,7 +81,7 @@ class AccountController extends Controller
                     ->orWhere('Last_name_Account', 'LIKE', '%' . $term . '%');
             })
             ->paginate(10);
-        return view('account.show-student', compact('students'));
+        return view('accounts.show-student', compact('students'));
     }
 
     public function destroy(Request $request, $id)
@@ -93,25 +93,25 @@ class AccountController extends Controller
 
         // Vérification de la valeur de source
         if ($source === 'show-student') {
-            return redirect()->route('account.show-student')->with('success', [
+            return redirect()->route('accounts.show-student')->with('success', [
                 'surname' => $account->Last_name_Account,
                 'lastname' => $account->First_name_Account
             ]);
         } elseif ($source === 'show-pilote') {
-            return redirect()->route('account.show-pilote')->with('success', [
+            return redirect()->route('accounts.show-pilote')->with('success', [
                 'surname' => $account->Last_name_Account,
                 'lastname' => $account->First_name_Account
             ]);
         } else {
             // Afficher un message d'erreur si la source n'est pas reconnue
-            return redirect()->route('account.show-pilote')->with('error', 'Source inconnue.');
+            return redirect()->route('accounts.show-pilote')->with('error', 'Source inconnue.');
         }
     }
 
     public function edit($id)
     {
         $account = Account::findOrFail($id);
-        return view('account.edit', compact('account'));
+        return view('accounts.edit', compact('account'));
     }
 
     public function update(Request $request, $id)
@@ -139,10 +139,10 @@ class AccountController extends Controller
         // Redirection conditionnelle en fonction du rôle
         if ($account->Id_Role == 1) {
             // Redirection vers la vue des étudiants
-            return redirect()->route('account.show-student')/*->with('success', 'Compte mis à jour avec succès !')*/;
+            return redirect()->route('accounts.show-student')/*->with('success', 'Compte mis à jour avec succès !')*/;
         } elseif ($account->Id_Role == 2) {
             // Redirection vers la vue des pilotes
-            return redirect()->route('account.show-pilote')/*->with('success', 'Compte mis à jour avec succès !')*/;
+            return redirect()->route('accounts.show-pilote')/*->with('success', 'Compte mis à jour avec succès !')*/;
         }
         // else {
         //     // Redirection par défaut
@@ -159,6 +159,6 @@ class AccountController extends Controller
     public function showStudentDetails($id)
     {
         $account = Account::with('role', 'application.offer')->findOrFail($id);
-        return view('account.show-student-details', compact('account'));
+        return view('accounts.show-student-details', compact('account'));
     }
 }

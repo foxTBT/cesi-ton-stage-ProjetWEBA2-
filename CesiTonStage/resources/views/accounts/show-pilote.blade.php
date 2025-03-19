@@ -7,14 +7,14 @@
 
 
 <div class="flex mx-auto p-3 gap-6">
-    <form action="{{ route('account.show-pilote') }}" class="flex">
+    <form action="{{ route('accounts.show-pilote') }}" class="flex">
         <input type="search" name="term" class="border-2 border-black p-2 rounded-l-md focus:outline-none hover:bg-yellow-50">
         <button type="submit" class="border-2 border-black bg-yellow-500 text-black px-4 py-2 rounded-r-md -ml-px flex items-center justify-center hover:bg-yellow-400">
             <img src="{{ asset('images/icon/searching.png') }}" alt="Chercher" class="w-6 h-6">
         </button>
     </form>
 
-    <a href="{{ route('account.create') }}">
+    <a href="{{ route('accounts.create') }}">
         <button class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black"><strong>Ajouter</strong></button>
     </a>
 </div> 
@@ -37,9 +37,9 @@
 
         <div class="flex flex-row place-content-evenly mt-4 font-bold">
             <!-- Bouton de mise à jour -->
-            <a href="{{ route('account.edit', $pilote->Id_Account) }}" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Mise à jour</a>
+            <a href="{{ route('accounts.edit', $pilote->Id_Account) }}" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Mise à jour</a>
             <!-- Bouton de suppression -->
-            <form action="{{ route('account.destroy', $pilote->Id_Account) }}" method="POST">
+            <form action="{{ route('accounts.destroy', $pilote->Id_Account) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="hidden" name="source" value="show-student">
@@ -50,7 +50,7 @@
 @endforeach
 
 <!-- Popup de succès -->
-<div id="successPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden ">
+<div id="successPopup" class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden ">
     <div class="bg-white rounded-lg p-6 shadow-lg max-w-sm w-full border-black border-2">
         <h2 class="text-3 font-semibold text-gray-800 mb-4">Succès</h2>
         <p id="successMessage" class="text-gray-600"></p>

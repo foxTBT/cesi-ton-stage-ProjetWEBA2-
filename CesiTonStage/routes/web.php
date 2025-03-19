@@ -47,8 +47,8 @@ Route::post('/cookies/update', [CookieController::class, 'updateCookies'])->name
 
 
 Route::get('/dashboard', function () {
-    if (!session('account')) return redirect()->route('login');
-    return "Bienvenue sur le dashboard, " . session('account')->Email_Account;
+    if (!session('accounts')) return redirect()->route('login');
+    return "Bienvenue sur le dashboard, " . session('accounts')->Email_Account;
 })->name('dashboard');
 
 Route::get('/admin', function () {

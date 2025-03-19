@@ -46,7 +46,7 @@
         </div>
         
         
-        <nav class="sticky top-0 w-full bg-zinc-800 text-white text-[1.3em]">
+        <nav class="sticky top-0 w-full bg-zinc-800 text-white text-[1em]">
             <div class="sticky top-0 flex items-center justify-between px-4 py-2">
                 <button class="menu-toggle text-2xl md:hidden" aria-label="Ouvrir le menu">&#9776;</button>
                 <ul id="navList" class="hidden md:flex md:items-center md:gap-4">

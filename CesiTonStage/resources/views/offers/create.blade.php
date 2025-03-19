@@ -64,32 +64,18 @@
         <div class="mb-4">
             <label for="Id_Account" class="block text-gray-700">Compte :</label>
             <select name="Id_Account" id="Id_Account" class="w-full px-4 py-2 border rounded-lg" required>
-                <option></option>
-                <option value="1">Steven Esco</option>
-                <option value="2">Thomas Palo</option>
-                <option value="3">Chris Milan</option>
-                <option value="4">Argan LeTomic</option>
-                <option value="5">Raphël Fabian</option>
-                <option value="6">Yren Jaegger</option>
+                @foreach ($accounts as $account)
+                   <option value="{{ $account->Id_Account }}">{{ $account->First_name_Account }} {{ $account->Last_name_Account }}</option>
+                 @endforeach
             </select>
         </div>
 
         <div class="mb-4">
             <label for="Id_Company" class="block text-gray-700">Entreprise : </label>
             <select name="Id_Company" id="Id_Company" class="w-full px-4 py-2 border rounded-lg" required>
-                <option></option>
-                <option value="1">UBISOFT</option>
-                <option value="2">STEAM</option>
-                <option value="3">SOPRA STERIA</option>
-                <option value="4">INFOTEL</option>
-                <option value="5">KNDS</option>
-                <option value="6">CAPGEMINI</option>
-                <option value="7">TBM</option>
-                <option value="8">TISSEO</option>
-                <option value="9">UBER</option>
-                <option value="10">LINKEDIN</option>
-                <option value="11">CYBERTECH</option>
-                <option value="12">CGI</option>
+                @foreach ($companies as $company)
+                   <option value="{{ $company->Id_Company }}">{{ $company->Name_Company }}</option>
+                 @endforeach
             </select>
         </div>
 

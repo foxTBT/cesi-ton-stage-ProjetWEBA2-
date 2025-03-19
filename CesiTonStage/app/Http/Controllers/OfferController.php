@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Account;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Offer;
 
@@ -20,7 +22,9 @@ class OfferController extends Controller
 
     public function create()
     {
-        return view('offers.create');
+        $accounts = Account::all();
+        $companies = Company::all();
+        return view('offers.create', compact('accounts','companies'));
     }
 
     public function store(Request $request)

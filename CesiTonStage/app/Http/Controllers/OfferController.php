@@ -88,6 +88,7 @@ class OfferController extends Controller
     
         return redirect()->route('offers.index')->with('success', 'Offre mise à jour avec succès !');
     }
+    
 
     public function destroy($id)
     {

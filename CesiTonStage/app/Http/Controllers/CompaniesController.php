@@ -3,29 +3,53 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
 {
     public function create()
     {
-        return view('companies.create');
+        $cities = City::all();
+        return view('companies.create', compact('cities'));
     }
-    
+
 
     public function store(Request $request)
     {
         // Valider les données du formulaire
         $request->validate([
-            'Name_Company' => 'required|string|max:128',
+            'Name_Company' => 'required|string|max:128|regex:/^[\pL\s]+$/u',
             'Email_Company' => 'required|string|max:255',
             'Phone_number_Company' => 'required|string|max:13',
             'Description_Company' => 'required|string',
             'Siret_number_Company' => 'required|string|max:14',
             'Logo_link_Company' => 'required|string',
-            'Id_City' => 'required'//|exists:cities,id
+            'Id_City' => 'required' //|exists:cities,id
+        ], [
+            'Name_Company.required' => 'Nom de l\'entreprise requis',
+            'Name_Company.max' => 'Nom de l\'entreprise est trop long (maximum 128)',
+            'Name_Company.regex' => 'Charactère invalide pour le nom de l\'entreprise',
+
+
+            'Email_Company.required' => 'L\'email de l\'entreprise est requise',
+            'Name_Company.max' => 'L\'email de l\'entreprise est trop long (maximum 255)',
+
+            'Phone_number_Company.required' => 'Numéro de téléphone de l\'entreprise requis',
+            'Phone_number_Company.max' => 'Numéro de téléphone de l\'entreprise trop long (maximum 13)',
+
+            'Description_Company.required' => 'Description de l\'entreprise requis',
+
+            'Siret_number_Company.required' => 'Numéro de SIRET de l\'entreprise requis',
+            'Siret_number_Company.max' => 'Numéro de SIRET de l\'entreprise trop long (maximum 14)',
+
+
+            'Logo_link_Company.required' => 'bar',
+
+            'Id_City.required' => 'Ville de l\'entreprise requis',
+
         ]);
-        
+
         Company::create([
             'Name_Company' => $request->Name_Company,
             'Email_Company' => $request->Email_Company,
@@ -35,7 +59,7 @@ class CompaniesController extends Controller
             'Logo_link_Company' => $request->Logo_link_Company,
             'Id_City' => $request->Id_City,
         ]);
-        
+
 
         // Rediriger vers une page de succès ou afficher un message
         return redirect()->route('companies.search')->with('success', 'Entreprise ajoutée avec succès !');
@@ -45,18 +69,18 @@ class CompaniesController extends Controller
     {
         $term = request('term');
 
-        $companies = Company::where('Name_Company','LIKE','%'.$term.'%')
-                ->orWhere('Description_Company','LIKE','%'.$term.'%')
-                ->orWhere('Email_Company','LIKE','%'.$term.'%')
-                ->orWhere('Phone_number_Company','LIKE','%'.$term.'%')
-                ->paginate(10);
+        $companies = Company::where('Name_Company', 'LIKE', '%' . $term . '%')
+            ->orWhere('Description_Company', 'LIKE', '%' . $term . '%')
+            ->orWhere('Email_Company', 'LIKE', '%' . $term . '%')
+            ->orWhere('Phone_number_Company', 'LIKE', '%' . $term . '%')
+            ->paginate(10);
 
         return view('companies.search')->with('companies', $companies);
     }
 
     public function show($Id_Company)
     {
-        $company = Company::where('Id_Company',$Id_Company)->firstOrFail();
+        $company = Company::where('Id_Company', $Id_Company)->firstOrFail();
 
         return view('companies.show')->with('company', $company);
     }
@@ -74,7 +98,7 @@ class CompaniesController extends Controller
         $company = Company::findOrFail($Id_Company);
         return view('companies.edit', compact('company'));
     }
-    
+
     public function update(Request $request, $Id_Company)
     {
         $company = Company::findOrFail($Id_Company);
@@ -89,7 +113,7 @@ class CompaniesController extends Controller
             'Logo_link_Company' => 'required|string',
             'Id_City' => 'required'
         ]);
-        
+
         $company->update([
             'Name_Company' => $request->Name_Company,
             'Email_Company' => $request->Email_Company,
@@ -99,7 +123,7 @@ class CompaniesController extends Controller
             'Logo_link_Company' => $request->Logo_link_Company,
             'Id_City' => $request->Id_City,
         ]);
-        
+
         return redirect()->route('companies.show', $company->Id_Company)->with('success', 'Entreprise mise à jour avec succès !');
     }
 }

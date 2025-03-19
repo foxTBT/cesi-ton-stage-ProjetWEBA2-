@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AccountController;
@@ -19,6 +18,8 @@ Route::post('/account', [AccountController::class, 'store'])->name('account.stor
 Route::delete('/account/destroy/{id}', [AccountController::class, 'destroy'])->name('account.destroy');
 Route::get('/account/{id}/edit', [AccountController::class, 'edit'])->name('account.edit');
 Route::put('/account/{id}', [AccountController::class, 'update'])->name('account.update');
+//Sfx21
+Route::get('/account/show-student/{id}', [AccountController::class, 'showStudentDetails'])->name('account.show-student-details');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

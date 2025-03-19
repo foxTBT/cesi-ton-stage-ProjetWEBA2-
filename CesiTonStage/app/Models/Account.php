@@ -10,7 +10,7 @@ class Account extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
 
     protected $dates = ['deleted_at'];
     protected $primaryKey = 'Id_Account'; // Spécifiez la clé primaire correcte
@@ -22,4 +22,12 @@ class Account extends Model
         'Birth_date_Account',
         'Id_Role',
     ];
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'Id_Role');
+    }
+    public function application()
+    {
+        return $this->hasMany(Application::class, 'Id_Account');
+    }
 }

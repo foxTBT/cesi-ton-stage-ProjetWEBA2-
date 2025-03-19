@@ -409,20 +409,14 @@ class DatabaseSeeder extends Seeder
         DB::table('statuses')->insert([
             [
             'Id_Status' => 1,
-            'Title_Status' => 'ACCEPTE',
-            'Description_Status' => 'bar',
-            ],
-            [
-            'Id_Status' => 2,
             'Title_Status' => 'EN_COURS',
             'Description_Status' => 'bar',
             ],
             [
-            'Id_Status' => 3,
-            'Title_Status' => 'REFUSE',
+            'Id_Status' => 2,
+            'Title_Status' => 'FINIS',
             'Description_Status' => 'bar',
             ],
-
         ]);
 
         // Seeder pour la table categories
@@ -701,7 +695,7 @@ class DatabaseSeeder extends Seeder
             'Begin_date_Offer' => now()->subDays(30)->toDateString(),
             'Duration_Offer' => now()->addDays(30)->toDateString(),
             'Id_Category' => 1,
-            'Id_Status' => 2,
+            'Id_Status' => 1,
             'Id_Account' => 2,
             'Id_Company' => 3,
             ],
@@ -713,7 +707,7 @@ class DatabaseSeeder extends Seeder
             'Begin_date_Offer' => now()->subDays(30)->toDateString(),
             'Duration_Offer' => now()->addDays(30)->toDateString(),
             'Id_Category' => 2,
-            'Id_Status' => 2,
+            'Id_Status' => 1,
             'Id_Account' => 2,
             'Id_Company' => 3,
             ],
@@ -762,7 +756,7 @@ class DatabaseSeeder extends Seeder
             'Begin_date_Offer' => now()->subDays(30)->toDateString(),
             'Duration_Offer' => now()->addDays(30)->toDateString(),
             'Id_Category' => 1,
-            'Id_Status' => 2,
+            'Id_Status' => 0,
             'Id_Account' => NULL,
             'Id_Company' => 3,
             ],
@@ -774,7 +768,7 @@ class DatabaseSeeder extends Seeder
             'Begin_date_Offer' => now()->subDays(30)->toDateString(),
             'Duration_Offer' => now()->addDays(30)->toDateString(),
             'Id_Category' => 2,
-            'Id_Status' => 2,
+            'Id_Status' => 0,
             'Id_Account' => 3,
             'Id_Company' => 3,
             ],

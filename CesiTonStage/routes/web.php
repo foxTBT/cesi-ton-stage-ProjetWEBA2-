@@ -6,10 +6,17 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\CookieController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
+Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.store');
+Route::get('/offers/{id}/edit', [OfferController::class, 'edit'])->name('offers.edit');
+Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.update');
 
 Route::get('/regions/create', [RegionController::class, 'create'])->name('regions.create');
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');
@@ -33,7 +40,7 @@ Route::post('/accept-cookies', [AuthController::class, 'acceptCookies'])->name('
 Route::post('/reject-cookies', [AuthController::class, 'rejectCookies'])->name('reject.cookies');
 Route::get('/check-cookies', [AuthController::class, 'checkCookies'])->name('check.cookies'); // <--- Ajout de cette route
 //pour la page de controle des cookies (côté utilisateur)
-use App\Http\Controllers\CookieController;
+
 
 Route::get('/politique-de-protection', [CookieController::class, 'showCookieSettings'])->name('cookie.settings');
 Route::post('/cookies/update', [CookieController::class, 'updateCookies'])->name('cookie.update');
@@ -51,8 +58,6 @@ Route::get('/admin', function () {
     return "Bienvenue sur la page Admin";
 })->name('admin.page');
 
-
-
 Route::get('/companies/create', [CompaniesController::class, 'create'])->name('companies.create');
 Route::post('/companies', [CompaniesController::class, 'store'])->name('companies.store');
 
@@ -61,11 +66,4 @@ Route::get('/companies/show/{Id_Company}', [CompaniesController::class, 'show'])
 Route::delete('/companies/destroy/{Id_Company}', [CompaniesController::class, 'destroy'])->name('companies.destroy');
 Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])->name('companies.edit');
 Route::put('/companies/update/{Id_Company}', [CompaniesController::class, 'update'])->name('companies.update');
-Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
 
-Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
-Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.store');
-
-
-Route::get('/offers/{id}/edit', [OfferController::class, 'edit'])->name('offers.edit');
-Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.update');

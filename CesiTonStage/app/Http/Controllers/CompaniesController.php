@@ -96,7 +96,8 @@ class CompaniesController extends Controller
     public function edit($Id_Company)
     {
         $company = Company::findOrFail($Id_Company);
-        return view('companies.edit', compact('company'));
+        $cities = City::all();
+        return view('companies.edit', compact('company','cities'));
     }
 
     public function update(Request $request, $Id_Company)
@@ -105,13 +106,35 @@ class CompaniesController extends Controller
 
         // Valider les données du formulaire
         $request->validate([
-            'Name_Company' => 'required|string|max:128',
+            'Name_Company' => 'required|string|max:128|regex:/^[\pL\s]+$/u',
             'Email_Company' => 'required|string|max:255',
             'Phone_number_Company' => 'required|string|max:13',
             'Description_Company' => 'required|string',
             'Siret_number_Company' => 'required|string|max:14',
             'Logo_link_Company' => 'required|string',
-            'Id_City' => 'required'
+            'Id_City' => 'required' //|exists:cities,id
+        ], [
+            'Name_Company.required' => 'Nom de l\'entreprise requis',
+            'Name_Company.max' => 'Nom de l\'entreprise est trop long (maximum 128)',
+            'Name_Company.regex' => 'Charactère invalide pour le nom de l\'entreprise',
+
+
+            'Email_Company.required' => 'L\'email de l\'entreprise est requise',
+            'Name_Company.max' => 'L\'email de l\'entreprise est trop long (maximum 255)',
+
+            'Phone_number_Company.required' => 'Numéro de téléphone de l\'entreprise requis',
+            'Phone_number_Company.max' => 'Numéro de téléphone de l\'entreprise trop long (maximum 13)',
+
+            'Description_Company.required' => 'Description de l\'entreprise requis',
+
+            'Siret_number_Company.required' => 'Numéro de SIRET de l\'entreprise requis',
+            'Siret_number_Company.max' => 'Numéro de SIRET de l\'entreprise trop long (maximum 14)',
+
+
+            'Logo_link_Company.required' => 'bar',
+
+            'Id_City.required' => 'Ville de l\'entreprise requis',
+
         ]);
 
         $company->update([

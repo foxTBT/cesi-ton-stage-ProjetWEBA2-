@@ -18,6 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->foreignId('Id_City')->constrained('cities')->references('Id_City');
             $table->primary('Id_Company');
             $table->timestamps();
+            $table->softDeletes(); // Ajout de la colonne deleted_at pour la suppression douce
         });
     }
 

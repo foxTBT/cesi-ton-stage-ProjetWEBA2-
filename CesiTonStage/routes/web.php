@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CompaniesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,9 +24,6 @@ Route::put('/account/{id}', [AccountController::class, 'update'])->name('account
 Route::get('/account/show-student/{id}', [AccountController::class, 'showStudentDetails'])->name('account.show-student-details');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-use App\Http\Controllers\AuthController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -51,3 +50,14 @@ Route::get('/admin', function () {
     }
     return "Bienvenue sur la page Admin";
 })->name('admin.page');
+
+
+
+Route::get('/companies/create', [CompaniesController::class, 'create'])->name('companies.create');
+Route::post('/companies', [CompaniesController::class, 'store'])->name('companies.store');
+
+Route::get('/companies/search', [CompaniesController::class, 'search'])->name('companies.search');
+Route::get('/companies/show/{Id_Company}', [CompaniesController::class, 'show'])->name('companies.show');
+Route::delete('/companies/destroy/{Id_Company}', [CompaniesController::class, 'destroy'])->name('companies.destroy');
+Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])->name('companies.edit');
+Route::put('/companies/update/{Id_Company}', [CompaniesController::class, 'update'])->name('companies.update');

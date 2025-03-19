@@ -63,6 +63,10 @@ class CompaniesController extends Controller
 
         // Rediriger vers une page de succès ou afficher un message
         return redirect()->route('companies.search')->with('success', 'Entreprise ajoutée avec succès !');
+        
+
+        // Rediriger vers une page de succès ou afficher un message
+        return redirect()->route('companies.create')->with('success', 'Entreprise ajoutée avec succès !');
     }
 
     public function search()

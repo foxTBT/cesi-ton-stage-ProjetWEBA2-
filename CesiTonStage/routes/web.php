@@ -5,6 +5,7 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\OfferController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,3 +61,11 @@ Route::get('/companies/show/{Id_Company}', [CompaniesController::class, 'show'])
 Route::delete('/companies/destroy/{Id_Company}', [CompaniesController::class, 'destroy'])->name('companies.destroy');
 Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])->name('companies.edit');
 Route::put('/companies/update/{Id_Company}', [CompaniesController::class, 'update'])->name('companies.update');
+Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+
+Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
+Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.store');
+
+
+Route::get('/offers/{id}/edit', [OfferController::class, 'edit'])->name('offers.edit');
+Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.update');

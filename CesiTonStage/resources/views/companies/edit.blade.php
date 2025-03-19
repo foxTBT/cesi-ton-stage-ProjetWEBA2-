@@ -1,5 +1,6 @@
-<script src="https://cdn.tailwindcss.com"></script>
+@extends('layouts.app')
 
+@section('content')
 <form action="{{ route('companies.update', $company->Id_Company) }}" method="POST">
     @csrf
     @method('PUT')
@@ -50,3 +51,4 @@
         </ul>
     </div>
 </form>
+@endsection

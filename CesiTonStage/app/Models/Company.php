@@ -1,10 +1,18 @@
 <?php
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes; // Importation du trait
 
 class Company extends Model
 {
+    use HasFactory;
+    use SoftDeletes;
+    
+    protected $dates = ['deleted_at'];
+    protected $primaryKey = 'Id_Company';
+
     // Définir le nom de la table associée
     protected $table = 'companies';
 
@@ -28,5 +36,15 @@ class Company extends Model
     public function offers()
     {
         return $this->hasMany(Offer::class, 'Id_Company');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Evaluate::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->ratings()->avg('rating');
     }
 }

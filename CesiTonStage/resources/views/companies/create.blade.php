@@ -1,5 +1,6 @@
-<script src="https://cdn.tailwindcss.com"></script>
+@extends('layouts.app')
 
+@section('content')
 <form action="{{ route('companies.store') }}" method="POST">
     @csrf
 
@@ -53,3 +54,4 @@
     <p style="color: green;">{{ session('success') }}</p>
     @endif
 </form>
+@endsection

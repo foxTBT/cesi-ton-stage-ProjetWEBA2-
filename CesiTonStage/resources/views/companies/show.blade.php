@@ -1,6 +1,8 @@
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+@extends('layouts.app')
+
+@section('content')
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 
 <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6 border mt-4 mb-4">
     <div class="flex items-center space-x-4 bg-yellow-500 shadow-lg rounded-lg p-2">
@@ -37,3 +39,4 @@
 <!-- Limiter Permissions -->
 
 @include('partials.search_bar_comp_offer')
+@endsection

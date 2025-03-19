@@ -1,5 +1,6 @@
-<script src="https://cdn.tailwindcss.com"></script>
+@extends('layouts.app')
 
+@section('content')
 <div class="flex mx-auto w-fit p-3 gap-6">
     @include('partials.search_bar')
 
@@ -33,3 +34,4 @@
 <div class="mt-6 flex justify-center">
     {{ $companies->appends(request()->input())->links('pagination::tailwind') }}
 </div>
+@endsection

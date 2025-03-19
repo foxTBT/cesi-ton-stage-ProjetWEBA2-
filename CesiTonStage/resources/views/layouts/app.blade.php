@@ -48,13 +48,25 @@
         
         <nav class="sticky top-0 w-full bg-zinc-800 text-white text-[1.3em]">
             <div class="sticky top-0 flex items-center justify-between px-4 py-2">
-                <button class="menu-toggle text-white text-2xl md:hidden" aria-label="Ouvrir le menu">&#9776;</button>
+                <button class="menu-toggle text-2xl md:hidden" aria-label="Ouvrir le menu">&#9776;</button>
                 <ul id="navList" class="hidden md:flex md:items-center md:gap-4">
-                    <li><a href="#" class="hover:text-yellow-500">Accueil</a></li>
-                    <li><a href="#" class="hover:text-yellow-500">Entreprises</a></li>
-                    <li><a href="#" class="text-yellow-500 font-bold hover:text-yellow-500">Offres</a></li>
-                    <li><a href="#" class="hover:text-yellow-500">Wishlist</a></li>
-                    <li><a href="{{ route('account.create') }}" class="hover:text-yellow-500">Créer un compte étudiant</a></li>
+                    <li><a href="/" class="{{ request()->is('/') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
+                        Accueil
+                      </a>
+                    </li>
+                    <li><a href="#" class="hover:text-yellow-500">Entreprises</a>
+                    </li>
+                    <li><a href="#" class="hover:text-yellow-500">Offres</a>
+                    </li>
+                    <li><a href="{{ route('account.show-pilote') }}" class="{{ request()->is('account/show-pilote') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
+                        Voir les comptes pilotes
+                        </a></li>
+                    <li><a href="{{ route('account.show-student') }}" class="{{ request()->is('account/show-student') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
+                        Voir les comptes étudiants
+                      </a></li>
+                    <li><a href="{{ route('account.create') }}" class="{{ request()->is('account/create') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
+                          Créer un compte étudiant
+                        </a></li>
                 </ul>
                 <ul class="flex items-center gap-4">
                     @if(session('account'))
@@ -67,8 +79,8 @@
                 </ul>
                 
             </div>
-            <ul class="flex-col items-start gap-2 p-4 bg-black md:hidden hidden" id="mobileMenu">
-                <li><a href="#" class="text-white font-bold hover:text-yellow-400">Accueil</a></li>
+            <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
+                <li><a href="/" class="text-white font-bold hover:text-yellow-400">Accueil</a></li>
                 <li><a href="#" class="text-white font-bold hover:text-yellow-400">Entreprises</a></li>
                 <li><a href="#" class="text-yellow-500 font-bold hover:text-yellow-400">Offres</a></li>
                 <li><a href="#" class="text-white font-bold hover:text-yellow-400">Wishlist</a></li>

@@ -30,25 +30,24 @@
             <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
             
             <label>Email:</label>
-            <input type="text" name="Email_Account" style="background-color: #d3d3d3; {{ $errors->has('Email_Account') ? 'border: 2px solid red;' : '' }}" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre email">
+            <input value="{{old('Email_Account')}}" type="text" name="Email_Account" style="background-color: #d3d3d3; {{ $errors->has('Email_Account') ? 'border: 2px solid red;' : '' }}" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre email">
             
             <label>Mot de passe :</label>
-            <input type="text" name="Password_Account" style="background-color: #d3d3d3; {{ $errors->has('Password_Account') ? 'border: 2px solid red;' : '' }}" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre mot de passe">
+            <input type="password" name="Password_Account" style="background-color: #d3d3d3; {{ $errors->has('Password_Account') ? 'border: 2px solid red;' : '' }}" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre mot de passe">
             
             <p style="text-align: right; font-size: 12px" class ="text-gray-600"> mot de passe oublié ?</p>
             
             <!-- Conteneur pour centrer uniquement le bouton -->
             <div style="display: flex; justify-content: center;">
-                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-xl {{ $errors->any() ? 'border-2xl border-red-500 border-2' : '' }}">
+                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-xl">
                     Se connecter
                 </button>
             </div>
             @if ($errors->any())
                 <div class="text-red-500">
                     <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
+                        <li>{{ $errors->first('Email_Account') }}</li>
+                        <li>{{ $errors->first('Password_Account') }}</li>
                     </ul>
                 </div>
             @endif
@@ -112,7 +111,7 @@
             }).then(response => response.json()).then(data => {
                 if (data.success) {
                     document.cookie = "accept_cookies=false; path=/; max-age=" + (30 * 24 * 60 * 60);
-                    window.location.href = "/";
+                    window.location.href = document.referrer || '/';
                 }
             });
         }

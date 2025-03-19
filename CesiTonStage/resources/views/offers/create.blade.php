@@ -28,27 +28,26 @@
         </div>
 
         <div class="mb-4">
-            <label for="Salary_Offer" class="block text-gray-700">Montant du salaire</label>
+            <label for="Salary_Offer" class="block text-gray-700">Montant du salaire annuel :</label>
             <input type="integer" name="Salary_Offer" id="Salary_Offer" class="w-full px-4 py-2 border rounded-lg" required>
         </div>
 
         <div class="mb-4">
             <label for="Id_Category" class="block text-gray-700">Catégorie :</label>
             <select name="Id_Category" id="Id_Category" class="w-full px-4 py-2 border rounded-lg" required>
-                <option></option>
                 <option value="1">Stage</option>
                 <option value="2">Alternance</option>
             </select>
         </div>
 
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <label for="Id_Status" class="block text-gray-700">Status :</label>
             <select name="Id_Status" id="Id_Status" class="w-full px-4 py-2 border rounded-lg" required>
                 @foreach ($statuses as $status)
                     <option value="{{ $status->Id_Status }}">{{ $status->Title_Status }}</option>                
                 @endforeach
             </select>
-        </div>
+        </div> --}}
 
         <div class="mb-4">
             <label for="Id_Account" class="block text-gray-700">Compte :</label>

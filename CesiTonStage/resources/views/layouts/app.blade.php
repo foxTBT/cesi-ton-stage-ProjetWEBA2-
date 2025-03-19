@@ -37,9 +37,9 @@
         <div class="bg-yellow-500 w-full border border-black" id="shimmerDiv">
             <div class="logo my-2">
                 <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
-                @php
+                {{-- @php
                 dump(request()->cookie('accept_cookies'));
-            @endphp
+            @endphp --}}
             
             </div>
             

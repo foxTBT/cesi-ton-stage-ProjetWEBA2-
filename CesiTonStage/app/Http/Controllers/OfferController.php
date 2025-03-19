@@ -5,6 +5,7 @@ use App\Models\Account;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Offer;
+use App\Models\Status;
 
 class OfferController extends Controller
 {
@@ -22,10 +23,17 @@ class OfferController extends Controller
 
     public function create()
     {
-        $accounts = Account::all();
+        $accounts = Account::whereIn('Id_Role', [2, 3])->get();
         $companies = Company::all();
-        return view('offers.create', compact('accounts','companies'));
+        $statuses = Status::whereIn('Id_Status', [2])->get();
+        return view('offers.create', compact('accounts','companies', 'statuses'));
     }
+
+    public function apply()
+    {
+        
+    }
+
 
     public function store(Request $request)
     {
@@ -54,7 +62,7 @@ class OfferController extends Controller
         'Id_Company' => $request->Id_Company,
         
     ]);
-    return redirect()->route('account.create')->with('success', 'Offre ajoutée avec succès !');
+    return redirect()->route('offers.create')->with('success', 'Offre ajoutée avec succès !');
     }
 
     public function edit($id)
@@ -65,7 +73,20 @@ class OfferController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Logic for updating an offer
+        $request->validate([
+            'Title_Offer' => 'required|string|max:255',
+            'Description_Offer' => 'required|string',
+            'Salary_Offer' => 'nullable|numeric',
+            'Begin_date_Offer' => 'required|date',
+            'Duration_Offer' => 'nullable|date',
+            'Id_Category' => 'nullable|exists:categories,Id_Category',
+            'Id_Status' => 'nullable|exists:statuses,Id_Status',
+        ]);
+    
+        $offer = Offer::findOrFail($id);
+        $offer->update($request->all());
+    
+        return redirect()->route('offers.index')->with('success', 'Offre mise à jour avec succès !');
     }
 
     public function destroy($id)

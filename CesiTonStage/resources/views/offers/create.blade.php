@@ -7,16 +7,6 @@
     <form action="{{ route('offers.store') }}" method="POST" class="flex flex-col justify-center">
         @csrf
 
-        `@if ($errors->any())
-                <div>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif`
-
         <div class="mb-4">
             <label for="Title_Offer" class="block text-gray-700">Titre de l'offre :</label>
             <input type="string" name="Title_Offer" id="Title_Offer" class="w-full px-4 py-2 border rounded-lg" required>
@@ -54,10 +44,9 @@
         <div class="mb-4">
             <label for="Id_Status" class="block text-gray-700">Status :</label>
             <select name="Id_Status" id="Id_Status" class="w-full px-4 py-2 border rounded-lg" required>
-                <option></option>
-                <option value="1">Accepté</option>
-                <option value="2">En Cours</option>
-                <option value="3">Refusé</option>
+                @foreach ($statuses as $status)
+                    <option value="{{ $status->Id_Status }}">{{ $status->Title_Status }}</option>                
+                @endforeach
             </select>
         </div>
 

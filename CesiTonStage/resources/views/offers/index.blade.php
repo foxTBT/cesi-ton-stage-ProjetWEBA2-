@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mx-auto px-4">
-    <h1 class="my-4 text-center">Liste des Offres</h1>
+    <h1 class="my-4 text-center text-xl font-semibold text-gray-800 mb-4">Liste des Offres</h1>
     <div class="flex justify-center">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @foreach($offers as $offer)
@@ -17,22 +17,40 @@
                     <!-- Détails de l'offre -->
                     <div class="mt-2">
                         <h5 class="text-xl font-semibold">{{ $offer->Title_Offer }}</h5>
-                        <p class="text-gray-600">{{ $offer->Description_Offer }}</p>
-                        <p class="text-gray-600">{{ $offer->Salary_Offer }}</p>
+                        <p class="text-gray-600">Salaire /an : {{ $offer->Salary_Offer }}</p>
                         <p class="text-gray-500 text-sm mt-1">Date de début : {{ $offer->Begin_date_Offer ?? 'Non spécifiée' }}</p>
                         <p class="text-gray-500 text-sm mt-1">Durée : {{ $offer->Duration_Offer ?? 'Non spécifiée' }}</p>
-                        <p class="text-gray-500 text-sm mt-1">Catégorie : {{ $offer->category?->Name_Category ?? 'Non spécifiée' }}</p>
-                        <p class="text-gray-500 text-sm mt-1">Status : {{ $offer->Title_Status ?? 'Non spécifiée' }}</p>
-                        <p class="text-gray-500 text-sm mt-1">Mail : {{ $offer->Email_Account ?? 'Non spécifiée' }}</p>
-                        <button class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Description +</button>
-                    </div>
-                    <!-- Évaluation -->
-                    <div class="mt-3 flex justify-center text-yellow-400 text-lg" aria-label="Évaluation">
-                        ⭐⭐⭐⭐⭐
+                        <p class="text-gray-500 text-sm mt-1">Catégorie : {{ $offer->category->Name_Category ?? 'Non spécifiée' }}</p>
+                        <p class="text-gray-500 text-sm mt-1">Status : {{ $offer->status->Title_Status ?? 'Non spécifiée' }}</p>
+                        <p class="text-gray-500 text-sm mt-1">Mail : {{ $offer->account->Email_Account ?? 'Non spécifiée' }}</p>
+                        
+                        <!-- Boutons pour afficher/cacher la description et postuler -->
+                        <div class="flex space-x-2 mt-2">
+                            <button onclick="toggleDescription(this)" class="flex-1 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Description +</button>
+                            <button class="flex-1 text-center px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Postuler</button>
+                        </div>
+                        
+                        <!-- Description cachée par défaut -->
+                        <div class="description hidden mt-2 text-gray-600">
+                            <p>{{ $offer->Description_Offer }}</p>
+                        </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
 </div>
+
+<script>
+    function toggleDescription(button) {
+        const description = button.parentElement.nextElementSibling;
+        if (description.classList.contains('hidden')) {
+            description.classList.remove('hidden');
+            button.textContent = "Description -";
+        } else {
+            description.classList.add('hidden');
+            button.textContent = "Description +";
+        }
+    }
+</script>
 @endsection

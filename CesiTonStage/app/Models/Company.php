@@ -22,4 +22,14 @@ class Company extends Model
         'Logo_link_Company',
         'Id_City',
     ];
+
+    public function ratings()
+    {
+        return $this->hasMany(Evaluate::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->ratings()->avg('rating');
+    }
 }

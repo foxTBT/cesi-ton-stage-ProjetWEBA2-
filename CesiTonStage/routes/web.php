@@ -31,7 +31,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Routes pour la gestion des cookies
 Route::post('/accept-cookies', [AuthController::class, 'acceptCookies'])->name('accept.cookies');
 Route::post('/reject-cookies', [AuthController::class, 'rejectCookies'])->name('reject.cookies');
-Route::get('/check-cookies', [AuthController::class, 'checkCookies'])->name('check.cookies'); // <--- Ajout de cette route
+Route::get('/check-cookies', [AuthController::class, 'checkCookies'])->name('check.cookies');
 //pour la page de controle des cookies (côté utilisateur)
 use App\Http\Controllers\CookieController;
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Account;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -33,11 +34,9 @@ class AuthController extends Controller
         'Password_Account.max' => 'Le mot de passe doit faire moins de 60 caractères.',
     ]);
 
-    $account = Account::where('Email_Account', $request->Email_Account)
-                      ->where('Password_Account', $request->Password_Account)
-                      ->first();
+    $account = Account::where('Email_Account', $request->Email_Account)->first();
 
-    if ($account) {
+    if ($account && Hash::check($request->Password_Account, $account->Password_Account)) {
         session(['account' => $account]);
 
         // Stocker l'email dans un cookie pour 1 jour
@@ -47,6 +46,7 @@ class AuthController extends Controller
     }
 
     return back()->withErrors(['login' => 'Email ou mot de passe incorrect.']);
+
 }
 
 

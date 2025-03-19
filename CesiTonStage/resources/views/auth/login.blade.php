@@ -26,7 +26,7 @@
 <form action="{{ route('login') }}" method="POST">
     @csrf
     <div class="flex justify-center items-center h-1/2">
-        <div class="p-10 m-6 mt-12 shadow-gray-200 shadow-xl rounded-xl {{ $errors->any() ? 'shake-div' : '' }}" style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="p-10 m-6 mt-12 bg-gray-100 shadow-gray-200 shadow-xl rounded-xl {{ $errors->any() ? 'shake-div' : '' }}" style="display: flex; flex-direction: column; gap: 8px;">
             <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
             
             <label>Email:</label>

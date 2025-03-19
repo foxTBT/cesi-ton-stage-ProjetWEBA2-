@@ -15,12 +15,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col h-screen">
     <!-- Header -->
-    <header class="flex flex-col items-center bg-white w-full border shadow-gray-500 shadow-md">
+    <header class="flex flex-col items-center bg-white w-full border shadow-gray-500 shadow-md mb-[10vh]">
         
         <div class="logo my-4">
-            <img src="{{ asset('images/logod_petit.svg') }}" alt="Logo CTS" class="w-[10em] mx-auto">
+            <img src="{{ asset('images/logod_petit.svg') }}" alt="Logo CTS" class="w-[11em] mx-auto">
         </div>
              
     </header>

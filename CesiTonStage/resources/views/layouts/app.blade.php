@@ -58,9 +58,13 @@
                     </li>
                     <li><a href="#" class="hover:text-yellow-500">Offres</a>
                     </li>
-                    <li><a href="{{ route('accounts.show-pilote') }}" class="{{ request()->is('accounts/show-pilote') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
-                        Voir les comptes pilotes
-                        </a></li>
+                    @if (session('account') && session('account')->Id_Role == '3')
+                        <li>
+                            <a href="{{ route('accounts.show-pilote') }}" class="{{ request()->is('accounts/show-pilote') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
+                                Voir les comptes pilotes
+                            </a>
+                        </li>
+                    @endif
                     <li><a href="{{ route('accounts.show-student') }}" class="{{ request()->is('accounts/show-student') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
                         Voir les comptes étudiants
                       </a></li>

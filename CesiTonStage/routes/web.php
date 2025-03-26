@@ -13,10 +13,17 @@ Route::get('/', function () {
 });
 
 Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+
 Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.store');
+
 Route::get('/offers/{id}/edit', [OfferController::class, 'edit'])->name('offers.edit');
 Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.update');
+
+Route::delete('/offers/{id}', [OfferController::class, 'destroy'])->name('offers.destroy');
+
+
+
 
 Route::get('/regions/create', [RegionController::class, 'create'])->name('regions.create');
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');

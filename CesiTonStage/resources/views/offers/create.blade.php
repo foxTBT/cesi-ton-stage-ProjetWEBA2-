@@ -40,14 +40,14 @@
             </select>
         </div>
 
-        {{-- <div class="mb-4">
+        <div class="mb-4">
             <label for="Id_Status" class="block text-gray-700">Status :</label>
             <select name="Id_Status" id="Id_Status" class="w-full px-4 py-2 border rounded-lg" required>
                 @foreach ($statuses as $status)
                     <option value="{{ $status->Id_Status }}">{{ $status->Title_Status }}</option>                
                 @endforeach
             </select>
-        </div> --}}
+        </div>
 
         <div class="mb-4">
             <label for="Id_Account" class="block text-gray-700">Compte :</label>

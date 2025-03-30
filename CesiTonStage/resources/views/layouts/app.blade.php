@@ -105,16 +105,16 @@
                     <div class="p-4 mb-4 text-yellow-400">
                         <strong class="text-yellow-300">Ressource</strong>
                         <p><a href="{{ route('cookie.settings') }}" class="hover:text-yellow-600 cursor-pointer">Politique de protection des données</a></p>
-                        <p class="hover:text-yellow-600 cursor-pointer">Support</p>
-                        <p class="hover:text-yellow-600 cursor-pointer">Condition générales d’utilisation</p>
+                        <p><a href="{{ route('support.support') }}" class="hover:text-yellow-600 cursor-pointer">Support</a></p>
+                        <p><a href="{{ route('cgu.cgu') }}" class="hover:text-yellow-600 cursor-pointer">Condition générales d’utilisation</a></p>
                     </div>
                 </div>
                 <div class="w-1/2 p-4">
                     <div class="p-4 mb-4 text-yellow-400">
                         <strong class="text-yellow-300">En savoir plus</strong>
-                        <p class="hover:text-yellow-600 cursor-pointer">Qui sommes de nous</p>
-                        <p class="hover:text-yellow-600 cursor-pointer">Nos valeurs</p>
-                        <p class="hover:text-yellow-600 cursor-pointer">FAQ</p>
+                        <p><a href="{{ route('a_propos.qui_sommes_nous') }}" class="hover:text-yellow-600 cursor-pointer">Qui sommes de nous</a></p>
+                        <p><a href="{{ route('a_propos.nos_valeurs') }}" class="hover:text-yellow-600 cursor-pointer">Nos valeurs</a></p>
+                        <p><a href="{{ route('a_propos.faq') }}" class="hover:text-yellow-600 cursor-pointer">FAQ</a></p>
                     </div>
                 </div>
             </div>

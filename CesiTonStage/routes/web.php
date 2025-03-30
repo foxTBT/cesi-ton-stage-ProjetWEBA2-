@@ -7,6 +7,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\SupportController;
+use App\Http\Controllers\CguController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\NosValeursController;
+use App\Http\Controllers\QuiSommesNousController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,9 +47,15 @@ Route::post('/reject-cookies', [AuthController::class, 'rejectCookies'])->name('
 Route::get('/check-cookies', [AuthController::class, 'checkCookies'])->name('check.cookies');
 //pour la page de controle des cookies (côté utilisateur)
 
-
-Route::get('/politique-de-protection', [CookieController::class, 'showCookieSettings'])->name('cookie.settings');
+//pages du footer
+Route::get('/politique-de-protection-des-donnees', [CookieController::class, 'showCookieSettings'])->name('cookie.settings');
 Route::post('/cookies/update', [CookieController::class, 'updateCookies'])->name('cookie.update');
+
+Route::get('/support', [SupportController::class, 'index'])->name('support.support');
+Route::get('/cgu', [CguController::class, 'index'])->name('cgu.cgu');
+Route::get('/faq', [FaqController::class, 'index'])->name('a_propos.faq');
+Route::get('/nos-valeurs', [NosValeursController::class, 'index'])->name('a_propos.nos_valeurs');
+Route::get('/qui-sommes-nous', [QuiSommesNousController::class, 'index'])->name('a_propos.qui_sommes_nous');
 
 
 Route::get('/dashboard', function () {

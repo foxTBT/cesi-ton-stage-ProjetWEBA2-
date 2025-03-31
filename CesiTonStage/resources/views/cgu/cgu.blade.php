@@ -48,7 +48,7 @@
             <section>
                 <h2 class="text-2xl font-semibold text-gray-800 mb-3">Protection des Données Personnelles</h2>
                 <p class="text-lg text-gray-600">
-                    Conformément au RGPD, vos données personnelles collectées sur ce site seront traitées de manière sécurisée. Vous avez le droit d'accéder, de modifier et de demander la suppression de vos données. Consultez notre <a href="/politique-de-protection-des-donnees" class="text-yellow-600 hover:underline">politique de confidentialité</a> pour plus d'informations.
+                    Conformément au RGPD, vos données personnelles collectées sur ce site seront traitées de manière sécurisée. Vous avez le droit d'accéder, de modifier et de demander la suppression de vos données. Consultez notre <a href="/politique-de-protection-des-donnees" class="text-yellow-600 hover:underline cursor-pointer">politique de confidentialité</a> pour plus d'informations.
                 </p>
             </section>
 

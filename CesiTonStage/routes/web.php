@@ -19,7 +19,7 @@ use App\Http\Controllers\WishListController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
 

@@ -86,20 +86,19 @@
                 </ul>
                 
             </div>
-            {{-- <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
-                <li><a href="/" class="text-white font-bold hover:text-yellow-400">Accueil</a></li>
-                <li><a href="#" class="text-white font-bold hover:text-yellow-400">Entreprises</a></li>
-                <li><a href="#" class="text-white font-bold hover:text-yellow-400">Offres</a></li>
-                <li><a href="#" class="text-white font-bold hover:text-yellow-400">Wishlist</a></li>
-                <li><a href="/accounts/create" class="text-white font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
-            </ul> --}}
-
             <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
-                <li><a href="/" class="menu-item font-bold hover:text-yellow-400">Accueil</a></li>
-                <li><a href="/companies/search" class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
-                <li><a href="/offers" class="menu-item font-bold hover:text-yellow-400">Offres</a></li>
-                <li><a href="/wishlist" class="menu-item font-bold hover:text-yellow-400">Wishlist</a></li>
-                <li><a href="/accounts/create" class="menu-item font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
+                <li><a href="{{ route('welcome') }}" class="menu-item font-bold hover:text-yellow-400">Accueil</a></li>
+                <li><a href="{{ route('companies.search') }}" class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
+                <li><a href="{{ route('offers.index') }}" class="menu-item font-bold hover:text-yellow-400">Offres</a></li>
+                <li><a href="{{ route('wishlist.index') }}" class="menu-item font-bold hover:text-yellow-400">Wishlist</a></li>
+                <li><a href="{{ route('accounts.create') }}" class="menu-item font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
+                @if (session('account') && session('account')->Id_Role == '3')
+                    <li>
+                        <a href="{{ route('accounts.show-pilote') }}" class="menu-item font-bold hover:text-yellow-400 {{ request()->is('accounts/show-pilote') ? 'text-yellow-500' : 'text-white' }}">
+                            Voir les comptes pilotes
+                        </a>
+                    </li>
+                @endif
             </ul>
             
             <script>
@@ -108,7 +107,10 @@
                     const currentPath = window.location.pathname;
             
                     menuItems.forEach(item => {
-                        if (item.getAttribute('href') === currentPath) {
+                        const href = item.getAttribute('href');
+                        const routePath = new URL(href, window.location.origin).pathname;
+            
+                        if (routePath === currentPath) {
                             item.classList.remove('text-white');
                             item.classList.add('text-yellow-500');
                         } else {
@@ -118,6 +120,7 @@
                     });
                 });
             </script>
+            
             
         </nav>
     </header>

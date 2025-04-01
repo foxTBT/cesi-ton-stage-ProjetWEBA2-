@@ -50,7 +50,9 @@
                         <li>{{ $errors->first('Password_Account') }}</li>
                     </ul>
                 </div>
+            
             @endif
+
         </div>
     </div>
 

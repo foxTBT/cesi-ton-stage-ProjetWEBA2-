@@ -57,19 +57,6 @@ Route::get('/faq', [FaqController::class, 'index'])->name('a_propos.faq');
 Route::get('/nos-valeurs', [NosValeursController::class, 'index'])->name('a_propos.nos_valeurs');
 Route::get('/qui-sommes-nous', [QuiSommesNousController::class, 'index'])->name('a_propos.qui_sommes_nous');
 
-
-Route::get('/dashboard', function () {
-    if (!session('accounts')) return redirect()->route('login');
-    return "Bienvenue sur le dashboard, " . session('accounts')->Email_Account;
-})->name('dashboard');
-
-Route::get('/admin', function () {
-    if (!session('account') || (int) session('account')->Id_Role !== 1) {
-        return redirect()->route('dashboard');
-    }
-    return "Bienvenue sur la page Admin";
-})->name('admin.page');
-
 Route::get('/companies/create', [CompaniesController::class, 'create'])->name('companies.create');
 Route::post('/companies', [CompaniesController::class, 'store'])->name('companies.store');
 

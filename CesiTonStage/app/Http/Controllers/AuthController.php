@@ -42,7 +42,7 @@ class AuthController extends Controller
         // Stocker l'email dans un cookie pour 1 jour
         Cookie::queue('user_email', $account->Email_Account, 1440);
 
-        return (int) $account->Id_Role === 1 ? redirect()->route('admin.page') : redirect()->route('dashboard');
+        return redirect('/');
     }
 
     return back()->withErrors(['login' => 'Email ou mot de passe incorrect.']);

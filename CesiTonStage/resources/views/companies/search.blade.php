@@ -31,7 +31,7 @@
     </div>
 @endforeach
 
-<div class="mt-6 flex justify-center">
+<div class="mt-6 mb-4">
     {{ $companies->appends(request()->input())->links('pagination::tailwind') }}
 </div>
 @endsection

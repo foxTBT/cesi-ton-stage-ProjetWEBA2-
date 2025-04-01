@@ -28,9 +28,9 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl text-black font-semibold mb-8">Nos entreprises partenaires</h2>
             <div class="flex justify-center space-x-8">
-                <div class="w-32 h-32 bg-gray-100 rounded-full"></div>
-                <div class="w-32 h-32 bg-gray-100 rounded-full"></div>
-                <div class="w-32 h-32 bg-gray-100 rounded-full"></div>
+                <img src="{{ asset('images/logo/talentis.png') }}" alt="Logo Talentis" class="mx-auto w-32 h-32 bg-yellow-500 rounded-full">
+                <img src="{{ asset('images/logo/traverse_ta_rue.png') }}" alt="Logo Traverse Ta Rue" class="mx-auto w-32 h-32 bg-yellow-500 rounded-full">
+                {{-- <div class="w-32 h-32 bg-gray-100 rounded-full"></div> --}}
             </div>
         </div>
     </section>

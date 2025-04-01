@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex mx-auto w-fit p-3 gap-6">
+<div class="flex mx-auto w-fit p-3 gap-3">
     @include('partials.search_bar')
 
     <a href="{{ route('companies.create') }}">
@@ -10,7 +10,7 @@
 </div>
 
 @foreach ($companies as $company)
-    <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6 border mb-4">
+    <div class="bg-white shadow-lg rounded-lg p-6 border mb-4">
         <a href="{{ route('companies.show', $company->Id_Company) }}" class="Block">
             <div class="flex items-center space-x-4 border-2 border-yellow-500 bg-yellow-500 shadow-lg rounded-lg p-2 hover:border-black hover:bg-yellow-400">
                 <img src="{{ $company->Logo_link_Company }}" alt="Logo de {{ $company->Name_Company }}" 

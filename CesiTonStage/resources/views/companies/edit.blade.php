@@ -5,11 +5,11 @@
     @csrf
     @method('PUT')
 
-    <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg border p-6 mt-4 mb-4">
+    <div class="bg-white shadow-lg rounded-lg border p-6 mt-4 mb-4">
 
-        <h2 class="shadow-lg rounded-lg bg-yellow-500 mx-auto w-fit text-xl font-semibold pt-2 pl-12 pr-12 pb-2 mb-6"><strong>Mise à jour de l'entreprise</strong></h2>
+        <h2 class="shadow-lg rounded-lg bg-yellow-500 text-xl font-semibold pt-2 pl-12 pr-12 pb-2 mb-6 text-center"><strong>Mise à jour de l'entreprise</strong></h2>
 
-        <ul class="space-y-3 mx-auto w-fit">
+        <ul class="space-y-3">
             <li>
                 <label for="Name_Company" class="block text-gray-700"><strong>Nom :</strong></label>
                 <input type="text" id="Name_Company" name="Name_Company" value="{{ $company->Name_Company }}" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
@@ -46,7 +46,7 @@
             </li>
 
             <li class="mx-auto w-fit">
-                <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-blue-500 hover:bg-blue-300 hover:text-black"><strong>Modifier</strong></button>
+                <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-blue-500 hover:bg-blue-300 hover:text-black"><strong>Mettre à jour</strong></button>
             </li>
         </ul>
     </div>

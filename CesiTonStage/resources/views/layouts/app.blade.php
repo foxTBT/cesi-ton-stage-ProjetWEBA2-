@@ -37,9 +37,9 @@
         <div class="bg-yellow-500 w-full border border-black" id="shimmerDiv">
             <div class="logo my-2">
                 <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
-                @php
+                <!-- @php
                 dump(request()->cookie('accept_cookies'));
-            @endphp
+            @endphp -->
             
             </div>
             
@@ -51,7 +51,7 @@
                 <button class="menu-toggle text-white text-2xl md:hidden" aria-label="Ouvrir le menu">&#9776;</button>
                 <ul id="navList" class="hidden md:flex md:items-center md:gap-4">
                     <li><a href="#" class="hover:text-yellow-500">Accueil</a></li>
-                    <li><a href="#" class="hover:text-yellow-500">Entreprises</a></li>
+                    <li><a href="{{ route('companies.search') }}" class="hover:text-yellow-500">Entreprises</a></li>
                     <li><a href="#" class="text-yellow-500 font-bold hover:text-yellow-500">Offres</a></li>
                     <li><a href="#" class="hover:text-yellow-500">Wishlist</a></li>
                     <li><a href="{{ route('account.create') }}" class="hover:text-yellow-500">Créer un compte étudiant</a></li>
@@ -69,7 +69,7 @@
             </div>
             <ul class="flex-col items-start gap-2 p-4 bg-black md:hidden hidden" id="mobileMenu">
                 <li><a href="#" class="text-white font-bold hover:text-yellow-400">Accueil</a></li>
-                <li><a href="#" class="text-white font-bold hover:text-yellow-400">Entreprises</a></li>
+                <li><a href="{{ route('companies.search') }}" class="text-white font-bold hover:text-yellow-400">Entreprises</a></li>
                 <li><a href="#" class="text-yellow-500 font-bold hover:text-yellow-400">Offres</a></li>
                 <li><a href="#" class="text-white font-bold hover:text-yellow-400">Wishlist</a></li>
                 <li><a href="/account/create" class="text-white font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
@@ -77,9 +77,10 @@
         </nav>
     </header>
 
-    <main class="flex-grow">
-   
+    <main class="flex-grow mx-[4%] sm:mx-[8%] md:mx-[12%] lg:mx-[16%] xl:mx-[20%]">
+
         @yield('content')
+
     </main>
 
     <footer class="mt-auto">

@@ -9,7 +9,7 @@ class Evaluate extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'post_id', 'rating'];
+    protected $fillable = ['user_id', 'Id_Company', 'Rating'];
 
     // Relations
     public function user()

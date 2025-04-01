@@ -4,11 +4,11 @@
 <form action="{{ route('companies.store') }}" method="POST">
     @csrf
 
-    <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg border p-6 mt-4 mb-4">
+    <div class="bg-white shadow-lg rounded-lg border p-6 mt-4 mb-4">
 
-        <h2 class="shadow-lg rounded-lg bg-yellow-500 mx-auto w-fit text-xl font-semibold pt-2 pl-12 pr-12 pb-2 mb-6"><strong>Création d'entreprise</strong></h2>
+        <h2 class="shadow-lg rounded-lg bg-yellow-500 text-xl font-semibold pt-2 pl-12 pr-12 pb-2 mb-6 text-center"><strong>Création d'entreprise</strong></h2>
 
-        <ul class="space-y-3 mx-auto w-fit">
+        <ul class="space-y-3">
             <li>
                 <label for="Name_Company" class="block text-gray-700"><strong>Nom :</strong></label>
                 <input type="text" id="Name_Company" name="Name_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>

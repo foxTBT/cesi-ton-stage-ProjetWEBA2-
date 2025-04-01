@@ -5,6 +5,7 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\EvaluateController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -61,3 +62,5 @@ Route::get('/companies/show/{Id_Company}', [CompaniesController::class, 'show'])
 Route::delete('/companies/destroy/{Id_Company}', [CompaniesController::class, 'destroy'])->name('companies.destroy');
 Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])->name('companies.edit');
 Route::put('/companies/update/{Id_Company}', [CompaniesController::class, 'update'])->name('companies.update');
+
+Route::post('/companies/show/{Id_Company}/rate', [EvaluateController::class, 'rate'])->name('companies.rate');

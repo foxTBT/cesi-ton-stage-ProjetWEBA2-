@@ -10,7 +10,7 @@
     <div class="text-center">
         <h1 class="text-6xl font-bold text-gray-800">404</h1>
         <p class="text-xl text-gray-600 mt-4">Zut de flûte ! La page que vous recherchez est introuvable.</p>
-        <a href="{{ url('/accueil') }}" class="mt-6 inline-block px-6 py-3 bg-gray-800 text-white rounded-lg shadow-7xl hover:bg-gray-700">
+        <a href="{{ url('/') }}" class="mt-6 inline-block px-6 py-3 bg-gray-800 text-white rounded-lg shadow-7xl hover:bg-gray-700">
             Retour à l'accueil
         </a>
     </div>

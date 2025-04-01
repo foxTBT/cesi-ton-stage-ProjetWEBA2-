@@ -86,13 +86,39 @@
                 </ul>
                 
             </div>
-            <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
+            {{-- <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
                 <li><a href="/" class="text-white font-bold hover:text-yellow-400">Accueil</a></li>
                 <li><a href="#" class="text-white font-bold hover:text-yellow-400">Entreprises</a></li>
-                <li><a href="#" class="text-yellow-500 font-bold hover:text-yellow-400">Offres</a></li>
+                <li><a href="#" class="text-white font-bold hover:text-yellow-400">Offres</a></li>
                 <li><a href="#" class="text-white font-bold hover:text-yellow-400">Wishlist</a></li>
                 <li><a href="/accounts/create" class="text-white font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
+            </ul> --}}
+
+            <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
+                <li><a href="/" class="menu-item font-bold hover:text-yellow-400">Accueil</a></li>
+                <li><a href="/companies/search" class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
+                <li><a href="/offers" class="menu-item font-bold hover:text-yellow-400">Offres</a></li>
+                <li><a href="/wishlist" class="menu-item font-bold hover:text-yellow-400">Wishlist</a></li>
+                <li><a href="/accounts/create" class="menu-item font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
             </ul>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const menuItems = document.querySelectorAll('.menu-item');
+                    const currentPath = window.location.pathname;
+            
+                    menuItems.forEach(item => {
+                        if (item.getAttribute('href') === currentPath) {
+                            item.classList.remove('text-white');
+                            item.classList.add('text-yellow-500');
+                        } else {
+                            item.classList.remove('text-yellow-500');
+                            item.classList.add('text-white');
+                        }
+                    });
+                });
+            </script>
+            
         </nav>
     </header>
 

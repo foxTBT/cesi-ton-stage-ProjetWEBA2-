@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\WishListController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +24,14 @@ Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.upd
 
 Route::delete('/offers/{id}', [OfferController::class, 'destroy'])->name('offers.destroy');
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
+    Route::post('/wishlist/toggle/{offerId}', [WishListController::class, 'toggle'])->name('wishlist.toggle');
+
+    Route::get('/applications/create/{offerId}', [ApplicationController::class, 'create'])->name('applications.create');
+    Route::post('/applications/store/{offerId}', [ApplicationController::class, 'store'])->name('applications.store');
+});
 
 
 

@@ -12,7 +12,7 @@
     <!-- Intégration de Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
+    {{-- <style>
         #shimmerDiv {
             width: 100%;
             height: 100%; /* Ajustez la hauteur si nécessaire */
@@ -29,12 +29,12 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-    </style>
+    </style> --}}
 </head>
 <body class="flex flex-col min-h-screen">
     <!-- Header -->
     <header class="flex flex-col items-center bg-red-500">
-        <div class="bg-yellow-500 w-full border border-black" id="shimmerDiv">
+        <div class="bg-yellow-500 w-full border border-black">
             <div class="logo my-2">
                 <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
                 {{-- @php

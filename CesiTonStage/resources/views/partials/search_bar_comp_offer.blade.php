@@ -1,6 +1,4 @@
-<script src="https://cdn.tailwindcss.com"></script>
-
-<div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6 border mt-4 mb-4">
+<div class="bg-white shadow-lg rounded-lg p-6 border mt-4 mb-4">
     <h2 class="mx-auto w-fit text-xl font-semibold text-gray-800">Rechercher une offre de l'entreprise ?</h2>
 
     <form action="{{ route('companies.show', $company->Id_Company) }}" class="flex mx-auto w-fit mt-3 mb-3">

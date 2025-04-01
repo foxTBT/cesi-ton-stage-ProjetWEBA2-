@@ -13,6 +13,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\NosValeursController;
 use App\Http\Controllers\QuiSommesNousController;
 
+use App\Http\Controllers\EvaluateController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -66,3 +67,4 @@ Route::delete('/companies/destroy/{Id_Company}', [CompaniesController::class, 'd
 Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])->name('companies.edit');
 Route::put('/companies/update/{Id_Company}', [CompaniesController::class, 'update'])->name('companies.update');
 
+Route::post('/companies/show/{Id_Company}/rate', [EvaluateController::class, 'rate'])->name('companies.rate');

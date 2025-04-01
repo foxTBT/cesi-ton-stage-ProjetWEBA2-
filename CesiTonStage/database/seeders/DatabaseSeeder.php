@@ -780,53 +780,53 @@ class DatabaseSeeder extends Seeder
             [
             'Id_Account' => 1,
             'Id_Company' => 1,
-            'Rating' => 4.5,
+            'Rating' => 4,
             ],
             [
             'Id_Account' => 2,
             'Id_Company' => 1,
-            'Rating' => 2.5,
-            ],
-            [
-            'Id_Account' => 3,
-            'Id_Company' => 1,
-            'Rating' => 3.5,
-            ],
-            [
-            'Id_Account' => 4,
-            'Id_Company' => 1,
-            'Rating' => 5.0,
-            ],
-            [
-            'Id_Account' => 1,
-            'Id_Company' => 2,
-            'Rating' => 0.5,
-            ],
-            [
-            'Id_Account' => 6,
-            'Id_Company' => 5,
-            'Rating' => 4.5,
-            ],
-            [
-            'Id_Account' => 6,
-            'Id_Company' => 1,
-            'Rating' => 2.5,
-            ],
-            [
-            'Id_Account' => 7,
-            'Id_Company' => 3,
-            'Rating' => 3.5,
-            ],
-            [
-            'Id_Account' => 2,
-            'Id_Company' => 3,
-            'Rating' => 5.0,
-            ],
-            [
-            'Id_Account' => 9,
-            'Id_Company' => 1,
-            'Rating' => 0.5,
-            ],
+            'Rating' => 2,
+            ]
+            // [
+            // 'Id_Account' => 3,
+            // 'Id_Company' => 1,
+            // 'Rating' => 3.5,
+            // ],
+            // [
+            // 'Id_Account' => 4,
+            // 'Id_Company' => 1,
+            // 'Rating' => 5.0,
+            // ],
+            // [
+            // 'Id_Account' => 1,
+            // 'Id_Company' => 2,
+            // 'Rating' => 0.5,
+            // ],
+            // [
+            // 'Id_Account' => 6,
+            // 'Id_Company' => 5,
+            // 'Rating' => 4.5,
+            // ],
+            // [
+            // 'Id_Account' => 6,
+            // 'Id_Company' => 1,
+            // 'Rating' => 2.5,
+            // ],
+            // [
+            // 'Id_Account' => 7,
+            // 'Id_Company' => 3,
+            // 'Rating' => 3.5,
+            // ],
+            // [
+            // 'Id_Account' => 2,
+            // 'Id_Company' => 3,
+            // 'Rating' => 5.0,
+            // ],
+            // [
+            // 'Id_Account' => 9,
+            // 'Id_Company' => 1,
+            // 'Rating' => 0.5,
+            // ],
         ]);
 
         // Seeder pour la table applications

@@ -40,6 +40,9 @@
                 {{-- @php
                 dump(request()->cookie('accept_cookies'));
             @endphp --}}
+                <!-- @php
+                dump(request()->cookie('accept_cookies'));
+            @endphp -->
             
             </div>
             
@@ -93,9 +96,10 @@
         </nav>
     </header>
 
-    <main class="flex-grow">
-   
+    <main class="flex-grow mx-[4%] sm:mx-[8%] md:mx-[12%] lg:mx-[16%] xl:mx-[20%]">
+
         @yield('content')
+
     </main>
 
     <footer class="mt-auto">

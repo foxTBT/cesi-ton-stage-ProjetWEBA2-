@@ -37,9 +37,20 @@
         <div class="bg-yellow-500 w-full border border-black">
             <div class="logo my-2">
                 <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
-                {{-- @php
-                dump(request()->cookie('accept_cookies'));
-            @endphp --}}
+                @php
+                    $account = session('account');
+
+                    if ($account === null) {
+                        dump('null');
+                    } else {
+                        $roleId = (int) $account->Id_Role;
+                        dump($roleId);
+                    }
+                @endphp
+
+
+            
+
                 <!-- @php
                 dump(request()->cookie('accept_cookies'));
             @endphp -->

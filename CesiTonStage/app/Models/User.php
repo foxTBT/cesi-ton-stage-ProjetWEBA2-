@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Evaluate::class);
     }
+    public function wishlist()
+    {
+    return $this->hasMany(WishList::class, 'Id_Account');
+    }
+
 }

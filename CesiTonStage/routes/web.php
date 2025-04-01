@@ -14,16 +14,33 @@ use App\Http\Controllers\NosValeursController;
 use App\Http\Controllers\QuiSommesNousController;
 
 use App\Http\Controllers\EvaluateController;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\WishListController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+
 Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.store');
+
 Route::get('/offers/{id}/edit', [OfferController::class, 'edit'])->name('offers.edit');
 Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.update');
+
+Route::delete('/offers/{id}', [OfferController::class, 'destroy'])->name('offers.destroy');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
+    Route::post('/wishlist/toggle/{offerId}', [WishListController::class, 'toggle'])->name('wishlist.toggle');
+
+    Route::get('/applications/create/{offerId}', [ApplicationController::class, 'create'])->name('applications.create');
+    Route::post('/applications/store/{offerId}', [ApplicationController::class, 'store'])->name('applications.store');
+});
+
+
 
 Route::get('/regions/create', [RegionController::class, 'create'])->name('regions.create');
 Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');

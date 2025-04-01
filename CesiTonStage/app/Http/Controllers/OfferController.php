@@ -25,7 +25,7 @@ class OfferController extends Controller
     {
         $accounts = Account::whereIn('Id_Role', [2, 3])->get();
         $companies = Company::all();
-        $statuses = Status::whereIn('Id_Status', [2])->get();
+        $statuses = Status::whereIn('Id_Status', [1])->get();
         return view('offers.create', compact('accounts','companies', 'statuses'));
     }
 
@@ -62,7 +62,7 @@ class OfferController extends Controller
         'Id_Company' => $request->Id_Company,
         
     ]);
-    return redirect()->route('offers.create')->with('success', 'Offre ajoutée avec succès !');
+    return redirect()->route('offers.index')->with('success', 'Offre ajoutée avec succès !');
     }
 
     public function edit($id)
@@ -94,7 +94,6 @@ class OfferController extends Controller
     {
         $offer = Offer::findOrFail($id);
         $offer->delete();
-        return redirect()->route('offers.index');
+        return redirect()->route('offers.index')->with('success', 'Offre supprimée avec succès.');
     }
 }
-

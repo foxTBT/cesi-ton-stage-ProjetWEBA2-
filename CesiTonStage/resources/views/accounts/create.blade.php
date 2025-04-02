@@ -5,19 +5,11 @@
         <h2 class="text-xl font-semibold text-gray-800 mb-4">Créer un compte</h2>
 
         @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="alert alert-success text-green-600">{{ session('success') }}</div>
+            
         @endif
 
-        @if ($errors->any())
-            <div class="text-red-500">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
+        
         <form action="{{ route('accounts.store') }}" method="POST" class="flex flex-col justify-center">
             @csrf
 
@@ -65,9 +57,35 @@
                 <input type="checkbox" name="remember" id="remember" class="form-check-input">
             </div>
 
-            <button type="submit"
-                class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Créer
-                le compte</button>
+            <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">
+                Créer le compte
+            </button>
+
+                @if ($errors->any())
+                    <div class="text-red-500">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
         </form>
+
     </div>
+
+    <script>
+        const userRole = {{ session('account')->Id_Role }}; // récupère l'Id_Role de l'utilisateur connecté
+
+        document.querySelector('form').addEventListener('submit', function (event) {
+            const selectedRole = parseInt(document.getElementById('Id_Role').value);
+
+            // Vérifier si le rôle sélectionné est différent du rôle de l'utilisateur connecté
+            if (selectedRole >= userRole) {
+                alert("Vous n'avez pas les permissions pour pouvoir créer ce rôle.");
+                event.preventDefault(); // Empêche l'envoi du formulaire si les rôles ne correspondent pas
+            }
+        });
+    </script>
 @endsection

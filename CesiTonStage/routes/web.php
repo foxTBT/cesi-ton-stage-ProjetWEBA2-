@@ -85,3 +85,11 @@ Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])
 Route::put('/companies/update/{Id_Company}', [CompaniesController::class, 'update'])->name('companies.update');
 
 Route::post('/companies/show/{Id_Company}/rate', [EvaluateController::class, 'rate'])->name('companies.rate');
+
+Route::get('/companies/show/{Id_Company}', function () {
+    if (!session('account') || (int) session('account')->Id_Role > 1) {
+        return redirect('/login');
+    }
+
+    return view('companies.show');
+});

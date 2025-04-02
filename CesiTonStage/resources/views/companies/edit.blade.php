@@ -10,6 +10,7 @@
             </ul>
         </div>
     @endif
+    
     <form action="{{ route('companies.update', $company->Id_Company) }}" method="POST">
         @csrf
         @method('PUT')
@@ -61,9 +62,9 @@
 
                 <li>
                     <label for="Id_City" class="block text-gray-700"><strong>Ville :</strong></label>
-                    <select name="Id_City" id="Id_City" class="w-full px-4 py-2 border rounded-lg" required>
+                    <select name="Id_City" id="Id_City" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
                         @foreach ($cities as $city)
-                            <option value="{{ $city->Id_City }}">{{ $city->Name_City }}</option>
+                            <option value="{{ $city->Id_City }}" {{ isset($company) && $company->Id_City == $city->Id_City ? 'selected' : '' }}>{{ $city->Name_City }}</option>
                         @endforeach
                     </select>
                 </li>

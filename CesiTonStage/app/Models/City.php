@@ -7,6 +7,7 @@ class City extends Model
 {
     // Définir le nom de la table associée
     protected $table = 'cities';
+    protected $primaryKey = 'Id_City';
 
     // Définir les attributs qui peuvent être assignés en masse
     protected $fillable = [

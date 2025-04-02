@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="bg-yellow-500 shadow-lg rounded-lg p-6 border mt-4 mb-4">
     @include('partials.evaluation')
 
@@ -18,6 +19,7 @@
             <li><strong>SIRET :</strong> {{ $company->Siret_number_Company }}</li>
             <li><strong>Email :</strong> {{ $company->Email_Company }}</li>
             <li><strong>Téléphone :</strong> {{ $company->Phone_number_Company }}</li>
+            <li><strong>Ville :</strong> {{ $company->city->Name_City }}</li>
             <li><strong>Description :</strong> {{ $company->Description_Company }}</li>
         </ul>
     </div>
@@ -35,6 +37,8 @@
             </form>
         </div>
     @endif
+
+    @include('partials.state_message')
 </div>
 
 @include('partials.search_bar_comp_offer')

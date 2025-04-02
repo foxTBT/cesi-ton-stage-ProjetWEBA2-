@@ -11,8 +11,10 @@
     @endif
 </div>
 
+@include('partials.state_message')
+
 @foreach ($companies as $company)
-    <div class="bg-white shadow-lg rounded-lg p-6 border mb-4">
+    <div class="bg-white shadow-lg rounded-lg p-6 border mt-2 mb-4">
         <a href="{{ route('companies.show', $company->Id_Company) }}" class="Block">
             <div class="flex items-center space-x-4 border-2 border-yellow-500 bg-yellow-500 shadow-lg rounded-lg p-2 hover:border-black hover:bg-yellow-400">
                 <img src="{{ $company->Logo_link_Company }}" alt="Logo de {{ $company->Name_Company }}" 
@@ -28,6 +30,7 @@
         <ul class="text-gray-600 space-y-1 mt-3">
             <li><strong>Email :</strong> {{ $company->Email_Company }}</li>
             <li><strong>Téléphone :</strong> {{ $company->Phone_number_Company }}</li>
+            <li><strong>Ville :</strong> {{ $company->city->Name_City }}</li>
             <li><strong>Description :</strong> {{ $company->Description_Company }}</li>
         </ul>
     </div>
@@ -36,4 +39,5 @@
 <div class="mt-6 mb-4">
     {{ $companies->appends(request()->input())->links('pagination::tailwind') }}
 </div>
+
 @endsection

@@ -23,7 +23,7 @@ class CompaniesController extends Controller
             'Email_Company' => 'required|string|max:255',
             'Phone_number_Company' => 'required|string|max:13',
             'Description_Company' => 'required|string',
-            'Siret_number_Company' => 'required|string|max:14',
+            'Siret_number_Company' => 'required|string|min:13|max:14',
             'Logo_link_Company' => 'required|string',
             'Id_City' => 'required' //|exists:cities,id
         ], [
@@ -42,6 +42,7 @@ class CompaniesController extends Controller
 
             'Siret_number_Company.required' => 'Numéro de SIRET de l\'entreprise requis',
             'Siret_number_Company.max' => 'Numéro de SIRET de l\'entreprise trop long (maximum 14)',
+            'Siret_number_Company.min' => 'Numéro de SIRET de l\'entreprise trop long (minimum 14)',
 
 
             'Logo_link_Company.required' => 'bar',
@@ -65,7 +66,9 @@ class CompaniesController extends Controller
         }
 
         // Rediriger vers une page de succès ou afficher un message
-        return redirect()->route('companies.index')->with('success', 'Entreprise ajoutée avec succès !');
+        return redirect()->route('companies.index')
+            ->with('success', "Succès de l'opération !")
+            ->with('error', "Erreur rencontrée lors de l'opération !");
     }
 
     public function index()
@@ -76,6 +79,7 @@ class CompaniesController extends Controller
             ->orWhere('Description_Company', 'LIKE', '%' . $term . '%')
             ->orWhere('Email_Company', 'LIKE', '%' . $term . '%')
             ->orWhere('Phone_number_Company', 'LIKE', '%' . $term . '%')
+            ->with('city')
             ->paginate(10);
         
         if (!session('account') || (int) session('account')->Id_Role < 1) {
@@ -87,7 +91,7 @@ class CompaniesController extends Controller
 
     public function show($Id_Company)
     {
-        $company = Company::where('Id_Company', $Id_Company)->firstOrFail();
+        $company = Company::where('Id_Company', $Id_Company)->with('city')->firstOrFail();
 
         if (!session('account') || (int) session('account')->Id_Role < 1) {
             return redirect('/login');
@@ -95,6 +99,7 @@ class CompaniesController extends Controller
 
         return view('companies.show')->with('company', $company);
     }
+
 
     public function destroy($Id_Company)
     {
@@ -105,7 +110,9 @@ class CompaniesController extends Controller
             return redirect('/login');
         }
 
-        return redirect()->route('companies.index', $company->Id_Company)->with('success', 'Entreprise mise à jour avec succès !');
+        return redirect()->route('companies.index')
+            ->with('success', "Succès de l'opération !")
+            ->with('error', "Erreur rencontrée lors de l'opération !");
     }
 
     public function edit($Id_Company)
@@ -171,6 +178,8 @@ class CompaniesController extends Controller
             return redirect('/login');
         }
 
-        return redirect()->route('companies.show', $company->Id_Company)->with('success', 'Entreprise mise à jour avec succès !');
+        return redirect()->route('companies.show', $company->Id_Company)
+            ->with('success', "Succès de l'opération !")
+            ->with('error', "Erreur rencontrée lors de l'opération !");
     }
 }

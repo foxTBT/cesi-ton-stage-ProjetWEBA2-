@@ -30,7 +30,13 @@
 
         <div class="mb-4">
             <label for="Id_Role" class="block text-gray-700">Rôle :</label>
-            <input type="number" name="Id_Role" id="Id_Role" value="{{ $account->Id_Role }}" class="w-full px-4 py-2 border rounded-lg">
+            {{-- <input type="number" name="Id_Role" id="Id_Role" value="{{ $account->Id_Role }}" class="w-full px-4 py-2 border rounded-lg"> --}}
+            <select name="Id_Role" id="Id_Role" class="w-full px-4 py-2 border rounded-lg" required>
+                <option value="0">Sans rôle</option>
+                <option value="1">Étudiant</option>
+                <option value="2">Pilote</option>
+                <option value="3">Admin</option>
+            </select>
         </div>
 
         <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black ">Mettre à jour</button>

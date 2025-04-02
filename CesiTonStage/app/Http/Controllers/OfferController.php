@@ -29,12 +29,6 @@ class OfferController extends Controller
         return view('offers.create', compact('accounts','companies', 'statuses'));
     }
 
-    public function apply()
-    {
-        
-    }
-
-
     public function store(Request $request)
     {
      // Valider les données du formulaire

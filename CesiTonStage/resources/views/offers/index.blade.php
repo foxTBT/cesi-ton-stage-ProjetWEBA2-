@@ -26,7 +26,6 @@
                     
                     <button class="wishlist-btn" data-offer-id="{{ $offer->Id_Offer }}">
                         <span class="wishlist-icon">{{ $isInWishlist ? '❤️' : '🤍' }}</span>
-                        <span class="wishlist-text">{{ $isInWishlist ? 'Retirer de la Wishlist' : 'Ajouter à la Wishlist' }}</span>
                     </button>
                     
                     </div>
@@ -75,6 +74,17 @@
     </div>
 </div>
 
+@php
+                    $account = session('account');
+
+                    if ($account === null) {
+                        dump('null');
+                    } else {
+                        $roleId = (int) $account->Id_Role;
+                        dump($roleId);
+                    }
+                @endphp
+
 <script>
     function toggleDescription(button) {
         const description = button.parentElement.nextElementSibling;
@@ -108,10 +118,8 @@
                 .then(data => {
                     if (data.status === 'added') {
                         icon.innerText = "❤️";
-                        text.innerText = "Retirer de la Wishlist";
                     } else if (data.status === 'removed') {
                         icon.innerText = "🤍";
-                        text.innerText = "Ajouter à la Wishlist";
                     } else {
                         alert(data.message);
                     }

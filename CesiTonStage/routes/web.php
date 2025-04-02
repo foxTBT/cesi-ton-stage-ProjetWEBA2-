@@ -31,14 +31,12 @@ Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.upd
 
 Route::delete('/offers/{id}', [OfferController::class, 'destroy'])->name('offers.destroy');
 
+Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
+Route::post('/wishlist/toggle/{offerId}', [WishListController::class, 'toggle'])->name('wishlist.toggle');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
-    Route::post('/wishlist/toggle/{offerId}', [WishListController::class, 'toggle'])->name('wishlist.toggle');
+Route::get('/applications/create/{offerId}', [ApplicationController::class, 'create'])->name('applications.create');
+Route::post('/applications/store/{offerId}', [ApplicationController::class, 'store'])->name('applications.store');
 
-    Route::get('/applications/create/{offerId}', [ApplicationController::class, 'create'])->name('applications.create');
-    Route::post('/applications/store/{offerId}', [ApplicationController::class, 'store'])->name('applications.store');
-});
 
 
 

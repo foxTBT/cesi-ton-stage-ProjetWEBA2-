@@ -6,9 +6,7 @@
     
     <!-- Bouton pour créer une offre -->
     <div class="flex justify-end mb-4">
-        <a href="{{ route('offers.create') }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            + Créer une offre
-        </a>
+        <a href="{{ route('offers.create') }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">+ Créer une offre</a>
     </div>
 
     <div class="flex justify-center">
@@ -21,9 +19,9 @@
                             <p>{{ $offer->company?->Name_Company ?? 'N/A' }}</p>
                         </strong>
                         @php
-                        $isInWishlist = auth()->check() && auth()->user()->wishlist()->where('Id_Offer', $offer->Id_Offer)->exists();
-                    @endphp
-                    
+                            $account = session('account');
+                            $isInWishlist = false;
+                        @endphp                    
                     <button class="wishlist-btn" data-offer-id="{{ $offer->Id_Offer }}">
                         <span class="wishlist-icon">{{ $isInWishlist ? '❤️' : '🤍' }}</span>
                     </button>

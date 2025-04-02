@@ -162,13 +162,6 @@ class AccountController extends Controller
             return redirect()->route('accounts.show-pilote')/*->with('success', 'Compte mis à jour avec succès !')*/;
         }
     }
-    /*
-    public function show($id)
-    {
-        $account = Account::findOrFail($id);
-        return view('account.show', compact('account'));
-    }
-*/
     public function showStudentDetails($id)
     {
         $account = Account::with('role', 'application.offer')->findOrFail($id);

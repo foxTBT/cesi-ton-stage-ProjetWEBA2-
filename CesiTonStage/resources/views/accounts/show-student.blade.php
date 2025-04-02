@@ -4,13 +4,6 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-{{-- <form action="{{ route('account.show-student') }}" class="flex mx-auto w-fit mt-3 mb-3">
-    <input type="search" name="term" class="border border-black p-2 rounded-l-md focus:outline-none">
-    <button type="submit" class="border border-black bg-yellow-500 text-black px-4 py-2 rounded-r-md -ml-px flex items-center justify-center">
-        <img src="{{ asset('images/icon/searching.png') }}" alt="Chercher" class="w-6 h-6">
-    </button>
-</form> --}}
-
 <div class="flex mx-auto p-3 gap-6">
     <form action="{{ route('accounts.show-student') }}" class="flex">
         <input type="search" name="term" class="border-2 border-black p-2 rounded-l-md focus:outline-none hover:bg-yellow-50">

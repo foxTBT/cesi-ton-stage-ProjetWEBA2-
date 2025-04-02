@@ -4,8 +4,6 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-
-
 <div class="flex mx-auto p-3 gap-6">
     <form action="{{ route('accounts.show-pilote') }}" class="flex">
         <input type="search" name="term" class="border-2 border-black p-2 rounded-l-md focus:outline-none hover:bg-yellow-50">

@@ -46,10 +46,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function ratings()
-    {
-        return $this->hasMany(Evaluate::class);
-    }
     public function wishlist()
     {
     return $this->hasMany(WishList::class, 'Id_Account');

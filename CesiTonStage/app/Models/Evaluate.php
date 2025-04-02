@@ -9,16 +9,10 @@ class Evaluate extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'Id_Company', 'Rating'];
-
-    // Relations
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function post()
-    {
-        return $this->belongsTo(Company::class);
-    }
+    protected $table = 'evaluates';
+    protected $fillable = [
+        'Id_Account',
+        'Id_Company',
+        'Rating',
+    ];
 }

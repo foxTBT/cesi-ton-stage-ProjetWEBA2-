@@ -8,20 +8,25 @@ use App\Models\Company;
 
 class EvaluateController extends Controller
 {
-    public function rate(Request $request, $Id_Company)
+    public function rate(Request $request, $companyId)
     {
+        // Validation des données
         $request->validate([
-            'Rating' => 'required|integer|min:1|max:5',
+            'note' => 'required|numeric|min:0|max:5',
         ]);
 
+        // Récupérer l'ID de l'utilisateur connecté via la session
+        $userId = session('account')->Id_Account;
+
+        // Création ou mise à jour de l'évaluation
         $evaluate = Evaluate::updateOrCreate(
-            [
-                'Id_Account' => auth()->id(),
-                'Id_Company' => $Id_Company,
-            ],
-            ['Rating' => $request->Rating]
+            ['Id_Account' => $userId, 'Id_Company' => $companyId],
+            ['Rating' => $request->note]
         );
 
-        return redirect()->route('companies.rate', $Id_Company)->with('success', 'Évaluation enregistrée avec succès.');
+        // Retourner une réponse
+        return redirect()->route('companies.show', $companyId)
+            ->with('success', 'Évaluation ajoutée avec succès !')
+            ->with('error', "Problème rencontré lors de l'évaluation !");
     }
 }

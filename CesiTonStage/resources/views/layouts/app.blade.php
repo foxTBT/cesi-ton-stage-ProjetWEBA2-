@@ -57,7 +57,7 @@
                         Accueil
                       </a>
                     </li>
-                    <li><a href="{{ route('companies.search') }}" class="{{ request()->is('companies/search') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">Entreprises</a>
+                    <li><a href="{{ route('companies.index') }}" class="{{ request()->is('companies/index') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">Entreprises</a>
                     </li>
                     <li><a href="#" class="hover:text-yellow-500">Offres</a>
                     </li>
@@ -88,7 +88,7 @@
             </div>
             {{-- <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
                 <li><a href="/" class="text-white font-bold hover:text-yellow-400">Accueil</a></li>
-                <li><a href="/companies/search" class="text-white font-bold hover:text-yellow-400">Entreprises</a></li>
+                <li><a href="/companies/index" class="text-white font-bold hover:text-yellow-400">Entreprises</a></li>
                 <li><a href="/offers" class="text-white font-bold hover:text-yellow-400">Offres</a></li>
                 <li><a href="/wishlist" class="text-white font-bold hover:text-yellow-400">Wishlist</a></li>
                 <li><a href="/accounts/create" class="text-white font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>
@@ -96,7 +96,7 @@
 
             <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
                 <li><a href="/" class="menu-item font-bold hover:text-yellow-400">Accueil</a></li>
-                <li><a href="/companies/search" class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
+                <li><a href="/companies/index" class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
                 <li><a href="/offers" class="menu-item font-bold hover:text-yellow-400">Offres</a></li>
                 <li><a href="/wishlist" class="menu-item font-bold hover:text-yellow-400">Wishlist</a></li>
                 <li><a href="/accounts/create" class="menu-item font-bold hover:text-yellow-400">Créer un compte étudiant</a></li>

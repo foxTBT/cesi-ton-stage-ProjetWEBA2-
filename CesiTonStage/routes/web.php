@@ -78,18 +78,10 @@ Route::get('/qui-sommes-nous', [QuiSommesNousController::class, 'index'])->name(
 Route::get('/companies/create', [CompaniesController::class, 'create'])->name('companies.create');
 Route::post('/companies', [CompaniesController::class, 'store'])->name('companies.store');
 
-Route::get('/companies/search', [CompaniesController::class, 'search'])->name('companies.search');
+Route::get('/companies/index', [CompaniesController::class, 'index'])->name('companies.index');
 Route::get('/companies/show/{Id_Company}', [CompaniesController::class, 'show'])->name('companies.show');
 Route::delete('/companies/destroy/{Id_Company}', [CompaniesController::class, 'destroy'])->name('companies.destroy');
 Route::get('/companies/{Id_Company}/edit', [CompaniesController::class, 'edit'])->name('companies.edit');
 Route::put('/companies/update/{Id_Company}', [CompaniesController::class, 'update'])->name('companies.update');
 
 Route::post('/companies/show/{Id_Company}/rate', [EvaluateController::class, 'rate'])->name('companies.rate');
-
-Route::get('/companies/show/{Id_Company}', function () {
-    if (!session('account') || (int) session('account')->Id_Role > 1) {
-        return redirect('/login');
-    }
-
-    return view('companies.show');
-});

@@ -60,8 +60,6 @@
                 </li>
 
                 <li>
-                    {{-- <label for="Id_City" class="block text-gray-700"><strong>Ville :</strong></label>
-                <input type="text" id="Id_City" name="Id_City" value="{{ $company->Id_City }}" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required> --}}
                     <label for="Id_City" class="block text-gray-700"><strong>Ville :</strong></label>
                     <select name="Id_City" id="Id_City" class="w-full px-4 py-2 border rounded-lg" required>
                         @foreach ($cities as $city)

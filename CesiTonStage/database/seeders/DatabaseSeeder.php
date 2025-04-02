@@ -436,27 +436,32 @@ class DatabaseSeeder extends Seeder
         // Seeder pour la table accounts
         
         DB::table('accounts')->insert([
+            //Admin
             ['Id_Account' => 1,
-            'Email_Account' => 'jean' . '@example.com',
-            'Password_Account' => bcrypt('password' . (1234)),
-            'First_name_Account' => 'Jean',
-            'Last_name_Account' => 'Doe',
-            'Birth_date_Account' => now()->subYears(30)->toDateString(),
-            'Id_Role' => 2],
+            'Email_Account' => 'admin@w4all.com',
+            'Password_Account' => bcrypt('000000'),
+            'First_name_Account' => 'Ad',
+            'Last_name_Account' => 'Minh',
+            'Birth_date_Account' => now()->subYears(28)->toDateString(),
+            'Id_Role' => 3],
+            //Pilote
             ['Id_Account' => 2,
-            'Email_Account' => 'pierre' . '@example.com',
-            'Password_Account' => bcrypt('password' . (1234)),
-            'First_name_Account' => 'Pierre',
-            'Last_name_Account' => 'Baptiste',
+            'Email_Account' => 'alaumond@web4all.com',
+            'Password_Account' => bcrypt('000000'),
+            'First_name_Account' => 'Antoine',
+            'Last_name_Account' => 'Laumond',
             'Birth_date_Account' => now()->subYears(31)->toDateString(),
-            'Id_Role' => 1],
+            'Id_Role' => 2],
+            //Etudiant
             ['Id_Account' => 3,
-            'Email_Account' => 'michel' . '@example.com',
-            'Password_Account' => bcrypt('password' . (1234)),
-            'First_name_Account' => 'Michel',
-            'Last_name_Account' => 'Arti',
-            'Birth_date_Account' => now()->subYears(12)->toDateString(),
+            'Email_Account' => 'mvogel',
+            'Password_Account' => bcrypt('000000'),
+            'First_name_Account' => 'Mathis',
+            'Last_name_Account' => 'Vogel',
+            'Birth_date_Account' => now()->subYears(19)->toDateString(),
             'Id_Role' => 1],
+
+
             ['Id_Account' => 4,
             'Email_Account' => 'Maxime' . '@example.com',
             'Password_Account' => bcrypt('password' . (1234)),

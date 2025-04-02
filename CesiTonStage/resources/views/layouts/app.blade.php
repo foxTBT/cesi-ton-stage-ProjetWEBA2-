@@ -115,7 +115,7 @@
             </div>
             <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
                 <li><a href="{{ route('welcome') }}" class="menu-item font-bold hover:text-yellow-400">Accueil</a></li>
-                <li><a href="{{ route('companies.search') }}"
+                <li><a href="{{ route('companies.index') }}"
                         class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
                 <li><a href="{{ route('offers.index') }}" class="menu-item font-bold hover:text-yellow-400">Offres</a>
                 </li>

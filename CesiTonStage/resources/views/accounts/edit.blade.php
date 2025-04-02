@@ -4,6 +4,16 @@
 <div class="max-w-100 mx-auto bg-white shadow-lg rounded-lg p-6 border mb-4">
     <h2 class="text-xl font-semibold text-gray-800 mb-4">Mettre à jour le compte</h2>
 
+    @if ($errors->any())
+            <div class="text-red-500">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
     <form action="{{ route('accounts.update', $account->Id_Account) }}" method="POST" class="flex flex-col justify-center">
         @csrf
         @method('PUT')
@@ -32,7 +42,6 @@
             <label for="Id_Role" class="block text-gray-700">Rôle :</label>
             {{-- <input type="number" name="Id_Role" id="Id_Role" value="{{ $account->Id_Role }}" class="w-full px-4 py-2 border rounded-lg"> --}}
             <select name="Id_Role" id="Id_Role" class="w-full px-4 py-2 border rounded-lg" required>
-                <option value="0">Sans rôle</option>
                 <option value="1">Étudiant</option>
                 <option value="2">Pilote</option>
                 <option value="3">Admin</option>

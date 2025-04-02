@@ -122,11 +122,26 @@ class AccountController extends Controller
 
         // Validation des données
         $request->validate([
-            'Email_Account' => 'required|string|email|max:255|unique:accounts,Email_Account,' . $id . ',Id_Account',
-            'First_name_Account' => 'required|string|max:128',
-            'Last_name_Account' => 'required|string|max:128',
+            'Email_Account' => 'required|string|email|max:255',
+            'First_name_Account' => 'required|string|max:128|regex:/^[\pL\s]+$/u',
+            'Last_name_Account' => 'required|string|max:128|regex:/^[\pL\s]+$/u',
             'Birth_date_Account' => 'required|date_format:Y-m-d',
             'Id_Role' => 'required|integer',
+        ],[
+            'Email_Account.required' => 'L\'email est requise',
+            'Email_Account.email' => 'L\'email est invalide',
+
+            'First_name_Account.required' => 'Veuillez insérer un prénom',
+            'First_name_Account.regex' => 'Charactère invalide pour le prénom',
+            'First_name_Account.max' => 'Prénom trop long (maximum 128 charactère)',
+
+            'First_name_Account.required' => 'Veuillez insérer un nom',
+            'Last_name_Account.regex' => 'Charactère invalide pour le nom',
+            'Last_name_Account.max' => 'Nom trop long (maximum 128 charactère)',
+            
+            'Birth_date_Account.required' => 'Veuillez insérer une date',
+
+            'Id_Role.required' => 'Veillez sélectionner un rôle pour le compte'
         ]);
 
         // Mise à jour des données
@@ -146,10 +161,6 @@ class AccountController extends Controller
             // Redirection vers la vue des pilotes
             return redirect()->route('accounts.show-pilote')/*->with('success', 'Compte mis à jour avec succès !')*/;
         }
-        // else {
-        //     // Redirection par défaut
-        //     return redirect()->route('account.show', $account->Id_Account)->with('success', 'Compte mis à jour avec succès !');
-        // }
     }
     /*
     public function show($id)

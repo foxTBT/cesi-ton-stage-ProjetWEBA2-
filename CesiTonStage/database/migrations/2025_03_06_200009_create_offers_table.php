@@ -19,6 +19,7 @@ class CreateOffersTable extends Migration
             $table->foreignId('Id_Account')->constrained('accounts')->references('Id_Account');
             $table->foreignId('Id_Company')->constrained('companies')->references('Id_Company');
             $table->primary('Id_Offer');
+            $table->softDeletes(); // Ajout de la colonne deleted_at pour la suppression douce
             $table->timestamps();
         });
     }

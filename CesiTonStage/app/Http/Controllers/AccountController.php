@@ -59,7 +59,7 @@ class AccountController extends Controller
         }
 
         // Redirection avec message de succès
-        return redirect()->route('accounts.create')->with('success', 'Compte ajouté avec succès !');
+        return redirect()->route('welcome')->with('success', 'Compte ajouté avec succès !');
     }
 
     public function showPilote()

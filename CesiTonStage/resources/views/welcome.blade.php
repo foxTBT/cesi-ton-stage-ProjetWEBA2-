@@ -24,13 +24,13 @@
     </section>
 
     <!-- Section des entreprises partenaires -->
-    <section class="bg-yellow-500 py-16 text-white">
+    <section class="bg-yellow-500 py-16 rounded-2xl text-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-3xl text-black font-semibold mb-8">Nos entreprises partenaires</h2>
-            <div class="flex justify-center space-x-8">
-                <img src="{{ asset('images/logo/talentis.png') }}" alt="Logo Talentis" class="mx-auto w-32 h-32 bg-yellow-400 rounded-full">
-                <img src="{{ asset('images/logo/traverse_ta_rue.png') }}" alt="Logo Traverse Ta Rue" class="mx-auto w-32 h-32 bg-yellow-400 rounded-full">
-                {{-- <div class="w-32 h-32 bg-gray-100 rounded-full"></div> --}}
+            <h2 class="text-3xl text-black font-bold mb-8">Nos entreprises partenaires</h2>
+            <div class="flex justify-center">
+                <img src="{{ asset('images/logo/talentis.png') }}" alt="Logo Talentis" class="mx-auto w-20 h-20 bg-yellow-400 rounded-full hover:opacity-60">
+                <img src="{{ asset('images/logo/traverse_ta_rue.png') }}" alt="Logo Traverse Ta Rue" class="mx-auto w-20 h-20 bg-black rounded-full hover:opacity-60">
+                <img src="{{ asset('images/logo/stage_finder.png') }}" alt="Logo Stage Finder" class="mx-auto w-20 h-20 bg-black rounded-full hover:opacity-60">
             </div>
         </div>
     </section>

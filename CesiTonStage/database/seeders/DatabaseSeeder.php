@@ -660,7 +660,7 @@ class DatabaseSeeder extends Seeder
             'Duration_Offer' => now()->addDays(30)->toDateString(),
             'Id_Category' => 1,
             'Id_Status' => 1,
-            'Id_Account' => 1,
+            'Id_Account' => 2,
             'Id_Company' => 1,
             ],
             [
@@ -831,7 +831,7 @@ class DatabaseSeeder extends Seeder
 
         // Seeder pour la table applications
         DB::table('applications')->insert([
-            'Id_Account' => 1,
+            'Id_Account' => 2,
             'Id_Offer' => 1,
             'Cv_link_Application' => 'http://example.com/cv' . '.pdf',
             'Cover_letter_Application' => 'Cover letter for application ',

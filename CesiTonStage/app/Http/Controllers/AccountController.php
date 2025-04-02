@@ -17,7 +17,7 @@ class AccountController extends Controller
         // Validation des données
         $request->validate([
             'Email_Account' => 'required|string|email|max:255|unique:accounts',
-            'Password_Account' => 'required|string|max:60',
+            'Password_Account' => 'required|string|max:60|min:6',
             'First_name_Account' => 'required|string|max:128|regex:/^[\pL\s]+$/u',
             'Last_name_Account' => 'required|string|max:128|regex:/^[\pL\s]+$/u',
             'Birth_date_Account' => 'required|date_format:Y-m-d',
@@ -27,7 +27,9 @@ class AccountController extends Controller
             'Email_Account.email' => 'L\'email est invalide',
 
             'Password_Account.required' => 'Mot de passe requis',
-            'Password_Account.max' => 'Mot de passe minimum de 6 à 60 charactères',
+            'Password_Account.max' => 'Mot de passe trop long ! (6 à 60 charactères)',
+            'Password_Account.min' => 'Mot de passe trop court ! (6 à 60 charactères)',
+
 
             'First_name_Account.required' => 'Veuillez insérer un prénom',
             'First_name_Account.regex' => 'Charactère invalide pour le prénom',

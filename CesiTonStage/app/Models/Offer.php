@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes; // Importation du trait
+
 
 class Offer extends Model
 {
+    use SoftDeletes;
+
     // Définir le nom de la table associée
     protected $table = 'offers';
     protected $primaryKey = 'Id_Offer';
+
+    protected $dates = ['deleted_at'];
 
     // Définir les attributs qui peuvent être assignés en masse
     protected $fillable = [

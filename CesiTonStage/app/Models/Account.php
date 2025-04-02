@@ -30,4 +30,8 @@ class Account extends Model
     {
         return $this->hasMany(Application::class, 'Id_Account');
     }
+    public function ratings()
+    {
+        return $this->hasMany(Evaluate::class);
+    }
 }

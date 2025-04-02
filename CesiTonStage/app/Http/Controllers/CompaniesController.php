@@ -67,8 +67,8 @@ class CompaniesController extends Controller
 
         // Rediriger vers une page de succès ou afficher un message
         return redirect()->route('companies.index')
-            ->with('success', "Succès de l'opération !")
-            ->with('error', "Erreur rencontrée lors de l'opération !");
+            ->with('success', "Entreprise ajoutée avec succès !")
+            ->with('error', "Erreur rencontrée lors de l'ajout de l'entreprise !");
     }
 
     public function index()
@@ -111,8 +111,8 @@ class CompaniesController extends Controller
         }
 
         return redirect()->route('companies.index')
-            ->with('success', "Succès de l'opération !")
-            ->with('error', "Erreur rencontrée lors de l'opération !");
+            ->with('success', "Entreprise supprimée avec succès !")
+            ->with('error', "Erreur rencontrée lors de la suppression de l'entreprise !");
     }
 
     public function edit($Id_Company)
@@ -179,7 +179,7 @@ class CompaniesController extends Controller
         }
 
         return redirect()->route('companies.show', $company->Id_Company)
-            ->with('success', "Succès de l'opération !")
-            ->with('error', "Erreur rencontrée lors de l'opération !");
+            ->with('success', "Entreprise mise à jour avec succès !")
+            ->with('error', "Erreur rencontrée lors de la mise à jour de l'entreprise !");
     }
 }

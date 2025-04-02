@@ -8,7 +8,7 @@
             <strong>Quelle note mérite cette entreprise ?</strong>
         </div>
 
-        <form action="{{ route('companies.rate', $company->Id_Company) }}" method="POST" class="mt-4 flex mx-auto w-fit gap-3">
+        <form action="{{ route('companies.rate', $company) }}" method="POST" class="mt-4 flex mx-auto w-fit gap-3">
         @csrf
             <div class="stars flex items-center">
                 <i class="lar la-star" data-value="1"></i><i class="lar la-star" data-value="2"></i><i class="lar la-star" data-value="3"></i><i class="lar la-star" data-value="4"></i><i class="lar la-star" data-value="5"></i>

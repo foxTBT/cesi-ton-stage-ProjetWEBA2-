@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="bg-yellow-500 shadow-lg rounded-lg p-6 border mt-4 mb-4">
-    @include('partials.evaluation')
+    @include('partials.evaluation', $company)
 
     <div class="bg-white shadow-lg rounded-lg p-6 border mt-4 mb-4">
         <div class="flex items-center space-x-4 bg-yellow-500 shadow-lg rounded-lg p-2">

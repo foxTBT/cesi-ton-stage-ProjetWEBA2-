@@ -17,37 +17,43 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+
+
+
+
+
+
     public function login(Request $request)
-{
-    if (!$request->cookie('accept_cookies')) {
-        return back()->withErrors(['login' => 'Vous devez accepter les cookies pour vous connecter.']);
+    {
+        if (!$request->cookie('accept_cookies')) {
+            return back()->withErrors(['login' => 'Vous devez accepter les cookies pour vous connecter.']);
+        }
+
+        $request->validate([
+            'Email_Account' => 'required|email',
+            'Password_Account' => 'required|min:6|max:60',
+        ], [
+            'Email_Account.required' => 'L\'email est requis.',
+            'Email_Account.email' => 'Veuillez fournir un email valide.',
+            'Password_Account.required' => 'Le mot de passe est requis.',
+            'Password_Account.min' => 'Le mot de passe doit contenir au moins 6 caractères.',
+            'Password_Account.max' => 'Le mot de passe doit faire moins de 60 caractères.',
+        ]);
+
+        $account = Account::where('Email_Account', $request->Email_Account)->first();
+
+        if ($account && Hash::check($request->Password_Account, $account->Password_Account)) {
+            session(['account' => $account]);
+
+            // Stocker l'email dans un cookie pour 1 jour
+            Cookie::queue('user_email', $account->Email_Account, 1440);
+
+            return redirect('/');
+        }
+
+        return back()->withErrors(['login' => 'Email ou mot de passe incorrect.']);
+
     }
-
-    $request->validate([
-        'Email_Account' => 'required|email',
-        'Password_Account' => 'required|min:6|max:60',
-    ], [
-        'Email_Account.required' => 'L\'email est requis.',
-        'Email_Account.email' => 'Veuillez fournir un email valide.',
-        'Password_Account.required' => 'Le mot de passe est requis.',
-        'Password_Account.min' => 'Le mot de passe doit contenir au moins 6 caractères.',
-        'Password_Account.max' => 'Le mot de passe doit faire moins de 60 caractères.',
-    ]);
-
-    $account = Account::where('Email_Account', $request->Email_Account)->first();
-
-    if ($account && Hash::check($request->Password_Account, $account->Password_Account)) {
-        session(['account' => $account]);
-
-        // Stocker l'email dans un cookie pour 1 jour
-        Cookie::queue('user_email', $account->Email_Account, 1440);
-
-        return redirect('/');
-    }
-
-    return back()->withErrors(['login' => 'Email ou mot de passe incorrect.']);
-
-}
 
 
     public function logout()

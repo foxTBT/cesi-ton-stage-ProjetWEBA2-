@@ -13,6 +13,8 @@
     <!-- Intégration de Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    
+
     {{-- <style>
         #shimmerDiv {
             width: 100%;

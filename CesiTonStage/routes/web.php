@@ -16,6 +16,8 @@ use App\Http\Controllers\EvaluateController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\WishListController;
 
+use App\Http\Controllers\DashboardController;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -80,3 +82,6 @@ Route::get('/companies/show/{Id_Company}/dashboard', [CompaniesController::class
 
 Route::post('/companies/show/{Id_Company}/rate', [EvaluateController::class, 'rate'])->name('companies.rate');
 Route::get('/companies/show/{Id_Company}', [EvaluateController::class, 'show'])->name('companies.show');
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.view');

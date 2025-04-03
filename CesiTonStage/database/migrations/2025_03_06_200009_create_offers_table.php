@@ -13,7 +13,7 @@ class CreateOffersTable extends Migration
             $table->text('Description_Offer');
             $table->decimal('Salary_Offer', 11, 2)->nullable();
             $table->date('Begin_date_Offer');
-            $table->date('Duration_Offer');
+            $table->date('End_date_Offer');
             $table->foreignId('Id_Category')->nullable()->constrained('categories')->references('Id_Category');
             $table->foreignId('Id_Status')->nullable()->constrained('statuses')->references('Id_Status');
             $table->foreignId('Id_Account')->constrained('accounts')->references('Id_Account');

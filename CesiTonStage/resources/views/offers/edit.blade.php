@@ -28,8 +28,8 @@
         </div>
 
         <div class="mb-4">
-            <label for="Duration_Offer" class="block text-gray-700">Date de fin :</label>
-            <input type="date" name="Duration_Offer" value="{{ $offer->Duration_Offer }}" class="border p-2 w-full">
+            <label for="End_date_Offer" class="block text-gray-700">Date de fin :</label>
+            <input type="date" name="End_date_Offer" value="{{ $offer->End_date_Offer }}" class="border p-2 w-full">
         </div>
 
         <div class="mb-4">

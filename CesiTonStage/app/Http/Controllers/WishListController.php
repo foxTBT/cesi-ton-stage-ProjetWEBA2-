@@ -17,10 +17,14 @@ class WishListController extends Controller
             return redirect('/login')->with('error', 'Vous devez être connecté pour ajouter une offre à votre wishlist.');
         }
 
-        // Vérifier si l'utilisateur a les permissions nécessaires (si applicable)
-        // if ($account->Id_Role != 1) {
-        //     return redirect('/login')->with('error', 'Vous n\'avez pas les permissions nécessaires.');
-        // }
+        // Vérifier si l'offre est déjà dans la wishlist
+        $exists = WishList::where('Id_Account', $account['Id_Account'])
+            ->where('Id_Offer', $offerId)
+            ->exists();
+
+        if ($exists) {
+            return redirect()->back()->with('error', 'Cette offre est déjà dans votre wishlist.');
+        }
 
         // Ajouter l'offre à la wishlist
         WishList::create([
@@ -30,7 +34,6 @@ class WishListController extends Controller
 
         return redirect()->back()->with('success', 'Offre ajoutée à votre wishlist.');
     }
-
     public function remove($offerId)
     {
         // Récupérer le compte de la session

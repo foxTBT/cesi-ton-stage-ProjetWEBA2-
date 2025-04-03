@@ -31,7 +31,7 @@
                             <h5 class="text-xl font-semibold">{{ $wishList->offer->Title_Offer }}</h5>
                             <p class="text-gray-600">Salaire /an : {{ $wishList->offer->Salary_Offer }}</p>
                             <p class="text-gray-500 text-sm mt-1">Date de début : {{ $wishList->offer->Begin_date_Offer ?? 'Non spécifiée' }}</p>
-                            <p class="text-gray-500 text-sm mt-1">Durée : {{ $wishList->offer->Duration_Offer ?? 'Non spécifiée' }}</p>
+                            <p class="text-gray-500 text-sm mt-1">Durée : {{ $wishList->offer->End_date_Offer ?? 'Non spécifiée' }}</p>
                             <p class="text-gray-500 text-sm mt-1">Catégorie : {{ $wishList->offer->category->Name_Category ?? 'Non spécifiée' }}</p>
                             <p class="text-gray-500 text-sm mt-1">Status : {{ $wishList->offer->status->Title_Status ?? 'Non spécifiée' }}</p>
                             <p class="text-gray-500 text-sm mt-1">Mail : {{ $wishList->offer->account->Email_Account ?? 'Non spécifiée' }}</p>

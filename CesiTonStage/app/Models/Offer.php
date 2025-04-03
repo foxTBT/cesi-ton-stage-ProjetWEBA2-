@@ -23,7 +23,7 @@ class Offer extends Model
         'Description_Offer',
         'Salary_Offer',
         'Begin_date_Offer',
-        'Duration_Offer',
+        'End_date_Offer',
         'Id_Category',
         'Id_Status',
         'Id_Account',

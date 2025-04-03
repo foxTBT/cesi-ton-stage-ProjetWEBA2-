@@ -23,7 +23,7 @@
             <li><strong>Description :</strong> {{ $application->offer->Description_Offer }}</li>
             <li><strong>Salaire :</strong> {{ $application->offer->Salary_Offer }}</li>
             <li><strong>Date de début :</strong> {{ $application->offer->Begin_date_Offer }}</li>
-            <li><strong>Durée :</strong> {{ $application->offer->Duration_Offer }}</li>
+            <li><strong>Durée :</strong> {{ $application->offer->End_date_Offer }}</li>
             <li><strong>CV :</strong> <a href="{{ $application->Cv_link_Application }}" target="_blank">Voir le CV</a></li>
             <li><strong>Lettre de motivation :</strong> {{ $application->Cover_letter_Application }}</li>
             <li><strong>Date de candidature :</strong> {{ $application->Date_Application }}</li>

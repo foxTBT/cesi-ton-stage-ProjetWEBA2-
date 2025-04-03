@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Offer;
 use App\Models\Skill;
 use App\Models\Category;
 use App\Models\Status;
+use Carbon\Carbon; // Assurez-vous d'importer Carbon
+
 
 class OfferController extends Controller
 {
@@ -47,7 +50,7 @@ class OfferController extends Controller
             'Title_Offer' => 'required|string|max:255',
             'Description_Offer' => 'required|string|max:65535',
             'Begin_date_Offer' => 'required|date',
-            'Duration_Offer' => 'required|date',
+            'End_date_Offer' => 'required|date',
             'Salary_Offer' => 'required|integer',
             'Id_Category' => 'required|integer',
             'Id_Status' => 'required|integer',
@@ -61,7 +64,7 @@ class OfferController extends Controller
             'Title_Offer' => $request->Title_Offer,
             'Description_Offer' => $request->Description_Offer,
             'Begin_date_Offer' => $request->Begin_date_Offer,
-            'Duration_Offer' => $request->Duration_Offer,
+            'End_date_Offer' => $request->End_date_Offer,
             'Salary_Offer' => $request->Salary_Offer,
             'Id_Category' => $request->Id_Category,
             'Id_Status' => $request->Id_Status,
@@ -95,47 +98,47 @@ class OfferController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    // Valider les données du formulaire
-    $request->validate([
-        'Title_Offer' => 'required|string|max:255',
-        'Description_Offer' => 'required|string|max:65535',
-        'Salary_Offer' => 'required|numeric',
-        'Begin_date_Offer' => 'required|date',
-        'Duration_Offer' => 'nullable|date',
-        'Id_Category' => 'required|integer',
-        'Id_Status' => 'required|integer',
-        'Id_Account' => 'required|integer',
-        'Id_Company' => 'required|integer',
-        'skills' => 'array', // Validation pour les compétences
-        'skills.*' => 'integer|exists:skills,Id_Skill', // Validation pour chaque compétence
-    ]);
+    {
+        // Valider les données du formulaire
+        $request->validate([
+            'Title_Offer' => 'required|string|max:255',
+            'Description_Offer' => 'required|string|max:65535',
+            'Salary_Offer' => 'required|numeric',
+            'Begin_date_Offer' => 'required|date',
+            'End_date_Offer' => 'nullable|date',
+            'Id_Category' => 'required|integer',
+            'Id_Status' => 'required|integer',
+            'Id_Account' => 'required|integer',
+            'Id_Company' => 'required|integer',
+            'skills' => 'array', // Validation pour les compétences
+            'skills.*' => 'integer|exists:skills,Id_Skill', // Validation pour chaque compétence
+        ]);
 
-    // Récupérer l'offre à mettre à jour
-    $offer = Offer::findOrFail($id);
+        // Récupérer l'offre à mettre à jour
+        $offer = Offer::findOrFail($id);
 
-    // Mettre à jour les informations de l'offre
-    $offer->update([
-        'Title_Offer' => $request->Title_Offer,
-        'Description_Offer' => $request->Description_Offer,
-        'Salary_Offer' => $request->Salary_Offer,
-        'Begin_date_Offer' => $request->Begin_date_Offer,
-        'Duration_Offer' => $request->Duration_Offer,
-        'Id_Category' => $request->Id_Category,
-        'Id_Status' => $request->Id_Status,
-        'Id_Account' => $request->Id_Account,
-        'Id_Company' => $request->Id_Company,
-    ]);
+        // Mettre à jour les informations de l'offre
+        $offer->update([
+            'Title_Offer' => $request->Title_Offer,
+            'Description_Offer' => $request->Description_Offer,
+            'Salary_Offer' => $request->Salary_Offer,
+            'Begin_date_Offer' => $request->Begin_date_Offer,
+            'End_date_Offer' => $request->End_date_Offer,
+            'Id_Category' => $request->Id_Category,
+            'Id_Status' => $request->Id_Status,
+            'Id_Account' => $request->Id_Account,
+            'Id_Company' => $request->Id_Company,
+        ]);
 
-    // Mettre à jour les compétences associées
-    if ($request->has('skills')) {
-        $offer->skills()->sync($request->skills); // Utiliser sync pour mettre à jour les compétences
-    } else {
-        $offer->skills()->sync([]); // Si aucune compétence n'est sélectionnée, dissocier toutes les compétences
+        // Mettre à jour les compétences associées
+        if ($request->has('skills')) {
+            $offer->skills()->sync($request->skills); // Utiliser sync pour mettre à jour les compétences
+        } else {
+            $offer->skills()->sync([]); // Si aucune compétence n'est sélectionnée, dissocier toutes les compétences
+        }
+
+        return redirect()->route('offers.index')->with('success', 'Offre mise à jour avec succès !');
     }
-
-    return redirect()->route('offers.index')->with('success', 'Offre mise à jour avec succès !');
-}
 
 
     public function destroy($id)
@@ -150,5 +153,37 @@ class OfferController extends Controller
         $offer = Offer::findOrFail($id);
         $offer->delete();
         return redirect()->route('offers.index')->with('success', 'Offre supprimée avec succès.');
+    }
+
+    public function analytics(Request $request)
+    {
+        // Répartition par compétence - Top 5
+        $skillsDistribution = DB::table('gots')
+            ->select('Id_Skill', DB::raw('count(*) as total'))
+            ->groupBy('Id_Skill')
+            ->orderBy('total', 'desc') // Trier par le nombre total
+            ->limit(5) // Limiter à 5 compétences
+            ->get();
+
+        // Récupérer les compétences
+        $skills = Skill::all()->keyBy('Id_Skill');
+
+        // Durée des offres avec tri
+        $sortOrder = $request->get('sort', 'asc'); // Récupérer l'ordre de tri (asc ou desc)
+        $offersDuration = Offer::select('Id_Offer', 'Title_Offer', DB::raw('DATEDIFF(End_date_Offer, Begin_date_Offer) as duration'))
+            ->orderBy('duration', $sortOrder)
+            ->limit(10) // Limiter à 10 résultats
+            ->get();
+
+        // Top des offres mises en wish-list avec le nom de l'offre
+        $topWishListedOffers = DB::table('wish_lists')
+            ->join('offers', 'wish_lists.Id_Offer', '=', 'offers.Id_Offer') // Joindre la table des offres
+            ->select('offers.Id_Offer', 'offers.Title_Offer', DB::raw('count(*) as total'))
+            ->groupBy('offers.Id_Offer', 'offers.Title_Offer') // Grouper par ID et titre de l'offre
+            ->orderBy('total', 'desc')
+            ->limit(5)
+            ->get();
+
+        return view('offers.analytics', compact('skillsDistribution', 'skills', 'offersDuration', 'topWishListedOffers'));
     }
 }

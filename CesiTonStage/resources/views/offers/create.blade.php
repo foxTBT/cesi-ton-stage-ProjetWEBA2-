@@ -23,8 +23,8 @@
         </div>
 
         <div class="mb-4">
-            <label for="Duration_Offer" class="block text-gray-700">Date de fin de l'offre :</label>
-            <input type="date" name="Duration_Offer" id="Duration_Offer" class="w-full px-4 py-2 border rounded-lg" required>
+            <label for="End_date_Offer" class="block text-gray-700">Date de fin de l'offre :</label>
+            <input type="date" name="End_date_Offer" id="End_date_Offer" class="w-full px-4 py-2 border rounded-lg" required>
         </div>
 
         <div class="mb-4">

@@ -21,21 +21,11 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
-
 Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.store');
-
 Route::get('/offers/{id}/edit', [OfferController::class, 'edit'])->name('offers.edit');
 Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.update');
-
-/*
-Route::get('/LAPAGEQUETUVEUX', function () {
-    if (!session('account') || (int) session('account')->Id_Role !== 1) {
-        return redirect('/');
-    }
-    return redirect('/LAPAGEQUETUVEUX'); 
-*/
-
+Route::get('/offers/analytics', [OfferController::class, 'analytics'])->name('offers.analytics');
 Route::delete('/offers/{id}', [OfferController::class, 'destroy'])->name('offers.destroy');
 
 Route::post('/wishlist/add/{offerId}', [WishListController::class, 'add'])->name('wishlist.add');

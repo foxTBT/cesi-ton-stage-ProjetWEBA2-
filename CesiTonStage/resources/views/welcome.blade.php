@@ -38,5 +38,12 @@
     
 </body>
 
+{{-- Si un message d'erreur existe dans la session, on affiche une popup alert --}}
+@if (session('error'))
+    <script type="text/javascript">
+        alert("{{ session('error') }}");
+    </script>
+@endif
+
 </html>
 @endsection

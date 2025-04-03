@@ -64,6 +64,12 @@ class AccountController extends Controller
 
     public function showPilote()
     {
+
+        if (!session('account') || (int) session('account')->Id_Role < 2) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return redirect('/')->with('error', "Vous n'avez pas la permission d'acèder à cette ressource");
+        }
+
         $term = request('term');
         $pilotes = Account::where('Id_Role', 2)
             ->where(function ($query) use ($term) {
@@ -76,6 +82,12 @@ class AccountController extends Controller
 
     public function showStudent()
     {
+
+        if (!session('account') || (int) session('account')->Id_Role < 1) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return redirect('/')->with('error', "Vous n'avez pas la permission d'acèder à cette ressource");
+        }
+
         $term = request('term');
         $students = Account::where('Id_Role', 1)
             ->where(function ($query) use ($term) {

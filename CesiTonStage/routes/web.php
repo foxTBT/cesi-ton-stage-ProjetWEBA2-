@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompaniesController;
@@ -47,11 +46,6 @@ Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.in
 Route::get('/applications/create/{offerId}', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('/applications/store/{offerId}', [ApplicationController::class, 'store'])->name('applications.store');
 
-
-
-
-Route::get('/regions/create', [RegionController::class, 'create'])->name('regions.create');
-Route::post('/regions', [RegionController::class, 'store'])->name('regions.store');
 
 Route::get('/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
 Route::get('/accounts/show-pilote', [AccountController::class, 'showPilote'])->name('accounts.show-pilote');

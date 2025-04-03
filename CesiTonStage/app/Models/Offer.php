@@ -52,7 +52,7 @@ class Offer extends Model
     }
 
     public function skills()
-{
-    return $this->belongsToMany(Skill::class, 'gots', 'Id_Offer', 'Id_Skill');
-}
+    {
+        return $this->belongsToMany(Skill::class, 'gots', 'Id_Offer', 'Id_Skill');
+    }
 }

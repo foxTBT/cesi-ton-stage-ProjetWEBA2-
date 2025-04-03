@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
-<button onclick="afficherCellule()" class="px-4 py-2 rounded border-black bg-yellow-400 text-black border-2 hover:border-white hover:bg-yellow-500 hover:text-white"><strong>Noter l'entreprise ?</strong></button>
+<button onclick="afficherCellule_E()" class="px-4 py-2 rounded border-black bg-yellow-400 text-black border-2 hover:border-white hover:bg-yellow-500 hover:text-white">
+    <strong>Noter l'entreprise ?</strong>
+</button>
 
-<div id="cellule" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+<div id="cellule_E" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
     <div class="mx-auto w-fit bg-white shadow-lg rounded-lg p-6 border">
         <div class="text-center">
             <strong>Quelle note mérite cette entreprise ?</strong>
@@ -19,18 +21,20 @@
         </form>
 
         <div class="text-center mt-4">
-            <button onclick="fermerCellule()" class="px-4 py-2 rounded border-black bg-yellow-400 text-black border-2 hover:border-yellow-500 hover:bg-white hover:text-yellow-500"><strong>Fermer</strong></button>
+            <button onclick="fermerCellule_E()" class="px-4 py-2 rounded border-black bg-yellow-400 text-black border-2 hover:border-yellow-500 hover:bg-white hover:text-yellow-500">
+                <strong>Fermer</strong>
+            </button>
         </div>
     </div>
 </div>
 
 <script>
-    function afficherCellule() {
-        document.getElementById("cellule").classList.remove("hidden");
+    function afficherCellule_E() {
+        document.getElementById("cellule_E").classList.remove("hidden");
     }
 
-    function fermerCellule() {
-        document.getElementById("cellule").classList.add("hidden");
+    function fermerCellule_E() {
+        document.getElementById("cellule_E").classList.add("hidden");
     }
 
     window.onload = () => {

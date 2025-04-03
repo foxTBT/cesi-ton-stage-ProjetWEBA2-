@@ -180,4 +180,9 @@ class CompaniesController extends Controller
             ->with('success', "Entreprise mise à jour avec succès !")
             ->with('error', "Erreur rencontrée lors de la mise à jour de l'entreprise !");
     }
+
+    public function dashboard($Id_Company) {
+
+        return redirect()->route('companies.show', $Id_Company);
+    }
 }

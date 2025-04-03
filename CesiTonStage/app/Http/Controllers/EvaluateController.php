@@ -8,7 +8,7 @@ use App\Models\Company;
 
 class EvaluateController extends Controller
 {
-    public function rate(Request $request, $companyId){
+    public function rate(Request $request, $Id_Company){
         try {
             // Validation des données
             $request->validate([
@@ -20,16 +20,16 @@ class EvaluateController extends Controller
 
             // Création ou mise à jour de l'évaluation
             $evaluate = Evaluate::updateOrCreate(
-                ['Id_Account' => $userId, 'Id_Company' => $companyId],
+                ['Id_Account' => $userId, 'Id_Company' => $Id_Company],
                 ['Rating' => $request->note]
             );
 
             // Retourner une réponse
-            return redirect()->route('companies.show', $companyId)
+            return redirect()->route('companies.show', $Id_Company)
                 ->with('success', 'Évaluation ajoutée avec succès !');
         }
         catch (\Illuminate\Database\QueryException $e) {
-            return redirect()->route('companies.show', $companyId)
+            return redirect()->route('companies.show', $Id_Company)
                 ->with('error', "Problème rencontré lors de l'évaluation !");
         }
     }

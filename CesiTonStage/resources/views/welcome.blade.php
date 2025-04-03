@@ -24,7 +24,7 @@
     </section>
 
     <!-- Section des entreprises partenaires -->
-    <section class="flex-grow mx-[-6%] sm:mx-[-10%] md:mx-[-16%] lg:mx-[-24%] xl:mx-[-34%] bg-yellow-500 p-[8%] text-white">
+    <section class="shadow-lg rounded-lg bg-yellow-500 p-[8%] text-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl text-black font-bold mb-8">Nos entreprises partenaires</h2>
             <div class="flex justify-center">

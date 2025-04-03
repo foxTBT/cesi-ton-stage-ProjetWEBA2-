@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="bg-yellow-500 shadow-lg rounded-lg p-6 border mt-4 mb-4">
+<div class="bg-yellow-500 shadow-lg rounded-lg p-6 border mb-4">
     @include('partials.evaluation', $company)
 
     <div class="bg-white shadow-lg rounded-lg p-6 border mt-4 mb-4">

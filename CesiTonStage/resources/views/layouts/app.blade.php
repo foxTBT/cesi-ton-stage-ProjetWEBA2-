@@ -38,7 +38,9 @@
     <header class="flex flex-col items-center bg-red-500">
         <div class="bg-yellow-500 w-full border border-black">
             <div class="logo my-2">
-                <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
+                <a href="/">
+                    <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
+                </a>
                 @php
                     $account = session('account');
 
@@ -158,7 +160,7 @@
         </nav>
     </header>
 
-    <main class="flex-grow mx-[4%] sm:mx-[8%] md:mx-[12%] lg:mx-[16%] xl:mx-[20%]">
+    <main class="flex-grow mx-[4%] sm:mx-[8%] md:mx-[12%] lg:mx-[16%] xl:mx-[20%] mt-[4%] mb-[4%]">
 
         @yield('content')
 

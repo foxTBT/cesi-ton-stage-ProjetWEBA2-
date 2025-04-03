@@ -15,7 +15,7 @@
         @csrf
         @method('PUT')
 
-    <div class="bg-white shadow-lg rounded-lg border p-6 mt-4 mb-4">
+    <div class="bg-white shadow-lg rounded-lg border p-6">
 
         <h2 class="shadow-lg rounded-lg bg-yellow-500 text-xl font-semibold pt-2 pl-12 pr-12 pb-2 mb-6 text-center"><strong>Mise à jour de l'entreprise</strong></h2>
 

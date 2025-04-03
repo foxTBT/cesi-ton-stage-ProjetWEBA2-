@@ -25,7 +25,7 @@ class OfferController extends Controller
     {
 
         if (!session('account') || (int) session('account')->Id_Role == 1) {
-            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amond un bloquage visuel)
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
             return back()->with('error', "Vous ne pouvez pas créer d'offre, vous n'en avez pas la permission");
         }
 
@@ -69,7 +69,7 @@ class OfferController extends Controller
     {
 
         if (!session('account') || (int) session('account')->Id_Role == 1) {
-            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amond un bloquage visuel)
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
             return back()->with('error', "Vous ne pouvez modifier cette offre, vous n'avez pas la permission pour.");
         }
 
@@ -100,7 +100,7 @@ class OfferController extends Controller
     {
 
         if (!session('account') || (int) session('account')->Id_Role == 1) {
-            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amond un bloquage visuel)
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
             return back()->with('error', "Vous ne pouvez pas supprimer cette offre, vous n'avez pas la permission");
         }
 

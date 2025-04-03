@@ -35,6 +35,7 @@
             <li><strong>Email :</strong> {{ $student->Email_Account }}</li>
             
         </ul>
+        @if (session('account') && session('account')->Id_Role > 1)
         <div class="flex flex-row place-content-evenly mt-4 font-bold">
             <!-- Bouton de mise à jour -->
             <a href="{{ route('accounts.edit', $student->Id_Account) }}" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Modifier</a>
@@ -46,6 +47,7 @@
                 <button type="submit" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-300">Supprimer</button>
             </form>
         </div>
+        @endif
     </div>
 @endforeach
 
@@ -76,4 +78,15 @@
         });
     </script>
 @endif
+
+
+{{-- Si un message d'erreur existe dans la session, on affiche une popup alert --}}
+@if (session('error'))
+    <script type="text/javascript">
+        alert("{{ session('error') }}");
+    </script>
+@endif
+
+
+
 @endsection

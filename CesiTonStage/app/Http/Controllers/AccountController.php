@@ -88,7 +88,16 @@ class AccountController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $account = Account::findOrFail($id);
+
+
+        $account = Account::findOrFail($id); //Si on ne le met pas avant on ne peut pas comparer avec l'id role de la personne qui supprime
+
+
+        if (!session('account') || (int) session('account')->Id_Role < ($account->Id_Role)) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return back()->with('error', "Vous ne pouvez pas supprimer l'élève, vous n'en avez pas la permission");
+        }
+
         $account->delete();
 
         $source = $request->input('source');
@@ -113,6 +122,13 @@ class AccountController extends Controller
     public function edit($id)
     {
         $account = Account::findOrFail($id);
+
+
+        if (!session('account') || (int) session('account')->Id_Role < ($account->Id_Role)) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return back()->with('error', "Vous ne pouvez pas supprimer l'élève, vous n'en avez pas la permission");
+        }
+
         return view('accounts.edit', compact('account'));
     }
 

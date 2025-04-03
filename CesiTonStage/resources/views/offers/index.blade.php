@@ -123,7 +123,7 @@
 
     
     
-@endsection
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll('.wishlist-btn').forEach(button => {

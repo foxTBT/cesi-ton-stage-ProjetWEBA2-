@@ -23,7 +23,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="Duration_Offer" class="block text-gray-700">Durée de l'offre :</label>
+            <label for="Duration_Offer" class="block text-gray-700">Date de fin de l'offre :</label>
             <input type="date" name="Duration_Offer" id="Duration_Offer" class="w-full px-4 py-2 border rounded-lg" required>
         </div>
 
@@ -67,8 +67,26 @@
             </select>
         </div>
 
+        <div class="mb-4">
+            <label for="skills" class="block text-gray-700">Compétences :</label>
+            <select name="skills[]" id="skills" class="w-full px-4 py-2 border rounded-lg" multiple required>
+                @foreach ($skills as $skill)
+                    <option value="{{ $skill->Id_Skill }}">{{ $skill->Name_Skill }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Créer l'offre</button>
     </form>
 </div>
 @endsection
 
+<script>
+    $(document).ready(function() {
+        $('#skills').select2({
+            placeholder: "Sélectionnez des compétences",
+            allowClear: true,
+            width: '100%' // Pour s'assurer qu'il s'adapte bien à l'écran
+        });
+    });
+</script>

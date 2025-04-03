@@ -32,11 +32,25 @@
                         <h5 class="text-xl font-semibold">{{ $offer->Title_Offer }}</h5>
                         <p class="text-gray-600">Salaire /an : {{ $offer->Salary_Offer }}</p>
                         <p class="text-gray-500 text-sm mt-1">Date de début : {{ $offer->Begin_date_Offer ?? 'Non spécifiée' }}</p>
-                        <p class="text-gray-500 text-sm mt-1">Durée : {{ $offer->Duration_Offer ?? 'Non spécifiée' }}</p>
+                        <p class="text-gray-500 text-sm mt-1">Date de fin : {{ $offer->Duration_Offer ?? 'Non spécifiée' }}</p>
                         <p class="text-gray-500 text-sm mt-1">Catégorie : {{ $offer->category->Name_Category ?? 'Non spécifiée' }}</p>
                         <p class="text-gray-500 text-sm mt-1">Status : {{ $offer->status->Title_Status ?? 'Non spécifiée' }}</p>
                         <p class="text-gray-500 text-sm mt-1">Mail : {{ $offer->account->Email_Account ?? 'Non spécifiée' }}</p>
                         
+                        <!-- Affichage des compétences -->
+                        <div class="mt-2">
+                            <strong>Compétences :</strong>
+                            <ul class="list-disc list-inside text-gray-500 text-sm">
+                                @if($offer->skills->isEmpty())
+                                    <li>Aucune compétence spécifiée</li>
+                                @else
+                                    @foreach($offer->skills as $skill)
+                                        <li>{{ $skill->Name_Skill }}</li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
+
                         <!-- Boutons pour afficher/cacher la description et postuler -->
                         <div class="flex space-x-2 mt-2">
                             <button onclick="toggleDescription(this)" class="flex-1 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Description +</button>
@@ -73,15 +87,15 @@
 </div>
 
 @php
-                    $account = session('account');
+    $account = session('account');
 
-                    if ($account === null) {
-                        dump('null');
-                    } else {
-                        $roleId = (int) $account->Id_Role;
-                        dump($roleId);
-                    }
-                @endphp
+    if ($account === null) {
+        dump('null');
+    } else {
+        $roleId = (int) $account->Id_Role;
+        dump($roleId);
+    }
+@endphp
 
 <script>
     function toggleDescription(button) {
@@ -126,7 +140,6 @@
             });
         });
     });
-    </script>
-    
-    
+</script>
+
 @endsection

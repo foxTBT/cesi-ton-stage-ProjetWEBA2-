@@ -454,7 +454,7 @@ class DatabaseSeeder extends Seeder
             'Id_Role' => 2],
             //Etudiant
             ['Id_Account' => 3,
-            'Email_Account' => 'mvogel',
+            'Email_Account' => 'mvogel@web4all.com',
             'Password_Account' => bcrypt('000000'),
             'First_name_Account' => 'Mathis',
             'Last_name_Account' => 'Vogel',

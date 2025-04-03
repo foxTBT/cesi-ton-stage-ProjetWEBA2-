@@ -6,7 +6,7 @@
 
     @if (session('account') && session('account')->Id_Role > '2')
         <a href="{{ route('companies.create') }}">
-            <button class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black"><strong>Ajouter</strong></button>
+            <button class="bg-white text-yellow-500 px-2 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black"><strong>Ajouter</strong></button>
         </a>
     @endif
 </div>

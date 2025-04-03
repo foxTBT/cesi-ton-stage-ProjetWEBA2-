@@ -10,6 +10,12 @@ class CompaniesController extends Controller
 {
     public function create()
     {
+
+        if (!session('account') || (int) session('account')->Id_Role < 1) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return back()->with('error', "Vous ne pouvez pas créer d'entreprises, vous n'en avez pas la permission");
+        }
+        
         $cities = City::all();
         return view('companies.create', compact('cities'));
     }
@@ -43,7 +49,6 @@ class CompaniesController extends Controller
             'Siret_number_Company.required' => 'Numéro de SIRET de l\'entreprise requis',
             'Siret_number_Company.max' => 'Numéro de SIRET de l\'entreprise trop long (maximum 14)',
             'Siret_number_Company.min' => 'Numéro de SIRET de l\'entreprise trop long (minimum 14)',
-
 
             'Logo_link_Company.required' => 'bar',
 
@@ -103,12 +108,14 @@ class CompaniesController extends Controller
 
     public function destroy($Id_Company)
     {
+        if (!session('account') || (int) session('account')->Id_Role < 1) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return redirect('/')->with('error', "Vous n'avez pas la permission de supprimer une entreprise");
+        }
+        
         $company = Company::findOrFail($Id_Company);
         $company->delete();
 
-        if (!session('account') || (int) session('account')->Id_Role < 1) {
-            return redirect('/login');
-        }
 
         return redirect()->route('companies.index')
             ->with('success', "Entreprise supprimée avec succès !")

@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('companies.store') }}" method="POST">
-    @csrf
 
-    <div class="bg-white shadow-lg rounded-lg border p-6">
+<div class="bg-white shadow-lg rounded-lg border p-6">
 
-        <h2 class="shadow-lg rounded-lg bg-yellow-500 text-xl font-semibold pt-2 pl-12 pr-12 pb-2 mb-6 text-center"><strong>Création d'entreprise</strong></h2>
+    <h2 class="shadow-lg rounded-lg bg-yellow-500 text-xl font-semibold pt-2 pl-12 pr-12 pb-2 mb-6 text-center">
+        <strong>Création d'entreprise</strong>
+    </h2>
 
+    <form action="{{ route('companies.store') }}" method="POST">
+        @csrf
+        
         <ul class="space-y-3">
             <li>
                 <label for="Name_Company" class="block text-gray-700"><strong>Nom :</strong></label>
@@ -49,8 +52,12 @@
             </li>
 
             <li class="mx-auto w-fit">
-                <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black"><strong>Ajouter</strong></button>
+                <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black">
+                    <strong>Créer l'entreprise</strong>
+                </button>
             </li>
         </ul>
-    </div>
+    </form>
+</div>
+
 @endsection

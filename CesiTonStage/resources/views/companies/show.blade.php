@@ -9,7 +9,7 @@
         @include('partials.dashboard', $company)
     </div>
 
-    <div class="bg-white shadow-lg rounded-lg p-6 border mt-4 mb-4">
+    <div class="bg-gray-100 shadow-lg rounded-lg p-6 border mt-4 mb-4">
         <div class="flex items-center space-x-4 bg-yellow-500 shadow-lg rounded-lg p-2">
             <img src="{{ $company->Logo_link_Company }}" alt="Logo de {{ $company->Name_Company }}" class="w-16 h-16 object-cover rounded-full border">
 
@@ -34,7 +34,7 @@
     </div>
 
     @if (session('account') && session('account')->Id_Role > '1')
-        <div class="flex flex-row items-center place-content-evenly bg-white shadow-lg rounded-lg p-4 border mt-4 mb-4">
+        <div class="flex flex-row items-center place-content-evenly bg-gray-100 shadow-lg rounded-lg p-4 border mt-4 mb-4">
             <a href="{{ route('companies.edit', $company->Id_Company) }}">
                 <button class="text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-blue-500 hover:bg-blue-300 hover:text-black"><strong>Mettre à jour</strong></button>
             </a>
@@ -50,5 +50,7 @@
     @include('partials.state_message')
 </div>
 
-@include('partials.search_bar_comp_offer')
+<div class="bg-yellow-500 shadow-lg rounded-lg p-4 border mb-4">
+    @include('partials.search_bar_comp_offer')
+</div>
 @endsection

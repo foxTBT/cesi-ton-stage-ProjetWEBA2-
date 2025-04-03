@@ -39,11 +39,15 @@
                         </strong>
                         @php
                             $account = session('account');
-                        @endphp                    
+                        @endphp         
+                        
+                        @if (session('account') && session('account')->Id_Role !== 2) 
                         <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
                             @csrf
                             <button type="submit">Ajouter à la wishlist</button>
                         </form>
+
+                        @endif
                     </div>
                     <!-- Détails de l'offre -->
                     <div class="mt-2">
@@ -99,6 +103,13 @@
         </div>
     </div>
 </div>
+
+{{-- Si un message d'erreur existe dans la session, on affiche une popup alert --}}
+@if (session('error'))
+    <script type="text/javascript">
+        alert("{{ session('error') }}");
+    </script>
+@endif
 
 <script>
     function toggleDescription(button) {

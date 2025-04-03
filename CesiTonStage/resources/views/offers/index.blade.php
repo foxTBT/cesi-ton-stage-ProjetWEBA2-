@@ -1,4 +1,4 @@
-@extends('layouts.app')
+ @extends('layouts.app')
 
 @section('content')
 <div class="container mx-auto px-4">
@@ -32,11 +32,16 @@
                         </strong>
                         @php
                             $account = session('account');
-                        @endphp                    
-                        <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
-                            @csrf
-                            <button type="submit">Ajouter à la wishlist</button>
-                        </form>
+                            $isInWishlist = false;
+                        @endphp 
+
+                        @if (session('account') && session('account')->Id_Role == 2)               
+                            <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
+                                @csrf
+                                <button type="submit">Ajouter à la wishlist</button>
+                            </form>
+                        @endif
+                    
                     </div>
                     <!-- Détails de l'offre -->
                     <div class="mt-2">

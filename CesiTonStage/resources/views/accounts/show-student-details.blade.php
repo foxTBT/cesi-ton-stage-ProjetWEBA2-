@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="max-w-100 mx-auto bg-gray-100 shadow-lg rounded-lg p-6 border mb-4">
     <h2 class="text-xl font-semibold text-gray-800 mb-4">Détails du compte</h2>
 

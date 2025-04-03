@@ -36,7 +36,7 @@
     </div>
 @endforeach
 
-<div class="mt-6 mb-4">
+<div>
     {{ $companies->appends(request()->input())->links('pagination::tailwind') }}
 </div>
 

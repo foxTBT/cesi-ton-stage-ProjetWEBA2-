@@ -2,24 +2,25 @@
 
 @section('content')
 
-<div class="bg-yellow-500 shadow-lg rounded-lg p-6 border mb-4">
-    @include('partials.evaluation', $company)
-    
-    @if(isset($averageRating))
-        <div>Moyenne des évaluations : <strong>{{ number_format($averageRating, 2) }} ⭐</strong></div>
-    @else
-        <div>Aucune évaluation disponible.</div>
-    @endif
-    
-    @include('partials.dashboard', $company)
+<div class="bg-yellow-500 shadow-lg rounded-lg p-4 border mb-4">
+    <div class="flex flex-row items-center place-content-evenly">
+        @include('partials.evaluation', $company)
+        
+        @include('partials.dashboard', $company)
+    </div>
 
     <div class="bg-white shadow-lg rounded-lg p-6 border mt-4 mb-4">
         <div class="flex items-center space-x-4 bg-yellow-500 shadow-lg rounded-lg p-2">
-            <img src="{{ $company->Logo_link_Company }}" alt="Logo de {{ $company->Name_Company }}" 
-                class="w-16 h-16 object-cover rounded-full border">
+            <img src="{{ $company->Logo_link_Company }}" alt="Logo de {{ $company->Name_Company }}" class="w-16 h-16 object-cover rounded-full border">
 
             <ul class="space-y-1">
-                <li class="mx-auto w-fit text-xl font-semibold text-gray-800"><strong>{{ $company->Name_Company }}</strong></li>
+                <li class="text-xl font-semibold text-gray-800"><strong>{{ $company->Name_Company }}</strong></li>
+        
+                @if(isset($averageRating))
+                    <div>Note de l'entreprise : <strong>{{ number_format($averageRating, 1) }} ⭐</strong></div>
+                @else
+                    <div>Aucune évaluation réalisée...</div>
+                @endif
             </ul>
         </div>
 
@@ -32,7 +33,7 @@
         </ul>
     </div>
 
-    @if (session('account') && session('account')->Id_Role > '2')
+    @if (session('account') && session('account')->Id_Role > '1')
         <div class="flex flex-row items-center place-content-evenly bg-white shadow-lg rounded-lg p-4 border mt-4 mb-4">
             <a href="{{ route('companies.edit', $company->Id_Company) }}">
                 <button class="text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-blue-500 hover:bg-blue-300 hover:text-black"><strong>Mettre à jour</strong></button>

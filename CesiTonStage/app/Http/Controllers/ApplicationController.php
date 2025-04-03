@@ -13,11 +13,11 @@ class ApplicationController extends Controller
         $account = session('account');
     
         if (!$account) {
-            return redirect('/')->with('error', 'Vous devez être connecté pour postuler.');
+            return redirect('/login')->with('error', 'Vous devez être connecté pour postuler.');
         }
     
         if ($account->Id_Role != 1) {
-            return redirect('/')->with('error', 'Vous n\'avez pas les permissions pour postuler.');
+            return redirect('/login')->with('error', 'Vous n\'avez pas les permissions pour postuler.');
         }
     
         return view('applications.create', compact('offerId'));

@@ -22,9 +22,10 @@
                             $account = session('account');
                             $isInWishlist = false;
                         @endphp                    
-                    <button class="wishlist-btn" data-offer-id="{{ $offer->Id_Offer }}">
-                        <span class="wishlist-icon">{{ $isInWishlist ? '❤️' : '🤍' }}</span>
-                    </button>
+                            <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
+                                @csrf
+                                <button type="submit">Ajouter à la wishlist</button>
+                            </form>
                     
                     </div>
                     <!-- Détails de l'offre -->
@@ -96,37 +97,6 @@
     }
 </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll('.wishlist-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                let offerId = this.getAttribute('data-offer-id');
-                let icon = this.querySelector('.wishlist-icon');
-                let text = this.querySelector('.wishlist-text');
-    
-                fetch(`/wishlist/toggle/${offerId}`, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({})
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'added') {
-                        icon.innerText = "❤️";
-                    } else if (data.status === 'removed') {
-                        icon.innerText = "🤍";
-                    } else {
-                        alert(data.message);
-                    }
-                })
-                .catch(error => console.error('Erreur:', error));
-            });
-        });
-    });
-    </script>
     
     
 @endsection

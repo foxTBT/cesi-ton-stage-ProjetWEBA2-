@@ -31,8 +31,10 @@ Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.upd
 
 Route::delete('/offers/{id}', [OfferController::class, 'destroy'])->name('offers.destroy');
 
+Route::post('/wishlist/add/{offerId}', [WishListController::class, 'add'])->name('wishlist.add');
+Route::delete('/wishlist/remove/{offerId}', [WishListController::class, 'remove'])->name('wishlist.remove');
 Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
-Route::post('/wishlist/toggle/{offerId}', [WishListController::class, 'toggle'])->name('wishlist.toggle');
+
 
 Route::get('/applications/create/{offerId}', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('/applications/store/{offerId}', [ApplicationController::class, 'store'])->name('applications.store');

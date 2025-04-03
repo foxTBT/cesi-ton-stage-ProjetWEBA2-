@@ -4,51 +4,64 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WishList;
-use Illuminate\Support\Facades\DB;
 
 class WishListController extends Controller
 {
-    public function toggle($offerId)
+    public function add(Request $request, $offerId)
     {
+        // Récupérer le compte de la session
         $account = session('account');
 
-        // Vérification si l'utilisateur est connecté
+        // Vérifier si l'utilisateur est connecté
         if (!$account) {
-            return response()->json(['status' => 'error', 'message' => 'Utilisateur non connecté'], 401);
+            return redirect('/login')->with('error', 'Vous devez être connecté pour ajouter une offre à votre wishlist.');
         }
 
-        // Vérification du rôle (seuls les utilisateurs avec Id_Role = 1 peuvent modifier la wishlist)
-        if ($account['Id_Role'] != 1) {
-            return response()->json(['status' => 'error', 'message' => 'Vous n\'avez pas les droits nécessaires'], 403);
+        // Vérifier si l'utilisateur a les permissions nécessaires (si applicable)
+        // if ($account->Id_Role != 1) {
+        //     return redirect('/login')->with('error', 'Vous n\'avez pas les permissions nécessaires.');
+        // }
+
+        // Ajouter l'offre à la wishlist
+        WishList::create([
+            'Id_Account' => $account['Id_Account'], // Utilisation de l'ID de l'utilisateur stocké dans la session
+            'Id_Offer' => $offerId,
+        ]);
+
+        return redirect()->back()->with('success', 'Offre ajoutée à votre wishlist.');
+    }
+
+    public function remove($offerId)
+    {
+        // Récupérer le compte de la session
+        $account = session('account');
+
+        // Vérifier si l'utilisateur est connecté
+        if (!$account) {
+            return redirect('/login')->with('error', 'Vous devez être connecté pour retirer une offre de votre wishlist.');
         }
 
-        $userId = $account['Id_Account'];
+        // Retirer l'offre de la wishlist
+        WishList::where('Id_Account', $account['Id_Account'])
+            ->where('Id_Offer', $offerId)
+            ->delete();
 
-        // Vérifier si l'offre est déjà en wishlist
-        $wishlistItem = WishList::where('Id_Account', $userId)->where('Id_Offer', $offerId)->first();
+        return redirect()->back()->with('success', 'Offre retirée de votre wishlist.');
+    }
 
-        if ($wishlistItem) {
-            // Supprimer de la base de données et mettre à jour la session
-            $wishlistItem->delete();
+    public function index()
+    {
+        // Récupérer le compte de la session
+        $account = session('account');
 
-            // Mise à jour de la session (supprime l'ID de l'offre)
-            $wishlist = session('wishlist', []);
-            session(['wishlist' => array_values(array_diff($wishlist, [$offerId]))]);
-
-            return response()->json(['status' => 'removed']);
-        } else {
-            // Ajouter à la base de données et mettre à jour la session
-            WishList::create([
-                'Id_Account' => $userId,
-                'Id_Offer' => $offerId,
-            ]);
-
-            // Mise à jour de la session (ajoute l'ID de l'offre)
-            $wishlist = session('wishlist', []);
-            $wishlist[] = $offerId;
-            session(['wishlist' => $wishlist]);
-
-            return response()->json(['status' => 'added']);
+        // Vérifier si l'utilisateur est connecté
+        if (!$account) {
+            return redirect('/login')->with('error', 'Vous devez être connecté pour consulter votre wishlist.');
         }
+
+        // Récupérer les offres de la wishlist
+        $wishLists = WishList::where('Id_Account', $account['Id_Account'])->with('offer')->get();
+
+        return view('wishlist.index', compact('wishLists'));
     }
 }

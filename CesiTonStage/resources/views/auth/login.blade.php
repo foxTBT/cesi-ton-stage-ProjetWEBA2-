@@ -26,16 +26,17 @@
 <form action="{{ route('login') }}" method="POST">
     @csrf
     <div class="flex justify-center items-center h-1/2">
-        <div class="p-20 pt-10 bg-gray-100 shadow-gray-200 shadow-xl rounded-xl {{ $errors->any() ? 'shake-div' : '' }}" style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="rounded-xl shadow-gray-200 shadow-xl bg-yellow-400 p-3">
+        <div class="p-20 pt-10 bg-gray-100 rounded-xl {{ $errors->any() ? 'shake-div' : '' }}" style="display: flex; flex-direction: column; gap: 8px;">
             <label style="text-align: center; font-family: 'Archivo', sans-serif; font-size: 2em;">CONNEXION</label>
             
-            <label>Email:</label>
+            <label>Email :</label>
             <input value="{{old('Email_Account')}}" type="text" name="Email_Account" style="background-color: #d3d3d3; {{ $errors->has('Email_Account') ? 'border: 2px solid red;' : '' }}" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre email">
             
             <label>Mot de passe :</label>
             <input type="password" name="Password_Account" style="background-color: #d3d3d3; {{ $errors->has('Password_Account') ? 'border: 2px solid red;' : '' }}" class="rounded-s placeholder-gray-400 hover:placeholder-gray-200 p-1" placeholder="Entrez votre mot de passe">
             
-            <p style="text-align: right; font-size: 12px" class ="text-gray-600"> mot de passe oublié ?</p>
+            <p style="text-align: right; font-size: 12px" title="Cette fonctionnalité n'a pas encore été implémentée..." class ="text-gray-600 hover:text-yellow-500"> Mot de passe oublié ?</p>
             
             <!-- Conteneur pour centrer uniquement le bouton -->
             <div style="display: flex; justify-content: center;">
@@ -53,6 +54,7 @@
             
             @endif
 
+        </div>
         </div>
     </div>
 

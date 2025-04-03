@@ -20,7 +20,9 @@
     <header class="flex flex-col items-center bg-white w-full border shadow-gray-500 shadow-md mb-[10vh]">
         
         <div class="my-4">
-            <img src="{{ asset('images/logod_petit.svg') }}" alt="Logo CTS" class="w-[11em] mx-auto">
+            <a href="/">
+                <img src="{{ asset('images/logod_petit.svg') }}" alt="Logo CTS" class="w-[11em] mx-auto">
+            </a>
         </div>
              
     </header>
@@ -33,7 +35,7 @@
 
     <footer>
                
-        <strong class="bg-black text-white text-left text-base block w-full mt-auto">&#169;2025 - Tous droits réservés - Web4All</strong>
+        <strong class="bg-zinc-900 text-white text-left text-base block w-full mt-auto">&#169;2025 - Tous droits réservés - Web4All</strong>
 
     </footer>
 

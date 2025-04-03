@@ -160,7 +160,7 @@
         </nav>
     </header>
 
-    <main class="flex-grow mx-[4%] sm:mx-[8%] md:mx-[12%] lg:mx-[16%] xl:mx-[20%] mt-[4%] mb-[4%]">
+    <main class="mt-[1%] mb-[3%] flex-grow mx-[4%] sm:mx-[8%] md:mx-[12%] lg:mx-[16%] xl:mx-[20%]">
 
         @yield('content')
 
@@ -195,8 +195,7 @@
         </div>
 
 
-        <strong class="bg-black text-white text-left text-base block w-full mt-auto">&#169;2025 - Tous droits réservés -
-            Web4All</strong>
+        <strong class="bg-zinc-900 text-white text-left text-base block w-full mt-auto">&#169;2025 - Tous droits réservés - Web4All</strong>
 
     </footer>
 

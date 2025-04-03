@@ -76,16 +76,25 @@
     </div>
 
     <script>
-        const userRole = {{ session('account')->Id_Role }}; // récupère l'Id_Role de l'utilisateur connecté
-
-        document.querySelector('form').addEventListener('submit', function (event) {
-            const selectedRole = parseInt(document.getElementById('Id_Role').value);
-
-            // Vérifier si le rôle sélectionné est différent du rôle de l'utilisateur connecté
-            if (selectedRole >= userRole) {
-                alert("Vous n'avez pas les permissions pour pouvoir créer ce rôle.");
-                event.preventDefault(); // Empêche l'envoi du formulaire si les rôles ne correspondent pas
-            }
-        });
+        // Vérifier si l'utilisateur est connecté
+        if ({{ session('account') ? 'true' : 'false' }}) {
+            const userRole = {{ session('account')->Id_Role }}; // récupère l'Id_Role de l'utilisateur connecté
+    
+            document.querySelector('form').addEventListener('submit', function (event) {
+                const selectedRole = parseInt(document.getElementById('Id_Role').value);
+    
+                // Vérifier si le rôle sélectionné est supérieur ou égal au rôle de l'utilisateur connecté
+                if (selectedRole >= userRole) {
+                    alert("Vous n'avez pas les permissions pour pouvoir créer ce rôle.");
+                    event.preventDefault(); // Empêche l'envoi du formulaire si les rôles ne correspondent pas
+                }
+            });
+        } 
+        
+        else {
+            // Rediriger vers la page d'accueil si l'utilisateur n'est pas connecté
+            window.location.href = '/'; // Remplace '/' par l'URL d'accueil de ton site si nécessaire
+        }
     </script>
+    
 @endsection

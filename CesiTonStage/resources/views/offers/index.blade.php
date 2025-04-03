@@ -4,10 +4,20 @@
 <div class="container mx-auto px-4">
     <h1 class="my-4 text-center text-xl font-semibold text-gray-800 mb-4">Liste des Offres</h1>
     
+    
+
+
+
+    @if (session('account') && session('account')->Id_Role > 1)
     <!-- Bouton pour créer une offre -->
     <div class="flex justify-end mb-4">
         <a href="{{ route('offers.create') }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">+ Créer une offre</a>
     </div>
+    @endif
+
+
+
+
 
     <div class="flex justify-center">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -48,22 +58,24 @@
                             <p>{{ $offer->Description_Offer }}</p>
                         </div>
 
-                        <div class="flex space-x-1 mt-2">
-                            <!-- Bouton Modifier -->
-                            <a href="{{ route('offers.edit', $offer->Id_Offer) }}" 
-                               class="p-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-sm">
-                                ✏
-                            </a>
-                        
-                            <!-- Bouton Supprimer -->
-                            <form action="{{ route('offers.destroy', $offer->Id_Offer) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette offre ?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="p-2 bg-red-500 text-white rounded hover:bg-red-600 text-sm">
-                                    🗑
-                                </button>
-                            </form>
-                        </div>
+                        @if (session('account') && session('account')->Id_Role > 1)
+                            <div class="flex space-x-1 mt-2">
+                                <!-- Bouton Modifier -->
+                                <a href="{{ route('offers.edit', $offer->Id_Offer) }}" 
+                                class="p-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-sm">
+                                    ✏
+                                </a>
+                            
+                                <!-- Bouton Supprimer -->
+                                <form action="{{ route('offers.destroy', $offer->Id_Offer) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette offre ?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="p-2 bg-red-500 text-white rounded hover:bg-red-600 text-sm">
+                                        🗑
+                                    </button>
+                                </form>
+                            </div>
+                        @endif
                                    
                     </div>
                 </div>
@@ -72,16 +84,14 @@
     </div>
 </div>
 
-@php
-                    $account = session('account');
+{{-- Si un message d'erreur existe dans la session, on affiche une popup alert --}}
+@if (session('error'))
+    <script type="text/javascript">
+        alert("{{ session('error') }}");
+    </script>
+@endif
 
-                    if ($account === null) {
-                        dump('null');
-                    } else {
-                        $roleId = (int) $account->Id_Role;
-                        dump($roleId);
-                    }
-                @endphp
+
 
 <script>
     function toggleDescription(button) {

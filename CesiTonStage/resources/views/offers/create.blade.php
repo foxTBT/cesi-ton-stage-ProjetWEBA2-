@@ -70,5 +70,25 @@
         <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:bg-yellow-300 hover:text-black">Créer l'offre</button>
     </form>
 </div>
+
+<script>
+    // Vérifier si l'utilisateur est connecté
+    if ({{ session('account') ? 'true' : 'false' }}) {
+        const userRole = {{ session('account')->Id_Role }}; // récupère l'Id_Role de l'utilisateur connecté
+
+            // Vérifier le rôle de l'utilisateur connecté
+            if (userRole < 2) {
+                alert("Vous n'avez pas les permissions pour pouvoir créer une entreprise");
+                event.preventDefault(); // Empêche l'envoi du formulaire si le rôle ne correspond pas
+            }
+        });
+    } 
+    
+    else {
+        // Rediriger vers la page d'accueil si l'utilisateur n'est pas connecté
+        window.location.href = '/'; // '/' pour d'accueil de ton site si nécessaire
+    }
+</script>
+
 @endsection
 

@@ -29,6 +29,14 @@ Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.st
 Route::get('/offers/{id}/edit', [OfferController::class, 'edit'])->name('offers.edit');
 Route::put('/offers/{id}', [OfferController::class, 'update'])->name('offers.update');
 
+/*
+Route::get('/LAPAGEQUETUVEUX', function () {
+    if (!session('account') || (int) session('account')->Id_Role !== 1) {
+        return redirect('/');
+    }
+    return redirect('/LAPAGEQUETUVEUX'); 
+*/
+
 Route::delete('/offers/{id}', [OfferController::class, 'destroy'])->name('offers.destroy');
 
 Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');

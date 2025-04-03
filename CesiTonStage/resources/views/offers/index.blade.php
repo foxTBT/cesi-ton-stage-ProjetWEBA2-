@@ -31,11 +31,14 @@
                         @php
                             $account = session('account');
                             $isInWishlist = false;
-                        @endphp                    
+                        @endphp 
+
+                        @if (session('account') && session('account')->Id_Role == 2)               
                             <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
                                 @csrf
                                 <button type="submit">Ajouter à la wishlist</button>
                             </form>
+                        @endif
                     
                     </div>
                     <!-- Détails de l'offre -->

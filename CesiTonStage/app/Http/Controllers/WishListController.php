@@ -13,14 +13,10 @@ class WishListController extends Controller
         $account = session('account');
 
         // Vérifier si l'utilisateur est connecté
-        if (!$account) {
-            return redirect('/login')->with('error', 'Vous devez être connecté pour ajouter une offre à votre wishlist.');
+        if (!session('account') || (int) session('account')->Id_Role !== 2) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return back()->with('error', "Vous n'avez pas la permission d'ajouter une offre à la wish-list");
         }
-
-        // Vérifier si l'utilisateur a les permissions nécessaires (si applicable)
-        // if ($account->Id_Role != 1) {
-        //     return redirect('/login')->with('error', 'Vous n\'avez pas les permissions nécessaires.');
-        // }
 
         // Ajouter l'offre à la wishlist
         WishList::create([
@@ -37,8 +33,9 @@ class WishListController extends Controller
         $account = session('account');
 
         // Vérifier si l'utilisateur est connecté
-        if (!$account) {
-            return redirect('/login')->with('error', 'Vous devez être connecté pour retirer une offre de votre wishlist.');
+        if (!session('account') || (int) session('account')->Id_Role !== 2) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return back()->with('error', "Vous n'avez pas la permission de retirer cette offre de la wish-list");
         }
 
         // Retirer l'offre de la wishlist
@@ -46,7 +43,7 @@ class WishListController extends Controller
             ->where('Id_Offer', $offerId)
             ->delete();
 
-        return redirect()->back()->with('success', 'Offre retirée de votre wishlist.');
+        return back()->with('success', 'Offre retirée de votre wishlist.');
     }
 
     public function index()

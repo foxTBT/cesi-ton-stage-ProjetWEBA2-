@@ -5,7 +5,7 @@
 </button>
 
 <div id="cellule_E" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-    <div class="mx-auto w-fit bg-white shadow-lg rounded-lg p-6 border">
+    <div class="mx-auto w-fit bg-white shadow-lg rounded-lg p-4 border">
         <div class="text-center">
             <strong>Quelle note mérite cette entreprise ?</strong>
         </div>

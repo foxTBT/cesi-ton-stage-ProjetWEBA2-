@@ -1,11 +1,11 @@
 <button onclick="afficherCellule_D()" class="px-4 py-2 rounded border-black bg-yellow-400 text-black border-2 hover:border-white hover:bg-yellow-500 hover:text-white">
-    <strong>Voir le dashboard ?</strong>
+    <strong>Dashboard</strong>
 </button>
 
 <div id="cellule_D" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-    <div class="mx-auto w-fit bg-white shadow-lg rounded-lg p-6 border">
+    <div class="mx-auto w-fit bg-white shadow-lg rounded-lg p-4 border">
         <div class="text-center">
-            <strong>Dashboard de l'entreprise</strong>
+            <strong>Voici quelques chiffres...</strong>
         </div>
 
         <div class="text-center mt-4">

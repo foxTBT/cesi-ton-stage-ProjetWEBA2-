@@ -1,4 +1,4 @@
- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container mx-auto px-4">
@@ -22,6 +22,13 @@
     </div>
     @endif
 
+    <!-- Bouton pour accéder à la page d'analytique -->
+    <div class="flex justify-end mb-4">
+        <a href="{{ route('offers.analytics') }}" class="border-2 border-black bg-yellow-500 text-black px-4 py-2 rounded -ml-px flex items-center justify-center hover:bg-yellow-400">
+            <img src="{{ asset('images/analytics.png') }}" alt="Statistiques" class="w-6 h-6">
+        </a>
+    </div>
+
     <div class="flex justify-center">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @foreach($offers as $offer)
@@ -32,16 +39,11 @@
                         </strong>
                         @php
                             $account = session('account');
-                            $isInWishlist = false;
-                        @endphp 
-
-                        @if (session('account') && session('account')->Id_Role == 2)               
-                            <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
-                                @csrf
-                                <button type="submit">Ajouter à la wishlist</button>
-                            </form>
-                        @endif
-                    
+                        @endphp                    
+                        <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
+                            @csrf
+                            <button type="submit">Ajouter à la wishlist</button>
+                        </form>
                     </div>
                     <!-- Détails de l'offre -->
                     <div class="mt-2">

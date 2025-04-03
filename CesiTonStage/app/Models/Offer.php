@@ -50,4 +50,9 @@ class Offer extends Model
     {
         return $this->belongsTo(Company::class, 'Id_Company');
     }
+
+    public function skills()
+{
+    return $this->belongsToMany(Skill::class, 'gots', 'Id_Offer', 'Id_Skill');
+}
 }

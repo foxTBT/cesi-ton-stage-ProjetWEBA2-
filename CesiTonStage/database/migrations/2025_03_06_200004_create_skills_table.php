@@ -12,6 +12,8 @@ class CreateSkillsTable extends Migration
             $table->string('Name_Skill', 255);
             $table->primary('Id_Skill');
             $table->timestamps();
+            $table->softDeletes(); // Ajout de la colonne deleted_at pour la suppression douce
+
         });
     }
 

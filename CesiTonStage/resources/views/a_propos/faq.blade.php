@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto py-12">
-    <div class="bg-zinc-100 shadow-md rounded-lg p-8">
+<div class="container mx-auto mt-3">
+    <div class="bg-gray-100 shadow-md rounded-lg p-8">
         <!-- Titre de la page -->
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Foire aux questions (FAQ)</h1>
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md mt-10 m-10">
+<div class="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md mt-3">
     <h2 class="text-2xl font-bold mb-4">Politique de protection des données</h2>
 
     @if(session('success'))

@@ -170,7 +170,7 @@
         <div class="bg-gray-800">
             <div class="flex">
                 <div class="w-1/2 p-4">
-                    <div class="p-4 mb-4 text-yellow-400">
+                    <div class="p-4 mb-4 text-yellow-400 space-y-1">
                         <strong class="text-yellow-300">Ressource</strong>
                         <p><a href="{{ route('cookie.settings') }}"
                                 class="hover:text-yellow-600 cursor-pointer">Politique de protection des données</a></p>
@@ -181,7 +181,7 @@
                     </div>
                 </div>
                 <div class="w-1/2 p-4">
-                    <div class="p-4 mb-4 text-yellow-400">
+                    <div class="p-4 mb-4 text-yellow-400 space-y-1">
                         <strong class="text-yellow-300">En savoir plus</strong>
                         <p><a href="{{ route('a_propos.qui_sommes_nous') }}"
                                 class="hover:text-yellow-600 cursor-pointer">Qui sommes de nous</a></p>
@@ -195,7 +195,7 @@
         </div>
 
 
-        <strong class="bg-zinc-900 text-white text-left text-base block w-full mt-auto">&#169;2025 - Tous droits réservés - Web4All</strong>
+        <strong class="bg-zinc-900 text-white text-left text-base block w-full pl-2 mt-auto">&#169;2025 - Tous droits réservés - Web4All</strong>
 
     </footer>
 

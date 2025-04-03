@@ -8,25 +8,40 @@ use App\Models\Company;
 
 class EvaluateController extends Controller
 {
-    public function rate(Request $request, $companyId)
+    public function rate(Request $request, $companyId){
+        try {
+            // Validation des données
+            $request->validate([
+                'note' => 'required|numeric|min:0|max:5',
+            ]);
+
+            // Récupérer l'ID de l'utilisateur connecté via la session
+            $userId = session('account')->Id_Account;
+
+            // Création ou mise à jour de l'évaluation
+            $evaluate = Evaluate::updateOrCreate(
+                ['Id_Account' => $userId, 'Id_Company' => $companyId],
+                ['Rating' => $request->note]
+            );
+
+            // Retourner une réponse
+            return redirect()->route('companies.show', $companyId)
+                ->with('success', 'Évaluation ajoutée avec succès !');
+        }
+        catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('companies.show', $companyId)
+                ->with('error', "Problème rencontré lors de l'évaluation !");
+        }
+    }
+
+    // Fonction pour calculer et afficher la moyenne d'une entreprise
+    public function show($Id_Company)
     {
-        // Validation des données
-        $request->validate([
-            'note' => 'required|numeric|min:0|max:5',
-        ]);
+        $company = Company::findOrFail($Id_Company);
+        
+        // Calcul de la moyenne des notes pour cette entreprise
+        $averageRating = Evaluate::where('Id_Company', $Id_Company)->avg('Rating');
 
-        // Récupérer l'ID de l'utilisateur connecté via la session
-        $userId = session('account')->Id_Account;
-
-        // Création ou mise à jour de l'évaluation
-        $evaluate = Evaluate::updateOrCreate(
-            ['Id_Account' => $userId, 'Id_Company' => $companyId],
-            ['Rating' => $request->note]
-        );
-
-        // Retourner une réponse
-        return redirect()->route('companies.show', $companyId)
-            ->with('success', 'Évaluation ajoutée avec succès !')
-            ->with('error', "Problème rencontré lors de l'évaluation !");
+        return view('companies.show', compact('company', 'averageRating'));
     }
 }

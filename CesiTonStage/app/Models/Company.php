@@ -42,9 +42,4 @@ class Company extends Model
     {
         return $this->hasMany(Evaluate::class);
     }
-
-    public function averageRating()
-    {
-        return $this->ratings()->avg('Rating');
-    }
 }

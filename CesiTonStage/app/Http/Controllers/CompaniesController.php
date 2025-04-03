@@ -81,17 +81,15 @@ class CompaniesController extends Controller
             ->orWhere('Phone_number_Company', 'LIKE', '%' . $term . '%')
             ->with('city')
             ->paginate(10);
-        
-        if (!session('account') || (int) session('account')->Id_Role < 1) {
-            return redirect('/login');
-        }
 
         return view('companies.index')->with('companies', $companies);
     }
 
     public function show($Id_Company)
     {
-        $company = Company::where('Id_Company', $Id_Company)->with('city')->firstOrFail();
+        $company = Company::where('Id_Company', $Id_Company)
+            ->with('city')
+            ->firstOrFail();
 
         if (!session('account') || (int) session('account')->Id_Role < 1) {
             return redirect('/login');

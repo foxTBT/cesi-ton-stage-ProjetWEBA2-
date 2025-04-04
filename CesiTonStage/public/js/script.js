@@ -202,3 +202,17 @@ function toggleDescriptionWishlist(button) {
         button.textContent = "Description +";
     }
 }
+
+// scripts companies
+
+// Fonction JavaScript pour afficher ou masquer les descriptions des offres
+function toggleDescription(button) {
+    const description = button.parentElement.nextElementSibling;
+    if (description.classList.contains('hidden')) {
+        description.classList.remove('hidden');
+        button.innerHTML = "<strong>Description-</strong>";
+    } else {
+        description.classList.add('hidden');
+        button.innerHTML = "<strong>Description+</strong>";
+    }
+}

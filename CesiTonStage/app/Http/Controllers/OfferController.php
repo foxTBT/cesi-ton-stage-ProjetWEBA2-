@@ -29,6 +29,9 @@ class OfferController extends Controller
                 })
                 ->orWhereHas('company', function ($q) use ($term) {
                     $q->where('Name_Company', 'LIKE', '%' . $term . '%');
+                })
+                ->orWhereHas('category', function ($q) use ($term) {
+                    $q->where('Name_Category', 'LIKE', '%' . $term . '%');
                 });
             })
             ->paginate(6);

@@ -75,7 +75,7 @@
                     </li>
                     <li><a href="{{ route('companies.index') }}" class="{{ request()->is('companies/index') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">Entreprises</a>
                     </li>
-                    <li><a href="#" class="hover:text-yellow-500">Offres</a>
+                    <li><a href="{{ route('offers.index') }}" class="hover:text-yellow-500">Offres</a>
                     </li>
                     @if (session('account') && session('account')->Id_Role == '3')
                         <li>

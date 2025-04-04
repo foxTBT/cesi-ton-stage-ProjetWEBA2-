@@ -93,7 +93,7 @@
                         <!-- Vérification si l'utilisateur a déjà postulé -->
                         @if ($offer->hasApplied)
                             <span class="flex-1 text-center px-2 py-2 bg-gray-300 text-black rounded">
-                                <strong>J'ai postulé à cette offre</strong>
+                                <strong>Postulé</strong>
                             </span>
                         @else
                             <a href="{{ route('applications.create', $offer->Id_Offer) }}" 

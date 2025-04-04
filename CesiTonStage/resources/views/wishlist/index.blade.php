@@ -5,7 +5,7 @@
     <h1 class="my-4 text-center text-xl font-semibold text-gray-800 mb-4">Votre Wishlist</h1>
 
     <div class="flex justify-center">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @if($wishLists->isEmpty())
                 <div class="col-span-1">
                     <div class="bg-white shadow-md rounded-lg p-4 text-center">
@@ -14,7 +14,7 @@
                 </div>
             @else
                 @foreach($wishLists as $wishList)
-                    <div class="bg-white shadow-md rounded-lg p-4 w-80">
+                    <div class="bg-white shadow-md rounded-lg p-4">
                         <!-- Nom de l'entreprise -->
                         <div class="flex justify-between items-center border-b pb-2">
                             <strong class="text-lg">
@@ -38,8 +38,8 @@
                             
                             <!-- Boutons pour afficher/cacher la description et postuler -->
                             <div class="flex space-x-2 mt-2">
-                                <button onclick="toggleDescriptionWishlist(this)" class="flex-1 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Description +</button>
-                                <a href="{{ route('applications.create', $wishList->offer->Id_Offer) }}" class="flex-1 text-center px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Postuler</a>
+                                <button onclick="toggleDescriptionWishlist(this)" class="flex-1 px-2 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Description+</button>
+                                <a href="{{ route('applications.create', $wishList->offer->Id_Offer) }}" class="flex-1 text-center px-2 py-2 bg-green-500 text-white rounded hover:bg-green-600">Postuler</a>
                             </div>
 
                             <!-- Description cachée par défaut -->

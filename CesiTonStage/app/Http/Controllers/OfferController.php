@@ -18,7 +18,9 @@ class OfferController extends Controller
     public function index()
     {
         $term = request('term');
-    
+        $user = session('account'); // Récupérer l'utilisateur actuel
+
+        // Récupérer toutes les offres avec leurs relations
         $offers = Offer::with(['category', 'status', 'account', 'company'])
             ->when($term, function ($query, $term) {
                 $query->where(function ($q) use ($term) {
@@ -27,14 +29,20 @@ class OfferController extends Controller
                         ->orWhere('Salary_Offer', 'LIKE', '%' . $term . '%')
                         ->orWhere('Begin_date_Offer', 'LIKE', '%' . $term . '%');
                 })
-                ->orWhereHas('company', function ($q) use ($term) {
-                    $q->where('Name_Company', 'LIKE', '%' . $term . '%');
-                });
+                    ->orWhereHas('company', function ($q) use ($term) {
+                        $q->where('Name_Company', 'LIKE', '%' . $term . '%');
+                    });
             })
             ->paginate(6);
-    
+
+        // Vérifier si l'utilisateur a postulé pour chaque offre
+        foreach ($offers as $offer) {
+            $offer->hasApplied = $offer->applications()->where('Id_Account', $user->Id_Account)->exists();
+        }
+
         return view('offers.index', compact('offers', 'term'));
     }
+
 
     public function show($id)
     {

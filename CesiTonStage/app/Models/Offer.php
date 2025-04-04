@@ -55,4 +55,10 @@ class Offer extends Model
     {
         return $this->belongsToMany(Skill::class, 'gots', 'Id_Offer', 'Id_Skill');
     }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class, 'Id_Offer');
+    }
+
 }

@@ -89,10 +89,37 @@
                         <button onclick="toggleDescription(this)" class="flex-1 px-3 py-2 bg-yellow-500 text-black rounded hover:bg-yellow-400">
                             <strong>Description+</strong>
                         </button>
-                        <a href="{{ route('applications.create', $offer->Id_Offer) }}" class="flex-1 text-center px-2 py-2 bg-yellow-500 text-black rounded hover:bg-green-400">
-                            <strong>Postuler</strong>
-                        </a>
+                    
+                        <!-- Vérification si l'utilisateur a déjà postulé -->
+                        @if ($offer->hasApplied)
+                            <span class="flex-1 text-center px-2 py-2 bg-gray-300 text-black rounded">
+                                <strong>J'ai postulé à cette offre</strong>
+                            </span>
+                        @else
+                            <a href="{{ route('applications.create', $offer->Id_Offer) }}" 
+                               class="flex-1 text-center px-2 py-2 bg-yellow-500 text-black rounded hover:bg-green-400"
+                               id="apply-button-{{ $offer->Id_Offer }}"
+                               onclick="hideButtonAfterApply(this)">
+                               <strong>Postuler</strong>
+                            </a>
+                        @endif
                     </div>
+                    
+                    <script>
+                        function hideButtonAfterApply(button) {
+                            // Empêche le comportement par défaut du lien (si tu veux éviter une redirection avant l'animation)
+                            event.preventDefault();
+                            
+                            // Cache le bouton
+                            button.style.display = 'none';
+                            
+                            // Redirige après un délai de 0.5 seconde pour donner l'impression que l'action est prise en compte
+                            setTimeout(function() {
+                                window.location.href = button.href; // Effectue la redirection vers la route de la création de la candidature
+                            }, 500);
+                        }
+                    </script>
+                    
                     
                     <div class="description hidden mt-2 text-gray-600">
                         <p>{{ $offer->Description_Offer }}</p>

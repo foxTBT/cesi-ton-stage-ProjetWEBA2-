@@ -107,27 +107,7 @@
                 @endif
             </ul>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const menuItems = document.querySelectorAll('.menu-item');
-                    const currentPath = window.location.pathname;
-
-                    menuItems.forEach(item => {
-                        const href = item.getAttribute('href');
-                        const routePath = new URL(href, window.location.origin).pathname;
-
-                        if (routePath === currentPath) {
-                            item.classList.remove('text-white');
-                            item.classList.add('text-yellow-500');
-                        } else {
-                            item.classList.remove('text-yellow-500');
-                            item.classList.add('text-white');
-                        }
-                    });
-                });
-            </script>
-
-
+            
         </nav>
     </header>
 

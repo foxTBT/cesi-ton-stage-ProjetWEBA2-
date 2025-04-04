@@ -148,37 +148,12 @@
     </script>
 @endif
 
-<script>
-    function toggleDescription(button) {
-        const description = button.parentElement.nextElementSibling;
-        if (description.classList.contains('hidden')) {
-            description.classList.remove('hidden');
-            button.innerHTML = "<strong>Description-</strong>";
-        } else {
-            description.classList.add('hidden');
-            button.innerHTML = "<strong>Description+</strong>";
-        }
-    }
-</script>
-
-<script>
-    function hideButtonAfterApply(button) {
-        // Empêche le comportement par défaut du lien 
-        event.preventDefault();
-        
-        // Cache le bouton
-        button.style.display = 'none';
-        
-        // Redirige après un délai de 0.5 seconde 
-        setTimeout(function() {
-            window.location.href = button.href; // Effectue la redirection vers la route de la création de la candidature
-        }, 500);
-    }
-</script>
-
 <!-- Pagination -->
 <div class="mt-4">
     {{ $offers->appends(request()->input())->links('pagination::tailwind') }}
 </div>
 
 @endsection
+
+
+<script src="{{ asset('js/offer.js') }}"></script>

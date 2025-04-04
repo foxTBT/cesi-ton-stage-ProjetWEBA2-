@@ -35,4 +35,7 @@ class CookieController extends Controller // Déclaration de la classe CookieCon
         // Redirige l'utilisateur vers la page des paramètres des cookies avec un message de succès
         return redirect()->route('cookie.settings')->with('success', 'Préférences mises à jour.'); // 'route' génère l'URL pour la route 'cookie.settings' et 'with' ajoute un message de session
     }
+
+
+    
 }

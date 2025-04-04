@@ -67,16 +67,74 @@
                 <!-- Message demandant d'accepter les cookies -->
                 <p class="mb-4">Veuillez accepter les cookies</p>
                 <!-- Boutons pour accepter ou refuser les cookies -->
-                <button onclick="accept()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">Accepter</button>
+                
+                <!--
+                <button onclick="window.location.href='/politique-de-protection-des-donnees'" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">
+                    Accepter
+                </button>
+                -->
+
+                <a href="{{ route('cookie.settings') }}" class="menu-item font-bold hover:text-yellow-400">Accepter</a>
+                
+                
+                
                 <button onclick="reject()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Refuser</button>
             </div>
         </div>
     @endif
 
-</form>
+
 
 <!-- Lien vers le fichier JavaScript pour gérer la logique du pop-up des cookies -->
-<script src="{{ asset('js/script.js') }}"></script>
+<script>
+    window.onload = function () {
+        let acceptCookies = document.cookie.includes('accept_cookies=true'); // Vérification du cookie
+        if (!acceptCookies) { // Si l'utilisateur n'a pas accepté les cookies, afficher le pop-up
+            document.getElementById("popup").style.display = "flex";
+        }
+    }
+
+    function accept() {
+        document.getElementById("popup").style.display = "none"; // Masque le pop-up après l'acceptation
+
+        fetch("{{ route('accept.cookies') }}", { // Envoie une requête pour enregistrer l'acceptation des cookies
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"), // Ajoute le token CSRF pour la sécurité
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ accept: true }) // Envoie 'true' pour indiquer l'acceptation des cookies
+        }).then(response => response.json()).then(data => {
+            if (data.success) { // Si l'acceptation est réussie
+                document.cookie = "accept_cookies=true; path=/; max-age=" + (30 * 24 * 60 * 60); // Crée un cookie 'accept_cookies' pour 30 jours
+            }
+        }).catch(error => {
+            console.error('Erreur lors de l\'acceptation des cookies:', error);
+        });
+    }
+
+    function reject() {
+        document.getElementById("popup").style.display = "none"; // Masque le pop-up après le rejet
+
+        fetch("{{ route('reject.cookies') }}", { // Envoie une requête pour enregistrer le rejet des cookies
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"), // Ajoute le token CSRF pour la sécurité
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ accept: false }) // Envoie 'false' pour indiquer le rejet des cookies
+        }).then(response => response.json()).then(data => {
+            if (data.success) { // Si le rejet est réussi
+                document.cookie = "accept_cookies=false; path=/; max-age=" + (30 * 24 * 60 * 60); // Crée un cookie pour le rejet des cookies pendant 30 jours
+                window.location.href = document.referrer || '/'; // Redirige l'utilisateur vers la page précédente ou la page d'accueil
+            }
+        }).catch(error => {
+            console.error('Erreur lors du rejet des cookies:', error);
+        });
+    }
+</script>
+
+</form>
 
 <!-- Lien vers le fichier CSS pour l'animation 'shake-div' -->
 <link href="{{ asset('css/animation.css') }}" rel="stylesheet">

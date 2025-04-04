@@ -48,12 +48,7 @@ function closePopup() {
     document.getElementById('successPopup').classList.add('hidden');
 }
 
-window.onload = function () {
-    let acceptCookies = document.cookie.includes('accept_cookies=true');
-    if (!acceptCookies) {
-        document.getElementById("popup").style.display = "flex";
-    }
-}
+
 
 function accept() {
     document.getElementById("popup").style.display = "none";

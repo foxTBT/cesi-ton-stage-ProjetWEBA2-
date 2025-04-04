@@ -29,9 +29,12 @@ class OfferController extends Controller
                         ->orWhere('Salary_Offer', 'LIKE', '%' . $term . '%')
                         ->orWhere('Begin_date_Offer', 'LIKE', '%' . $term . '%');
                 })
-                    ->orWhereHas('company', function ($q) use ($term) {
-                        $q->where('Name_Company', 'LIKE', '%' . $term . '%');
-                    });
+                ->orWhereHas('company', function ($q) use ($term) {
+                    $q->where('Name_Company', 'LIKE', '%' . $term . '%');
+                })
+                ->orWhereHas('category', function ($q) use ($term) {
+                    $q->where('Name_Category', 'LIKE', '%' . $term . '%');
+                });
             })
             ->paginate(6);
 

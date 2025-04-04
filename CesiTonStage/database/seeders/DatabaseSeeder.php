@@ -542,7 +542,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo1' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 1,
             ],
             [
@@ -552,7 +552,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo2' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 2,
             ],
             [
@@ -562,7 +562,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo3' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 3,
             ],
             [
@@ -572,7 +572,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo4' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 4,
             ],
             [
@@ -582,7 +582,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo5' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 5,
             ],
             [
@@ -592,7 +592,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo6' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 6,
             ],
             [
@@ -602,7 +602,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo7' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 7,
             ],
             [
@@ -612,7 +612,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo8' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 8,
             ],
              [
@@ -622,7 +622,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo9' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 9,
             ],
             [
@@ -632,7 +632,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo10' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 10,
             ],
             [
@@ -642,7 +642,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo11' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 11,
             ],
             [
@@ -652,7 +652,7 @@ class DatabaseSeeder extends Seeder
             'Phone_number_Company' => '0123456789',
             'Description_Company' => 'bar',
             'Siret_number_Company' => '12345678901234',
-            'Logo_link_Company' => 'example.com/logo12' . '.png',
+            'Logo_link_Company' => 'images/logo/office-building.png',
             'Id_City' => 12,
             ],
         ]);

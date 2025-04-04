@@ -11,7 +11,7 @@
 
     <div class="bg-gray-100 shadow-lg rounded-lg p-6 border mt-4 mb-4">
         <div class="flex items-center space-x-4 bg-yellow-500 shadow-lg rounded-lg p-2">
-            <img src="{{ $company->Logo_link_Company }}" alt="Logo de {{ $company->Name_Company }}" class="w-16 h-16 object-cover rounded-full border">
+            <img src="{{ asset($company->Logo_link_Company) }}" alt="Logo de {{ $company->Name_Company }}" class="w-16 h-16 object-cover square-full">
 
             <ul class="space-y-1">
                 <li class="text-xl font-semibold text-gray-800"><strong>{{ $company->Name_Company }}</strong></li>

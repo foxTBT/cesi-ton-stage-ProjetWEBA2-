@@ -121,4 +121,62 @@ function hideButtonAfterApply(button) {
     }, 500);
 }
 
+//partial de l'évaluation
+function afficherCellule_E() {
+    document.getElementById("cellule_E").classList.remove("hidden");
+}
 
+function fermerCellule_E() {
+    document.getElementById("cellule_E").classList.add("hidden");
+}
+
+window.onload = () => {
+    const stars = document.querySelectorAll(".la-star");
+    const noteInput = document.querySelector("#note");
+
+    stars.forEach((star) => {
+        // Effet au survol
+        star.addEventListener("mouseover", function() {
+            resetStars();
+            this.style.color = "#eab308";
+            this.classList.add("las");
+            this.classList.remove("lar");
+
+            let previousStar = this.previousElementSibling;
+            while (previousStar) {
+                previousStar.style.color = "#eab308";
+                previousStar.classList.add("las");
+                previousStar.classList.remove("lar");
+                previousStar = previousStar.previousElementSibling;
+            }
+        });
+
+        // Clic pour noter
+        star.addEventListener("click", function() {
+            noteInput.value = this.dataset.value;
+        });
+
+        // Effet quand la souris quitte la zone
+        star.addEventListener("mouseout", function() {
+            resetStars(noteInput.value);
+        });
+    });
+
+    /**
+     * Réinitialiser les étoiles
+     * @param {number} nb - La note sélectionnée
+     */
+    function resetStars(nb = 0) {
+        stars.forEach((star) => {
+            if (star.dataset.value > nb) {
+                star.style.color = "black";
+                star.classList.add("lar");
+                star.classList.remove("las");
+            } else {
+                star.style.color = "#eab308";
+                star.classList.add("las");
+                star.classList.remove("lar");
+            }
+        });
+    }
+}

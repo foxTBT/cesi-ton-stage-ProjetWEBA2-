@@ -42,9 +42,11 @@
                     </li>
                     <li><a href="{{ route('companies.index') }}"
                             class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
+                    @if (session('account'))
                     <li><a href="{{ route('offers.index') }}"
                             class="menu-item font-bold hover:text-yellow-400">Offres</a>
                     </li>
+                    @endif
                     @if (session('account') && session('account')->Id_Role == '1')
                         <li><a href="{{ route('wishlist.index') }}"
                                 class="menu-item font-bold hover:text-yellow-400">Wishlist</a></li>
@@ -86,8 +88,10 @@
                 <li><a href="{{ route('welcome') }}" class="menu-item font-bold hover:text-yellow-400">Accueil</a></li>
                 <li><a href="{{ route('companies.index') }}"
                         class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
+                @if (session('account'))
                 <li><a href="{{ route('offers.index') }}" class="menu-item font-bold hover:text-yellow-400">Offres</a>
                 </li>
+                @endif
                 @if (session('account') && session('account')->Id_Role == '1')
                     <li><a href="{{ route('wishlist.index') }}"
                             class="menu-item font-bold hover:text-yellow-400">Wishlist</a></li>
@@ -151,7 +155,7 @@
                     <div class="p-4 mb-4 text-yellow-400 space-y-1">
                         <strong class="text-yellow-300">En savoir plus</strong>
                         <p><a href="{{ route('a_propos.qui_sommes_nous') }}"
-                                class="hover:text-yellow-600 cursor-pointer">Qui sommes de nous</a></p>
+                                class="hover:text-yellow-600 cursor-pointer">Qui sommes nous</a></p>
                         <p><a href="{{ route('a_propos.nos_valeurs') }}"
                                 class="hover:text-yellow-600 cursor-pointer">Nos valeurs</a></p>
                         <p><a href="{{ route('a_propos.faq') }}" class="hover:text-yellow-600 cursor-pointer">FAQ</a>

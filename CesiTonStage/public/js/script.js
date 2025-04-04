@@ -122,4 +122,3 @@ function hideButtonAfterApply(button) {
 }
 
 
-//fin script offers

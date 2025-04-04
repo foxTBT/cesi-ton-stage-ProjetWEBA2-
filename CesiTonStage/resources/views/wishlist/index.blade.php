@@ -38,7 +38,7 @@
                             
                             <!-- Boutons pour afficher/cacher la description et postuler -->
                             <div class="flex space-x-2 mt-2">
-                                <button onclick="toggleDescription(this)" class="flex-1 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Description +</button>
+                                <button onclick="toggleDescriptionWishlist(this)" class="flex-1 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Description +</button>
                                 <a href="{{ route('applications.create', $wishList->offer->Id_Offer) }}" class="flex-1 text-center px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Postuler</a>
                             </div>
 
@@ -54,17 +54,6 @@
     </div>
 </div>
 
-<script>
-    function toggleDescription(button) {
-        const description = button.parentElement.nextElementSibling;
-        if (description.classList.contains('hidden')) {
-            description.classList.remove('hidden');
-            button.textContent = "Description -";
-        } else {
-            description.classList.add('hidden');
-            button.textContent = "Description +";
-        }
-    }
-</script>
+<script src="{{ asset('js/script.js') }}"></script>
 
 @endsection

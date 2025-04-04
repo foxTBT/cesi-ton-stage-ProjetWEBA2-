@@ -180,3 +180,16 @@ window.onload = () => {
         });
     }
 }
+
+//Wishlist
+
+function toggleDescriptionWishlist(button) {
+    const description = button.parentElement.nextElementSibling;
+    if (description.classList.contains('hidden')) {
+        description.classList.remove('hidden');
+        button.textContent = "Description -";
+    } else {
+        description.classList.add('hidden');
+        button.textContent = "Description +";
+    }
+}

@@ -105,20 +105,7 @@
                         @endif
                     </div>
                     
-                    <script>
-                        function hideButtonAfterApply(button) {
-                            // Empêche le comportement par défaut du lien (si tu veux éviter une redirection avant l'animation)
-                            event.preventDefault();
-                            
-                            // Cache le bouton
-                            button.style.display = 'none';
-                            
-                            // Redirige après un délai de 0.5 seconde pour donner l'impression que l'action est prise en compte
-                            setTimeout(function() {
-                                window.location.href = button.href; // Effectue la redirection vers la route de la création de la candidature
-                            }, 500);
-                        }
-                    </script>
+                    
                     
                     
                     <div class="description hidden mt-2 text-gray-600">
@@ -164,6 +151,21 @@
             description.classList.add('hidden');
             button.innerHTML = "<strong>Description+</strong>";
         }
+    }
+</script>
+
+<script>
+    function hideButtonAfterApply(button) {
+        // Empêche le comportement par défaut du lien (si tu veux éviter une redirection avant l'animation)
+        event.preventDefault();
+        
+        // Cache le bouton
+        button.style.display = 'none';
+        
+        // Redirige après un délai de 0.5 seconde pour donner l'impression que l'action est prise en compte
+        setTimeout(function() {
+            window.location.href = button.href; // Effectue la redirection vers la route de la création de la candidature
+        }, 500);
     }
 </script>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app') <!-- Indique que ce fichier étend un modèle de mise en page appelé 'app'. Cela insère ce contenu dans la structure définie dans 'layouts.app'. -->
 
-<html class="bg-yellow-500 text-gray-800"> <!-- Début du tag HTML avec des classes Tailwind pour définir l'arrière-plan jaune et le texte gris foncé -->
+<html class="bg-white text-gray-800"> <!-- Début du tag HTML avec des classes Tailwind pour définir l'arrière-plan jaune et le texte gris foncé -->
 
 @section('content') <!-- Début de la section 'content', qui sera insérée dans la mise en page définie dans 'app' -->
 
@@ -8,9 +8,19 @@
 <section class="text-center py-20"> <!-- Section héroïque (grande bannière) centrée avec un padding vertical de 20 unités -->
     <h1 class="text-3xl font-bold">Trouvez votre stage idéal en quelques clics !</h1> <!-- Titre principal, de taille 3xl et en gras -->
     <p class="mt-4 text-lg text-gray-600">Explorez les meilleures opportunités de stage dans des entreprises de renom.</p> <!-- Paragraphe de description avec un léger espacement au-dessus et une couleur de texte gris clair -->
+    
+    @if (session('account'))
     <a href="/offers" class="mt-6 inline-block border-2 border-gray-800 bg-gray-800 text-gray-100 py-3 px-8 rounded-lg text-lg hover:bg-gray-100 hover:text-gray-800"> <!-- Lien vers les offres de stage avec des styles de bouton, bordure et arrière-plan gris foncé, texte gris clair, padding et coins arrondis -->
         <strong>Les offres de stage</strong> <!-- Texte du lien en gras -->
     </a>
+    @endif
+
+    @if (!session('account'))
+    <a href="/login" class="mt-6 inline-block border-2 border-gray-800 bg-gray-800 text-gray-100 py-3 px-8 rounded-lg text-lg hover:bg-gray-100 hover:text-gray-800"> <!-- Lien vers les offres de stage avec des styles de bouton, bordure et arrière-plan gris foncé, texte gris clair, padding et coins arrondis -->
+        <strong>Se connecter</strong> <!-- Texte du lien en gras -->
+    </a>
+    @endif
+
 </section>
 
 <!-- Section des entreprises partenaires -->

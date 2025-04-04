@@ -1,3 +1,8 @@
+
+
+<!-- CETTE PAGE A ÉTÉ CRÉÉ PAR LARAVEL, NOUS NE L'UTILISONS PAS-->
+
+
 @extends('layouts.app') <!-- Étend le layout 'app', permettant de réutiliser des éléments communs comme l'en-tête, le pied de page et la structure de la page -->
 
 @section('content') <!-- Début de la section 'content' qui sera remplie dans le layout parent -->

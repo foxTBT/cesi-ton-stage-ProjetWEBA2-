@@ -58,17 +58,6 @@
     </div>
 </div>
 
-{{-- En commun avec show-show.blade.php A METTRE DANS LE SCRIPT.JS --}}
-<script>
-    function showPopup(surname, lastname) {
-        document.getElementById('successMessage').innerText = `Le compte de ${surname} ${lastname} est supprimé avec succès !`;
-        document.getElementById('successPopup').classList.remove('hidden');
-    }
-
-    function closePopup() {
-        document.getElementById('successPopup').classList.add('hidden');
-    }
-</script>
 @if (session('success'))
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -25,7 +25,7 @@
         <ul class="space-y-3">
             <li>
                 <label for="Name_Company" class="block text-gray-700"><strong>Nom :</strong></label>
-                <input type="text" id="Name_Company" name="Name_Company" value="{{ $company->Name_Company }}"
+                <input  type="text" id="Name_Company" name="Name_Company" value="{{ $company->Name_Company }}"
                 class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
             </li>
 

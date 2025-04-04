@@ -14,27 +14,27 @@
         <ul class="space-y-3">
             <li>
                 <label for="Name_Company" class="block text-gray-700"><strong>Nom :</strong></label>
-                <input type="text" id="Name_Company" name="Name_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
+                <input value="{{ old('Name_Company') }}"  type="text" id="Name_Company" name="Name_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
             </li>
 
             <li>
                 <label for="Email_Company" class="block text-gray-700"><strong>Email :</strong></label>
-                <input type="text" id="Email_Company" name="Email_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
+                <input value="{{ old('Email_Company') }}" type="text" id="Email_Company" name="Email_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
             </li>
 
             <li>
                 <label for="Phone_number_Company" class="block text-gray-700"><strong>Téléphone :</strong></label>
-                <input type="text" id="Phone_number_Company" name="Phone_number_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
+                <input value="{{ old('Phone_number_Company') }}" type="text" id="Phone_number_Company" name="Phone_number_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
             </li>
 
             <li>
                 <label for="Description_Company" class="block text-gray-700"><strong>Description :</strong></label>
-                <input type="text" id="Description_Company" name="Description_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
+                <input value="{{ old('Description_Company') }}" type="text" id="Description_Company" name="Description_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
             </li>
 
             <li>
                 <label for="Siret_number_Company" class="block text-gray-700"><strong>SIRET :</strong></label>
-                <input type="text" id="Siret_number_Company" name="Siret_number_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
+                <input value="{{ old('Siret_number_Company') }}" type="text" id="Siret_number_Company" name="Siret_number_Company" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
             </li>
 
             <li>
@@ -57,6 +57,16 @@
                 </button>
             </li>
         </ul>
+
+        @if ($errors->any())
+                <div class="text-red-500">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
     </form>
 </div>
 

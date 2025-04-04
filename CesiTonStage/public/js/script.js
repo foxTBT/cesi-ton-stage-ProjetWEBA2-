@@ -37,3 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+function showPopup(surname, lastname) {
+    document.getElementById('successMessage').innerText = `Le compte de ${surname} ${lastname} est supprimé avec succès !`;
+    document.getElementById('successPopup').classList.remove('hidden');
+}
+
+function closePopup() {
+    document.getElementById('successPopup').classList.add('hidden');
+}

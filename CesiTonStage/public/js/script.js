@@ -47,3 +47,38 @@ function showPopup(surname, lastname) {
 function closePopup() {
     document.getElementById('successPopup').classList.add('hidden');
 }
+
+
+
+//script offers
+
+//permet de montrer ou cacher la description d'une offre
+function toggleDescription(button) {
+    const description = button.parentElement.nextElementSibling;
+    if (description.classList.contains('hidden')) {
+        description.classList.remove('hidden');
+        button.innerHTML = "<strong>Description-</strong>";
+    } 
+    else {
+        description.classList.add('hidden');
+        button.innerHTML = "<strong>Description+</strong>";
+    }
+}
+
+
+//permet de postuler à une offre si on ne l'a pas encore fait
+function hideButtonAfterApply(button) {
+    // Empêche le comportement par défaut du lien 
+    event.preventDefault();
+        
+    // Cache le bouton
+    button.style.display = 'none';
+        
+    // Redirige après un délai de 0.5 seconde 
+    setTimeout(function() {
+        window.location.href = button.href; // Effectue la redirection vers la route de la création de la candidature
+    }, 500);
+}
+
+
+//fin script offers

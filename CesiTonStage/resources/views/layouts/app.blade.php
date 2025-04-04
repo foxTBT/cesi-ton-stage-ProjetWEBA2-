@@ -41,16 +41,6 @@
                 <a href="/">
                     <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
                 </a>
-                @php
-                    $account = session('account');
-
-                    if ($account === null) {
-                        dump('null');
-                    } else {
-                        $roleId = (int) $account->Id_Role;
-                        dump($roleId);
-                    }
-                @endphp
 
 
 

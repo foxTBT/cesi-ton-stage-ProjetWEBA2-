@@ -3,11 +3,12 @@
 @section('content')
 
 <div class="bg-yellow-500 shadow-lg rounded-lg p-4 border mb-4">
-    <div class="flex flex-row items-center place-content-evenly">
-        @include('partials.evaluation', $company)
-        
-        
-    </div>
+    
+    @if (session('account') && session('account')->Id_Role > '1')
+        <div class="flex flex-row items-center place-content-evenly">
+            @include('partials.evaluation', $company)
+        </div>
+    @endif
 
     <div class="bg-gray-100 shadow-lg rounded-lg p-6 border mt-4 mb-4">
         <div class="flex items-center space-x-4 bg-yellow-500 shadow-lg rounded-lg p-2">

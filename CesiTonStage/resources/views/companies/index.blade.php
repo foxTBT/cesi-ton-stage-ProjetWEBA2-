@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="my-4 text-center text-xl font-semibold text-gray-800 mb-4">Liste des Entrteprises</h1>
+<h1 class="my-4 text-center text-xl font-semibold text-gray-800 mb-4">Liste des Entreprises</h1>
 
 <div class="flex mx-auto w-fit p-3 gap-3">
     @include('partials.search_bar')

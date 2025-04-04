@@ -13,24 +13,6 @@
     <!-- Intégration de Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    {{-- <style>
-        #shimmerDiv {
-            width: 100%;
-            height: 100%; /* Ajustez la hauteur si nécessaire */
-            border: 1px solid black;
-            box-shadow: 0 0 10px #f9a825, 0 0 20px #cd820b, 0 0 30px #633e03;
-            background: linear-gradient(11270deg, #f9a825, #ffcc00, #ffd500, #ffbf00);
-            background-size: 600% 600%; /* Ajustez la taille du dégradé pour un effet plus doux */
-            animation: gradientAnimation 10s ease infinite; /* Animation continue */
-        }
-        
-        
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-    </style> --}}
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -41,9 +23,6 @@
                 <a href="/">
                     <img src="{{ asset('images/logoj_petit.svg') }}" alt="Logo CTS" class="w-[7em] mx-auto">
                 </a>
-
-
-
 
                 <!-- @php
                     dump(request()->cookie('accept_cookies'));
@@ -57,32 +36,28 @@
         <nav class="sticky top-0 w-full bg-zinc-800 text-white text-[1em]">
             <div class="sticky top-0 flex items-center justify-between px-4 py-2">
                 <button class="menu-toggle text-2xl md:hidden" aria-label="Ouvrir le menu">&#9776;</button>
+                {{-- Nav Bar Full --}}
                 <ul id="navList" class="hidden md:flex md:items-center md:gap-4">
-                    <li><a href="/"
-                            class="{{ request()->is('/') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
-                            Accueil
-                        </a>
+                    <li><a href="{{ route('welcome') }}" class="menu-item font-bold hover:text-yellow-400">Accueil</a>
                     </li>
-                    <li><a href="{{ route('companies.index') }}" class="{{ request()->is('companies/index') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">Entreprises</a>
+                    <li><a href="{{ route('companies.index') }}"
+                            class="menu-item font-bold hover:text-yellow-400">Entreprises</a></li>
+                    <li><a href="{{ route('offers.index') }}"
+                            class="menu-item font-bold hover:text-yellow-400">Offres</a>
                     </li>
-                    <li><a href="{{ route('offers.index') }}" class="hover:text-yellow-500">Offres</a>
-                    </li>
+                    @if (session('account') && session('account')->Id_Role == '1')
+                        <li><a href="{{ route('wishlist.index') }}"
+                                class="menu-item font-bold hover:text-yellow-400">Wishlist</a></li>
+                    @endif
+                    @if (session('account') && (session('account')->Id_Role == '2' || session('account')->Id_Role == '3'))
+                        <li><a href="{{ route('accounts.show-student') }}"
+                                class="menu-item font-bold hover:text-yellow-400">Étudiants</a></li>
+                    @endif
                     @if (session('account') && session('account')->Id_Role == '3')
-                        <li>
-                            <a href="{{ route('accounts.show-pilote') }}"
-                                class="{{ request()->is('accounts/show-pilote') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
-                                Voir les comptes pilotes
-                            </a>
+                        <li><a href="{{ route('accounts.show-pilote') }}"
+                                class="menu-item font-bold hover:text-yellow-400 {{ request()->is('accounts/show-pilote') ? 'text-yellow-500' : 'text-white' }}">Pilotes</a>
                         </li>
                     @endif
-                    <li><a href="{{ route('accounts.show-student') }}"
-                            class="{{ request()->is('accounts/show-student') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
-                            Voir les comptes étudiants
-                        </a></li>
-                    <li><a href="{{ route('accounts.create') }}"
-                            class="{{ request()->is('accounts/create') ? 'text-yellow-400 font-bold' : 'text-white hover:text-yellow-500' }}">
-                            Créer un compte étudiant
-                        </a></li>
                 </ul>
                 <ul class="flex items-center gap-4">
                     @if (session('account') && session('account')->Id_Role != 1)
@@ -105,6 +80,8 @@
                 </ul>
 
             </div>
+
+            {{-- Nav Bar Mobile --}}
             <ul class="flex-col items-start gap-2 p-4 bg-zinc-900 md:hidden hidden" id="mobileMenu">
                 <li><a href="{{ route('welcome') }}" class="menu-item font-bold hover:text-yellow-400">Accueil</a></li>
                 <li><a href="{{ route('companies.index') }}"
@@ -185,7 +162,8 @@
         </div>
 
 
-        <strong class="bg-zinc-900 text-white text-left text-base block w-full pl-2 mt-auto">&#169;2025 - Tous droits réservés - Web4All</strong>
+        <strong class="bg-zinc-900 text-white text-left text-base block w-full pl-2 mt-auto">&#169;2025 - Tous droits
+            réservés - Web4All</strong>
 
     </footer>
 

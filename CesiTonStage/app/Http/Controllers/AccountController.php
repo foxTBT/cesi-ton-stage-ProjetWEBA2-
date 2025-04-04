@@ -7,11 +7,13 @@ use App\Models\Account;
 
 class AccountController extends Controller
 {
-    public function create()
+    //Méthode permettant d'aller sur la vue accounts/create.blade.php
+    public function create() 
     {
         return view('accounts.create');
     }
 
+    //Méthode permettant de gérer le stockage des informations
     public function store(Request $request)
     {
         // Validation des données
@@ -62,6 +64,7 @@ class AccountController extends Controller
         return redirect()->route('welcome')->with('success', 'Compte ajouté avec succès !');
     }
 
+    //Méthode permettant d'afficher les pilotes
     public function showPilote()
     {
 
@@ -79,7 +82,8 @@ class AccountController extends Controller
             ->paginate(8);
         return view('accounts.show-pilote', compact('pilotes'));
     }
-
+    
+    //Méthode permettant d'afficher les étudiants
     public function showStudent()
     {
 
@@ -98,6 +102,7 @@ class AccountController extends Controller
         return view('accounts.show-student', compact('students'));
     }
 
+    //Méthode permettant d'effectuer le soft delete d'un compte par son {Id_Account}
     public function destroy(Request $request, $id)
     {
 
@@ -131,6 +136,7 @@ class AccountController extends Controller
         }
     }
 
+    //Méthode permettant la modification d'un compte par son {Id_Account}
     public function edit($id)
     {
         $account = Account::findOrFail($id);
@@ -144,6 +150,7 @@ class AccountController extends Controller
         return view('accounts.edit', compact('account'));
     }
 
+    //Méthode permettant la mise à jour des données après leur modifications
     public function update(Request $request, $id)
     {
         $account = Account::findOrFail($id);
@@ -190,6 +197,8 @@ class AccountController extends Controller
             return redirect()->route('accounts.show-pilote')/*->with('success', 'Compte mis à jour avec succès !')*/;
         }
     }
+
+    //Méthode permettant d'afficher spécifiquement un étudiants via son {Id_Account}
     public function showStudentDetails($id)
     {
 

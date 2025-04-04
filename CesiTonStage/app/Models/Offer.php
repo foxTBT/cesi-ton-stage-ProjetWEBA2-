@@ -69,4 +69,10 @@ class Offer extends Model
     {
         return $this->hasMany(Application::class, 'Id_Offer');
     }
+
+
+    public function wishlist()
+    {
+        return $this->hasMany(WishList::class, 'Id_Offer');
+    }
 }

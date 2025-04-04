@@ -50,13 +50,32 @@
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         @foreach($offers as $offer)
             <div class="bg-gray-100 shadow-lg rounded-lg p-7 border">
-                    <!--Vérification du rôle de l'utilisateur afin de lui donner le droit d'ajouter des offres à sa wishlist ou non-->
+
+                
+
+                <!--Vérification du rôle de l'utilisateur afin de lui donner le droit d'ajouter des offres à sa wishlist ou non-->
                 @if (session('account') && session('account')->Id_Role !== 2) 
-                    <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="flex ml-auto w-fit font-bold text-zinc-500 hover:text-yellow-500 pb-1">Ajouter à la wishlist</button>
-                    </form>
+
+                    <!-- Vérification si l'utilisateur a déjà postulé et affichage du bouton pour postuler -->
+                    @if ($offer->hasWished)
+                        <div class="flex-1 text-center px-2 py-2 mb-4 bg-gray-300 text-black rounded">
+                            
+                            <strong>Mis en WishList</strong>
+                            
+                        </div>
+                    @else
+                        <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="flex-1 text-center px-2 py-2 bg-yellow-500 text-black rounded hover:bg-yellow-400">
+                                <strong>Ajouter à la wishlist</strong>
+                            </button>
+                        </form>
+                    @endif
+
                 @endif
+
+
+
 
                 <!-- Affichage du nom de l'entreprise -->
                 <div class="flex items-center border-b pb-2">

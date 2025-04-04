@@ -121,6 +121,15 @@ function hideButtonAfterApply(button) {
     }, 500);
 }
 
+function hideButtonAfterWished(button) {
+    // Empêche le comportement par défaut du lien 
+    event.preventDefault();
+        
+    // Cache le bouton
+    button.style.display = 'none';
+        
+}
+
 //partial de l'évaluation
 function afficherCellule_E() {
     document.getElementById("cellule_E").classList.remove("hidden");

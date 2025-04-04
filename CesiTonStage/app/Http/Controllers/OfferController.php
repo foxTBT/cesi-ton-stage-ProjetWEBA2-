@@ -38,13 +38,17 @@ class OfferController extends Controller
             })
             ->paginate(6);
 
-        // Vérifier si l'utilisateur a postulé pour chaque offre
+        // Vérifier si l'utilisateur a postulé et/ou mis en wish list pour chaque offre
         foreach ($offers as $offer) {
             $offer->hasApplied = $offer->applications()->where('Id_Account', $user->Id_Account)->exists();
+            
+            $offer->hasWished = $offer->wishlist()->where('Id_Account', $user->Id_Account)->exists();
         }
+
 
         return view('offers.index', compact('offers', 'term'));
     }
+    
 
     //Afficher la page des offres
     public function show($id)

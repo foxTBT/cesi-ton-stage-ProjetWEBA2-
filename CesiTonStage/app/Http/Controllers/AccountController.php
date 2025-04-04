@@ -192,6 +192,12 @@ class AccountController extends Controller
     }
     public function showStudentDetails($id)
     {
+
+        if ((int)session('account')->Id_Account != $id && (int) session('account')->Id_Role == 1) {
+            // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
+            return redirect('/')->with('error', "Vous n'avez pas la permission d'accèder à cette ressource");
+        }
+
         $account = Account::with('role', 'application.offer')->findOrFail($id);
         return view('accounts.show-student-details', compact('account'));
     }

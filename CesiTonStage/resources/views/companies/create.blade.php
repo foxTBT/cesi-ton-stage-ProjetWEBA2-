@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="bg-white shadow-lg rounded-lg border p-6">
+<div class="bg-gray-100 shadow-lg rounded-lg border p-6">
 
     <h2 class="shadow-lg rounded-lg bg-yellow-500 text-xl font-semibold pt-2 pl-12 pr-12 pb-2 mb-6 text-center">
         <strong>Création d'entreprise</strong>
@@ -52,7 +52,7 @@
             </li>
 
             <li class="mx-auto w-fit">
-                <button type="submit" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black">
+                <button type="submit" class="text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black">
                     <strong>Créer l'entreprise</strong>
                 </button>
             </li>

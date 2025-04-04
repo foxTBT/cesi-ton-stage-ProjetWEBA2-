@@ -6,7 +6,7 @@
     <div class="flex flex-row items-center place-content-evenly">
         @include('partials.evaluation', $company)
         
-        @include('partials.dashboard', $company)
+        
     </div>
 
     <div class="bg-gray-100 shadow-lg rounded-lg p-6 border mt-4 mb-4">

@@ -50,7 +50,7 @@
                 @if (session('account') && session('account')->Id_Role !== 2) 
                     <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
                         @csrf
-                        <button type="submit" class="flex ml-auto w-fit hover:text-yellow-500 hover:font-bold pb-1">Ajouter à la wishlist</button>
+                        <button type="submit" class="flex ml-auto w-fit font-bold text-zinc-500 hover:text-yellow-500 pb-1">Ajouter à la wishlist</button>
                     </form>
                 @endif
 
@@ -127,20 +127,18 @@
     </script>
 @endif
 
-<strong>
-    <script>
-        function toggleDescription(button) {
-            const description = button.parentElement.nextElementSibling;
-            if (description.classList.contains('hidden')) {
-                description.classList.remove('hidden');
-                button.textContent = "Description-";
-            } else {
-                description.classList.add('hidden');
-                button.textContent = "Description+";
-            }
+<script>
+    function toggleDescription(button) {
+        const description = button.parentElement.nextElementSibling;
+        if (description.classList.contains('hidden')) {
+            description.classList.remove('hidden');
+            button.innerHTML = "<strong>Description-</strong>";
+        } else {
+            description.classList.add('hidden');
+            button.innerHTML = "<strong>Description+</strong>";
         }
-    </script>
-</strong>
+    }
+</script>
 
 <div class="mt-4">
     {{ $offers->appends(request()->input())->links('pagination::tailwind') }}

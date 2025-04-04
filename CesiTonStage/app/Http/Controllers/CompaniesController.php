@@ -85,7 +85,7 @@ class CompaniesController extends Controller
             ->orWhere('Email_Company', 'LIKE', '%' . $term . '%')
             ->orWhere('Phone_number_Company', 'LIKE', '%' . $term . '%')
             ->with('city')
-            ->paginate(10);
+            ->paginate(8);
 
         return view('companies.index')->with('companies', $companies);
     }

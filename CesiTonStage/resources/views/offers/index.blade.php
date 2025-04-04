@@ -4,9 +4,9 @@
 
 <h1 class="my-4 text-center text-xl font-semibold text-gray-800 mb-4">Liste des Offres</h1>
 
-<div class="flex ml-auto w-fit p-3 gap-3 mr-[7%]">
+<div class="flex mx-auto w-fit p-3 gap-3">
     @if (session('account') && session('account')->Id_Role > 1)
-    <div class="flex justify-end mb-4">
+    <div class="flex justify-end">
         <a href="{{ route('offers.create') }}" class="bg-white text-yellow-500 px-4 py-2 rounded h-min border-yellow-500 border-2 hover:border-green-500 hover:bg-green-300 hover:text-black">
             <strong>Ajouter une offre</strong>
         </a>
@@ -14,11 +14,20 @@
     @endif
 
     <!-- Bouton pour accéder à la page d'analytique -->
-    <div class="flex justify-end mb-4">
+    <div class="flex justify-end">
         <a href="{{ route('offers.analytics') }}" class="border-2 border-black bg-yellow-500 text-black px-4 py-2 rounded -ml-px flex items-center justify-center hover:bg-yellow-400">
             <img src="{{ asset('images/analytics.png') }}" alt="Statistiques" class="w-6 h-6">
         </a>
     </div>
+</div>
+
+<div class="flex mx-auto w-fit gap-3 mb-4">
+    <form action="{{ route('offers.index') }}" class="flex">
+        <input type="search" name="term" class="border-2 border-black p-2 rounded-l-md focus:outline-none hover:bg-yellow-50">
+        <button type="submit" class="border-2 border-black bg-yellow-500 text-black px-4 py-2 rounded-r-md -ml-px flex items-center justify-center hover:bg-yellow-400">
+            <img src="{{ asset('images/searching.png') }}" alt="Chercher" class="w-6 h-6">
+        </button>
+    </form>
 </div>
 
 @if (session('error'))
@@ -36,7 +45,7 @@
 <div class="flex justify-center">
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         @foreach($offers as $offer)
-            <div class="bg-gray-100 shadow-lg rounded-lg p-4 border">
+            <div class="bg-gray-100 shadow-lg rounded-lg p-7 border">
                     
                 @if (session('account') && session('account')->Id_Role !== 2) 
                     <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
@@ -118,17 +127,23 @@
     </script>
 @endif
 
-<script>
-    function toggleDescription(button) {
-        const description = button.parentElement.nextElementSibling;
-        if (description.classList.contains('hidden')) {
-            description.classList.remove('hidden');
-            button.textContent = "Description -";
-        } else {
-            description.classList.add('hidden');
-            button.textContent = "Description +";
+<strong>
+    <script>
+        function toggleDescription(button) {
+            const description = button.parentElement.nextElementSibling;
+            if (description.classList.contains('hidden')) {
+                description.classList.remove('hidden');
+                button.textContent = "Description-";
+            } else {
+                description.classList.add('hidden');
+                button.textContent = "Description+";
+            }
         }
-    }
-</script>
+    </script>
+</strong>
+
+<div class="mt-4">
+    {{ $offers->appends(request()->input())->links('pagination::tailwind') }}
+</div>
 
 @endsection

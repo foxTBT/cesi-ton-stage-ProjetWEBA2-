@@ -76,7 +76,7 @@ class AccountController extends Controller
                 $query->orWhere('First_name_Account', 'LIKE', '%' . $term . '%')
                     ->orWhere('Last_name_Account', 'LIKE', '%' . $term . '%');
             })
-            ->paginate(10);
+            ->paginate(8);
         return view('accounts.show-pilote', compact('pilotes'));
     }
 
@@ -94,7 +94,7 @@ class AccountController extends Controller
                 $query->orWhere('First_name_Account', 'LIKE', '%' . $term . '%')
                     ->orWhere('Last_name_Account', 'LIKE', '%' . $term . '%');
             })
-            ->paginate(10);
+            ->paginate(8);
         return view('accounts.show-student', compact('students'));
     }
 

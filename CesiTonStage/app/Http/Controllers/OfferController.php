@@ -17,8 +17,23 @@ class OfferController extends Controller
 {
     public function index()
     {
-        $offers = Offer::with(['category', 'status', 'account', 'company'])->get();
-        return view('offers.index', compact('offers'));
+        $term = request('term');
+    
+        $offers = Offer::with(['category', 'status', 'account', 'company'])
+            ->when($term, function ($query, $term) {
+                $query->where(function ($q) use ($term) {
+                    $q->where('Title_Offer', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Description_Offer', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Salary_Offer', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Begin_date_Offer', 'LIKE', '%' . $term . '%');
+                })
+                ->orWhereHas('company', function ($q) use ($term) {
+                    $q->where('Name_Company', 'LIKE', '%' . $term . '%');
+                });
+            })
+            ->paginate(6);
+    
+        return view('offers.index', compact('offers', 'term'));
     }
 
     public function show($id)

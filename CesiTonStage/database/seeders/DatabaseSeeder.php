@@ -786,16 +786,16 @@ class DatabaseSeeder extends Seeder
 
         // Seeder pour la table evaluates
         DB::table('evaluates')->insert([
-            [
-            'Id_Account' => 1,
-            'Id_Company' => 1,
-            'Rating' => 4,
-            ],
-            [
-            'Id_Account' => 2,
-            'Id_Company' => 1,
-            'Rating' => 2,
-            ]
+            // [
+            // 'Id_Account' => 1,
+            // 'Id_Company' => 1,
+            // 'Rating' => 4,
+            // ],
+            // [
+            // 'Id_Account' => 2,
+            // 'Id_Company' => 1,
+            // 'Rating' => 2,
+            // ]
             // [
             // 'Id_Account' => 3,
             // 'Id_Company' => 1,

@@ -47,3 +47,45 @@ function showPopup(surname, lastname) {
 function closePopup() {
     document.getElementById('successPopup').classList.add('hidden');
 }
+
+window.onload = function () {
+    let acceptCookies = document.cookie.includes('accept_cookies=true');
+    if (!acceptCookies) {
+        document.getElementById("popup").style.display = "flex";
+    }
+}
+
+function accept() {
+    document.getElementById("popup").style.display = "none";
+
+    fetch("{{ route('accept.cookies') }}", {
+        method: "POST",
+        headers: {
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ accept: true })
+    }).then(response => response.json()).then(data => {
+        if (data.success) {
+            document.cookie = "accept_cookies=true; path=/; max-age=" + (30 * 24 * 60 * 60);
+        }
+    });
+}
+
+function reject() {
+    document.getElementById("popup").style.display = "none";
+
+    fetch("{{ route('reject.cookies') }}", {
+        method: "POST",
+        headers: {
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ accept: false })
+    }).then(response => response.json()).then(data => {
+        if (data.success) {
+            document.cookie = "accept_cookies=false; path=/; max-age=" + (30 * 24 * 60 * 60);
+            window.location.href = document.referrer || '/';
+        }
+    });
+}

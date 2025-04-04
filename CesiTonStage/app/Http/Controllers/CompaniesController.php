@@ -102,28 +102,25 @@ class CompaniesController extends Controller
     {
         $term = request('term');
         
-        $company = Company::with('city')
-            ->findOrFail($Id_Company);
-    
-        $offers = Offer::with(['category', 'status', 'account', 'company', 'skills'])
+        $company = Company::with('city', 'offer', 'category', 'status', 'account')
             ->where('Id_Company', $Id_Company)
             ->when($term, function ($query, $term) {
-                $query->where(function ($q) use ($term) {
+                $query->whereHas('offer', function ($q) use ($term) {
                     $q->where('Title_Offer', 'LIKE', '%' . $term . '%')
                         ->orWhere('Description_Offer', 'LIKE', '%' . $term . '%')
                         ->orWhere('Salary_Offer', 'LIKE', '%' . $term . '%')
                         ->orWhere('Begin_date_Offer', 'LIKE', '%' . $term . '%');
                 });
             })
-            ->paginate(6);
+            ->paginate(6)
+            ->findOrFail($Id_Company);
 
         if (!session('account') || (int) session('account')->Id_Role < 1) {
             return redirect('/login');
         }
 
-        return view('companies.show', ['company' => $company, 'offers' => $offers]);
+        return view('companies.show')->with('company', $company);
     }
-
 
     public function destroy($Id_Company)
     {

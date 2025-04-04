@@ -59,8 +59,8 @@
 
         <div class="flex justify-center">
             <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                @isset($offers)
-                @foreach($offers as $offer)
+                @isset($company->offers)
+                @foreach($company->offers as $offer)
                     <div class="bg-gray-100 shadow-lg rounded-lg p-7 border">
                             
                         @if (session('account') && session('account')->Id_Role !== 2) 
@@ -157,7 +157,7 @@
         </script>
         
         <div class="mt-4">
-            {{ $offers->appends(request()->input())->links('pagination::tailwind') }}
+            {{ $company->offers->appends(request()->input())->links('pagination::tailwind') }}
         </div>
     </div>
 </div>

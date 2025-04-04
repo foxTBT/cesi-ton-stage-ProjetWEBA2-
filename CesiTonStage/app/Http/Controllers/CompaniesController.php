@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Offer;
 use App\Models\City;
 use Illuminate\Http\Request;
 
@@ -80,11 +81,18 @@ class CompaniesController extends Controller
     {
         $term = request('term');
 
-        $companies = Company::where('Name_Company', 'LIKE', '%' . $term . '%')
-            ->orWhere('Description_Company', 'LIKE', '%' . $term . '%')
-            ->orWhere('Email_Company', 'LIKE', '%' . $term . '%')
-            ->orWhere('Phone_number_Company', 'LIKE', '%' . $term . '%')
-            ->with('city')
+        $companies = Company::with('city')
+            ->when($term, function ($query, $term) {
+                $query->where(function ($q) use ($term) {
+                    $q->where('Name_Company', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Description_Company', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Email_Company', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Phone_number_Company', 'LIKE', '%' . $term . '%');
+                })
+                ->orWhereHas('city', function ($q) use ($term) {
+                    $q->where('Name_City', 'LIKE', '%' . $term . '%');
+                });
+            })
             ->paginate(8);
 
         return view('companies.index')->with('companies', $companies);
@@ -92,15 +100,28 @@ class CompaniesController extends Controller
 
     public function show($Id_Company)
     {
-        $company = Company::where('Id_Company', $Id_Company)
-            ->with('city')
-            ->firstOrFail();
+        $term = request('term');
+        
+        $company = Company::with('city')
+            ->findOrFail($Id_Company);
+    
+        $offers = Offer::with(['category', 'status', 'account', 'company', 'skills'])
+            ->where('Id_Company', $Id_Company)
+            ->when($term, function ($query, $term) {
+                $query->where(function ($q) use ($term) {
+                    $q->where('Title_Offer', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Description_Offer', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Salary_Offer', 'LIKE', '%' . $term . '%')
+                        ->orWhere('Begin_date_Offer', 'LIKE', '%' . $term . '%');
+                });
+            })
+            ->paginate(6);
 
         if (!session('account') || (int) session('account')->Id_Role < 1) {
             return redirect('/login');
         }
 
-        return view('companies.show')->with('company', $company);
+        return view('companies.show', ['company' => $company, 'offers' => $offers]);
     }
 
 

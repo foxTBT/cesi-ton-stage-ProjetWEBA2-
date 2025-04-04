@@ -16,7 +16,7 @@ class CompaniesController extends Controller
             // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
             return back()->with('error', "Vous ne pouvez pas créer d'entreprises, vous n'en avez pas la permission");
         }
-        
+
         $cities = City::all();
         return view('companies.create', compact('cities'));
     }
@@ -89,9 +89,9 @@ class CompaniesController extends Controller
                         ->orWhere('Email_Company', 'LIKE', '%' . $term . '%')
                         ->orWhere('Phone_number_Company', 'LIKE', '%' . $term . '%');
                 })
-                ->orWhereHas('city', function ($q) use ($term) {
-                    $q->where('Name_City', 'LIKE', '%' . $term . '%');
-                });
+                    ->orWhereHas('city', function ($q) use ($term) {
+                        $q->where('Name_City', 'LIKE', '%' . $term . '%');
+                    });
             })
             ->paginate(8);
 
@@ -101,19 +101,17 @@ class CompaniesController extends Controller
     public function show($Id_Company)
     {
         $term = request('term');
-        
-        $company = Company::with('city', 'offer', 'category', 'status', 'account')
+
+        $company = Company::with(['city', 'offers' => function ($query) use ($term) {
+            if ($term) {
+                $query->where('Title_Offer', 'LIKE', '%' . $term . '%')
+                    ->orWhere('Description_Offer', 'LIKE', '%' . $term . '%')
+                    ->orWhere('Salary_Offer', 'LIKE', '%' . $term . '%')
+                    ->orWhere('Begin_date_Offer', 'LIKE', '%' . $term . '%');
+            }
+        }])
             ->where('Id_Company', $Id_Company)
-            ->when($term, function ($query, $term) {
-                $query->whereHas('offer', function ($q) use ($term) {
-                    $q->where('Title_Offer', 'LIKE', '%' . $term . '%')
-                        ->orWhere('Description_Offer', 'LIKE', '%' . $term . '%')
-                        ->orWhere('Salary_Offer', 'LIKE', '%' . $term . '%')
-                        ->orWhere('Begin_date_Offer', 'LIKE', '%' . $term . '%');
-                });
-            })
-            ->paginate(6)
-            ->findOrFail($Id_Company);
+            ->firstOrFail();
 
         if (!session('account') || (int) session('account')->Id_Role < 1) {
             return redirect('/login');
@@ -128,7 +126,7 @@ class CompaniesController extends Controller
             // Rediriger l'utilisateur avec un message d'erreur (il n'est pas censé s'afficher car il y a en amont un bloquage visuel)
             return redirect('/')->with('error', "Vous n'avez pas la permission de supprimer une entreprise");
         }
-        
+
         $company = Company::findOrFail($Id_Company);
         $company->delete();
 
@@ -147,7 +145,7 @@ class CompaniesController extends Controller
             return redirect('/login');
         }
 
-        return view('companies.edit', compact('company','cities'));
+        return view('companies.edit', compact('company', 'cities'));
     }
 
     public function update(Request $request, $Id_Company)
@@ -206,7 +204,8 @@ class CompaniesController extends Controller
             ->with('error', "Erreur rencontrée lors de la mise à jour de l'entreprise !");
     }
 
-    public function dashboard($Id_Company) {
+    public function dashboard($Id_Company)
+    {
 
         return redirect()->route('companies.show', $Id_Company);
     }

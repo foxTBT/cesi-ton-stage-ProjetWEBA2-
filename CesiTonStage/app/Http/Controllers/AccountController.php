@@ -32,12 +32,12 @@ class AccountController extends Controller
 
 
             'First_name_Account.required' => 'Veuillez insérer un prénom',
-            'First_name_Account.regex' => 'Charactère invalide pour le prénom',
-            'First_name_Account.max' => 'Prénom trop long (maximum 128 charactère)',
+            'First_name_Account.regex' => 'Caractère invalide pour le prénom',
+            'First_name_Account.max' => 'Prénom trop long (maximum 128 caractère)',
 
             'First_name_Account.required' => 'Veuillez insérer un nom',
-            'Last_name_Account.regex' => 'Charactère invalide pour le nom',
-            'Last_name_Account.max' => 'Nom trop long (maximum 128 charactère)',
+            'Last_name_Account.regex' => 'Caractère invalide pour le nom',
+            'Last_name_Account.max' => 'Nom trop long (maximum 128 caractère)',
             
             'Birth_date_Account.required' => 'Veuillez insérer une date',
 
@@ -164,8 +164,8 @@ class AccountController extends Controller
             'First_name_Account.max' => 'Prénom trop long (maximum 128 charactère)',
 
             'First_name_Account.required' => 'Veuillez insérer un nom',
-            'Last_name_Account.regex' => 'Charactère invalide pour le nom',
-            'Last_name_Account.max' => 'Nom trop long (maximum 128 charactère)',
+            'Last_name_Account.regex' => 'Caractère invalide pour le nom',
+            'Last_name_Account.max' => 'Nom trop long (maximum 128 caractère)',
             
             'Birth_date_Account.required' => 'Veuillez insérer une date',
 
@@ -174,7 +174,7 @@ class AccountController extends Controller
 
         // Mise à jour des données
         $account->update([
-            'Email_Account' => $request->Email_Account,
+            'Email_Account' => strtolower($request->Email_Account),
             'First_name_Account' => $request->First_name_Account,
             'Last_name_Account' => $request->Last_name_Account,
             'Birth_date_Account' => $request->Birth_date_Account,

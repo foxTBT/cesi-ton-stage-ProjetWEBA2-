@@ -4,6 +4,7 @@
 
 <h1 class="my-4 text-center text-xl font-semibold text-gray-800 mb-4">Liste des Offres</h1>
 
+<!--Vérification de la connexion et du rôle qui ne doit pas être étudient, soit pilote soit admin-->
 <div class="flex mx-auto w-fit p-3 gap-3">
     @if (session('account') && session('account')->Id_Role > 1)
     <div class="flex justify-end">
@@ -21,6 +22,7 @@
     </div>
 </div>
 
+<!--Barre de recherche-->
 <div class="flex mx-auto w-fit gap-3 mb-4">
     <form action="{{ route('offers.index') }}" class="flex">
         <input type="search" name="term" class="border-2 border-black p-2 rounded-l-md focus:outline-none hover:bg-yellow-50">
@@ -30,6 +32,7 @@
     </form>
 </div>
 
+<!-- Affichage des messages d'erreur ou de succès -->
 @if (session('error'))
     <div class="alert alert-danger">
         {{ session('error') }}
@@ -42,11 +45,12 @@
     </div>
 @endif
 
+<!-- Affichage des offres -->
 <div class="flex justify-center">
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         @foreach($offers as $offer)
             <div class="bg-gray-100 shadow-lg rounded-lg p-7 border">
-                    
+                    <!--Vérification du rôle de l'utilisateur afin de lui donner le droit d'ajouter des offres à sa wishlist ou non-->
                 @if (session('account') && session('account')->Id_Role !== 2) 
                     <form action="{{ route('wishlist.add', $offer->Id_Offer) }}" method="POST">
                         @csrf
@@ -54,6 +58,7 @@
                     </form>
                 @endif
 
+                <!-- Affichage du nom de l'entreprise -->
                 <div class="flex items-center border-b pb-2">
                     <strong class="text-lg">
                         <p>{{ $offer->company?->Name_Company ?? 'N/A' }}</p>
@@ -72,6 +77,7 @@
                     <p class="text-gray-500 text-sm mt-1">Status : {{ $offer->status->Title_Status ?? 'Non spécifiée' }}</p>
                     <p class="text-gray-500 text-sm mt-1">Mail : {{ $offer->account->Email_Account ?? 'Non spécifiée' }}</p>
                     
+                    <!-- Affichage des compétences -->
                     <div class="mt-2">
                         <strong>Compétences :</strong>
                         <ul class="list-disc list-inside text-gray-500 text-sm">
@@ -85,12 +91,13 @@
                         </ul>
                     </div>
 
+                    <!--Affichage de la description de l'offre-->
                     <div class="flex gap-2 mt-2">
                         <button onclick="toggleDescription(this)" class="flex-1 px-3 py-2 bg-yellow-500 text-black rounded hover:bg-yellow-400">
                             <strong>Description+</strong>
                         </button>
                     
-                        <!-- Vérification si l'utilisateur a déjà postulé -->
+                        <!-- Vérification si l'utilisateur a déjà postulé et affichage du bouton pour postuler -->
                         @if ($offer->hasApplied)
                             <span class="flex-1 text-center px-2 py-2 bg-gray-300 text-black rounded">
                                 <strong>Postulé</strong>
@@ -111,7 +118,7 @@
                     <div class="description hidden mt-2 text-gray-600">
                         <p>{{ $offer->Description_Offer }}</p>
                     </div>
-
+                    <!-- Affichage du bouton de suppression et d'édition pour les admin et les pilotes-->
                     @if (session('account') && session('account')->Id_Role > 1)
                         <div class="flex space-x-1 mt-2">
                             <a href="{{ route('offers.edit', $offer->Id_Offer) }}" 
@@ -156,19 +163,20 @@
 
 <script>
     function hideButtonAfterApply(button) {
-        // Empêche le comportement par défaut du lien (si tu veux éviter une redirection avant l'animation)
+        // Empêche le comportement par défaut du lien 
         event.preventDefault();
         
         // Cache le bouton
         button.style.display = 'none';
         
-        // Redirige après un délai de 0.5 seconde pour donner l'impression que l'action est prise en compte
+        // Redirige après un délai de 0.5 seconde 
         setTimeout(function() {
             window.location.href = button.href; // Effectue la redirection vers la route de la création de la candidature
         }, 500);
     }
 </script>
 
+<!-- Pagination -->
 <div class="mt-4">
     {{ $offers->appends(request()->input())->links('pagination::tailwind') }}
 </div>

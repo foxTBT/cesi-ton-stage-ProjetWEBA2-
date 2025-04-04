@@ -10,7 +10,7 @@ use App\Models\Offer;
 use App\Models\Skill;
 use App\Models\Category;
 use App\Models\Status;
-use Carbon\Carbon; // Assurez-vous d'importer Carbon
+use Carbon\Carbon; 
 
 
 class OfferController extends Controller
@@ -46,13 +46,15 @@ class OfferController extends Controller
         return view('offers.index', compact('offers', 'term'));
     }
 
-
+    //Afficher la page des offres
     public function show($id)
     {
         $offer = Offer::with(['category', 'status', 'account', 'company'])->findOrFail($id);
         return view('offers.index', compact('offer'));
     }
 
+
+    // Afficher la page de création d'une offre
     public function create()
     {
 
@@ -69,6 +71,8 @@ class OfferController extends Controller
         return view('offers.create', compact('accounts', 'companies', 'statuses', 'skills'));
     }
 
+
+    // Enregistrer une nouvelle offre
     public function store(Request $request)
     {
         // Valider les données du formulaire
@@ -82,10 +86,12 @@ class OfferController extends Controller
             'Id_Status' => 'required|integer',
             'Id_Account' => 'required|integer',
             'Id_Company' => 'required|integer',
-            'skills' => 'array', // Validation pour les compétences
-            'skills.*' => 'integer|exists:skills,Id_Skill', // Validation pour chaque compétence
+            'skills' => 'array', 
+            'skills.*' => 'integer|exists:skills,Id_Skill', 
         ]);
 
+
+        //Créer une nouvelle offre
         $offer = Offer::create([
             'Title_Offer' => $request->Title_Offer,
             'Description_Offer' => $request->Description_Offer,
@@ -136,8 +142,8 @@ class OfferController extends Controller
             'Id_Status' => 'required|integer',
             'Id_Account' => 'required|integer',
             'Id_Company' => 'required|integer',
-            'skills' => 'array', // Validation pour les compétences
-            'skills.*' => 'integer|exists:skills,Id_Skill', // Validation pour chaque compétence
+            'skills' => 'array', 
+            'skills.*' => 'integer|exists:skills,Id_Skill', 
         ]);
 
         // Récupérer l'offre à mettre à jour
@@ -167,6 +173,8 @@ class OfferController extends Controller
     }
 
 
+
+    //Supprimer l'offre de manière douce
     public function destroy($id)
     {
 
@@ -180,7 +188,10 @@ class OfferController extends Controller
         $offer->delete();
         return redirect()->route('offers.index')->with('success', 'Offre supprimée avec succès.');
     }
+    
 
+
+    // Afficher la page d'analyse des offres
     public function analytics(Request $request)
     {
         // Répartition par compétence - Top 5

@@ -36,7 +36,7 @@ class CompaniesController extends Controller
         ], [
             'Name_Company.required' => 'Nom de l\'entreprise requis',
             'Name_Company.max' => 'Nom de l\'entreprise est trop long (maximum 128)',
-            'Name_Company.regex' => 'Charactère invalide pour le nom de l\'entreprise',
+            'Name_Company.regex' => 'Caractère invalide pour le nom de l\'entreprise',
 
 
             'Email_Company.required' => 'L\'email de l\'entreprise est requise',

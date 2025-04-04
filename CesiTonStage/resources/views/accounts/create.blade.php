@@ -49,8 +49,8 @@
             </li>
 
             <li>
-                <label value="{{ old('Id_Role') }}" for="Id_Role" class="block text-gray-700"><strong>Rôle :</strong></label>
-                <select name="Id_Role" id="Id_Role" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
+                <label for="Id_Role" class="block text-gray-700"><strong>Rôle :</strong></label>
+                <select value="{{ old('Id_Role') }}"  name="Id_Role" id="Id_Role" class="border-gray-700 w-full px-4 py-2 border rounded-lg hover:bg-yellow-50" required>
                     <option value="1">Étudiant</option>
                     <option value="2">Pilote</option>
                     <option value="3">Admin</option>
